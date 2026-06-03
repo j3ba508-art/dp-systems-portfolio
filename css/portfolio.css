@@ -958,3 +958,8 @@ svg {
 body {
   outline: 8px solid red !important;
 }
+
+/* TEMP TEST - REMOVE AFTER CONFIRMED */
+.site-header {
+  background: red !important;
+}
