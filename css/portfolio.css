@@ -935,3 +935,18 @@ svg {
   max-width: 100%;
   height: auto;
 }
+
+/* FINAL STICKY NAV OVERRIDE */
+.site-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 9999 !important;
+  }
+}
