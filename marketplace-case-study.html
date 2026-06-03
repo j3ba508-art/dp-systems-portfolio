@@ -1,0 +1,1163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Multi-Seller Marketplace Case Study | D & P Systems</title>
+
+    <meta
+      name="description"
+      content="A Supabase-powered multi-seller marketplace prototype case study featuring guest checkout, seller dashboard, product CRUD, order tracking, inventory safety, and review moderation."
+    />
+
+    <style>
+      :root {
+        --bg-main: #f8fafc;
+        --bg-soft: #eef2f7;
+        --bg-dark: #0f172a;
+        --bg-card: #ffffff;
+        --text-main: #0f172a;
+        --text-muted: #64748b;
+        --text-light: #f8fafc;
+        --accent: #e50914;
+        --accent-dark: #b20710;
+        --border: #e2e8f0;
+        --shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
+        --radius-lg: 22px;
+        --radius-md: 16px;
+        --max-width: 1160px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--text-main);
+        background: var(--bg-main);
+        line-height: 1.6;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      ul {
+        padding-left: 1.2rem;
+      }
+
+      li {
+        margin-bottom: 8px;
+      }
+
+      .container {
+        width: min(100% - 32px, var(--max-width));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(248, 250, 252, 0.92);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav {
+        min-height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .brand {
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        font-size: 1.1rem;
+      }
+
+      .brand span {
+        color: var(--accent);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 18px;
+        border-radius: 999px;
+        font-weight: 700;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: 0.2s ease;
+      }
+
+      .btn.primary {
+        background: var(--accent);
+        color: #fff;
+        box-shadow: 0 14px 30px rgba(229, 9, 20, 0.28);
+      }
+
+      .btn.primary:hover {
+        background: var(--accent-dark);
+        transform: translateY(-1px);
+      }
+
+      .btn.secondary {
+        background: #fff;
+        color: var(--text-main);
+        border-color: var(--border);
+      }
+
+      .btn.secondary:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        transform: translateY(-1px);
+      }
+
+      .hero {
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(229, 9, 20, 0.14),
+            transparent 28%
+          ),
+          linear-gradient(135deg, #0f172a 0%, #111827 45%, #020617 100%);
+        color: var(--text-light);
+        padding: 92px 0 68px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 44px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 14px;
+        color: var(--accent);
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+      }
+
+      .hero h1 {
+        margin: 0;
+        font-size: clamp(2.35rem, 5vw, 4.8rem);
+        line-height: 1;
+        letter-spacing: -0.06em;
+      }
+
+      .hero .lead {
+        margin: 22px 0 0;
+        color: #cbd5e1;
+        font-size: 1.12rem;
+        max-width: 720px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 28px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        color: #e2e8f0;
+        font-size: 0.9rem;
+      }
+
+      .hero-card {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: var(--radius-lg);
+        padding: 18px;
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
+      }
+
+      .hero-card img {
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: #111827;
+      }
+
+      .image-note {
+        margin: 12px 0 0;
+        color: #cbd5e1;
+        font-size: 0.92rem;
+      }
+
+      .section {
+        padding: 74px 0;
+      }
+
+      .section.alt {
+        background: var(--bg-soft);
+      }
+
+      .section.dark {
+        background: var(--bg-dark);
+        color: var(--text-light);
+      }
+
+      .section-header {
+        max-width: 820px;
+        margin-bottom: 32px;
+      }
+
+      .section-header h2 {
+        margin: 0;
+        font-size: clamp(1.9rem, 3vw, 3rem);
+        line-height: 1.1;
+        letter-spacing: -0.04em;
+      }
+
+      .section-header p {
+        margin: 14px 0 0;
+        color: var(--text-muted);
+        font-size: 1.02rem;
+      }
+
+      .dark .section-header p {
+        color: #cbd5e1;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 26px;
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+      }
+
+      .dark .card {
+        background: #111827;
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .card h3 {
+        margin: 0 0 10px;
+        font-size: 1.25rem;
+        letter-spacing: -0.02em;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--text-muted);
+      }
+
+      .dark .card p,
+      .dark .card li {
+        color: #cbd5e1;
+      }
+
+      .screenshot-card {
+        overflow: hidden;
+        padding: 0;
+      }
+
+      .screenshot-card img {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+        background: #e2e8f0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .screenshot-card .content {
+        padding: 22px;
+      }
+
+      .feature-list {
+        display: grid;
+        gap: 14px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .feature-list li {
+        margin: 0;
+        padding: 16px 18px;
+        border-radius: var(--radius-md);
+        background: #fff;
+        border: 1px solid var(--border);
+        color: var(--text-muted);
+      }
+
+      .feature-list strong {
+        color: var(--text-main);
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .process {
+        counter-reset: step;
+        display: grid;
+        gap: 16px;
+      }
+
+      .process-item {
+        position: relative;
+        padding: 22px 22px 22px 70px;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+      }
+
+      .process-item::before {
+        counter-increment: step;
+        content: counter(step);
+        position: absolute;
+        left: 22px;
+        top: 22px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+      }
+
+      .process-item h3 {
+        margin: 0 0 6px;
+      }
+
+      .process-item p {
+        margin: 0;
+        color: var(--text-muted);
+      }
+
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 9px 12px;
+        border-radius: 999px;
+        background: #fff;
+        border: 1px solid var(--border);
+        color: var(--text-muted);
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+
+      .dark .tag {
+        background: rgba(255, 255, 255, 0.08);
+        color: #e2e8f0;
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .wide-image {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 14px;
+        box-shadow: var(--shadow);
+        margin-top: 28px;
+      }
+
+      .wide-image img {
+        border-radius: 14px;
+        width: 100%;
+        background: #e2e8f0;
+      }
+
+      .image-stack img + img {
+        margin-top: 18px;
+      }
+
+      .caption {
+        margin: 12px 6px 0;
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+
+      .cta {
+        text-align: center;
+        background:
+          radial-gradient(
+            circle at top,
+            rgba(229, 9, 20, 0.14),
+            transparent 30%
+          ),
+          #0f172a;
+        color: #fff;
+        border-radius: var(--radius-lg);
+        padding: 48px 28px;
+        box-shadow: var(--shadow);
+      }
+
+      .cta h2 {
+        margin: 0;
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+        letter-spacing: -0.04em;
+      }
+
+      .cta p {
+        max-width: 720px;
+        margin: 14px auto 26px;
+        color: #cbd5e1;
+      }
+
+      .cta-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .site-footer {
+        padding: 28px 0;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid,
+        .grid-2,
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding-top: 68px;
+        }
+
+        .nav {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 16px 0;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .container {
+          width: min(100% - 24px, var(--max-width));
+        }
+
+        .section {
+          padding: 54px 0;
+        }
+
+        .hero-actions,
+        .cta-actions {
+          flex-direction: column;
+        }
+
+        .btn {
+          width: 100%;
+        }
+
+        .process-item {
+          padding-left: 22px;
+          padding-top: 68px;
+        }
+
+        .process-item::before {
+          top: 22px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a href="index.html" class="brand">D &amp; P <span>Systems</span></a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="#overview">Overview</a>
+          <a href="#features">Features</a>
+          <a href="#screenshots">Screenshots</a>
+          <a href="#backend">Backend</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Portfolio Case Study</p>
+
+            <h1>Multi-Seller Marketplace Prototype</h1>
+
+            <p class="lead">
+              A working marketplace prototype built with vanilla JavaScript and
+              Supabase, focused on seller workflows, guest checkout, inventory
+              safety, order tracking, review moderation, and multi-seller order
+              handling.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#screenshots" class="btn primary">View Screenshots</a>
+              <a href="index.html#work" class="btn secondary"
+                >Back to Portfolio</a
+              >
+            </div>
+
+            <div class="hero-meta">
+              <span class="pill">Working prototype / portfolio case study</span>
+              <span class="pill">Supabase Backend</span>
+              <span class="pill">Vanilla JavaScript</span>
+              <span class="pill">PostgreSQL RPC</span>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <img
+              src="img/marketplace-home.png"
+              alt="Marketplace product listing screenshot"
+            />
+            <p class="image-note">
+              Placeholder screenshot: <strong>img/marketplace-home.png</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- OVERVIEW -->
+      <section id="overview" class="section">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">Project Overview</p>
+            <h2>A marketplace workflow built around real backend logic.</h2>
+            <p>
+              This project is not only a product listing page. It includes a
+              buyer storefront, cart and checkout flow, public order tracking,
+              seller authentication, seller dashboard, product management, order
+              status updates, and review moderation.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <article class="card">
+              <h3>Buyer Side</h3>
+              <p>
+                Buyers can browse products, add items to cart, check out as
+                guests, track orders, contact sellers, and leave reviews for
+                completed orders.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Seller Side</h3>
+              <p>
+                Sellers can log in, complete onboarding, manage products, update
+                order statuses, and moderate customer reviews from a dedicated
+                dashboard.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Backend Focus</h3>
+              <p>
+                The project uses Supabase Auth, relational tables, RLS policies,
+                Storage, and PostgreSQL RPC logic for safer order creation.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROBLEM / SOLUTION -->
+      <section class="section alt">
+        <div class="container grid-2">
+          <div>
+            <div class="section-header">
+              <p class="eyebrow">The Problem</p>
+              <h2>
+                Small sellers need a simple but structured way to sell online.
+              </h2>
+              <p>
+                Many small sellers need product listings, order tracking, buyer
+                communication, and basic inventory control without the
+                complexity of a full enterprise e-commerce system.
+              </p>
+            </div>
+
+            <ul class="feature-list">
+              <li>
+                <strong>Buyer friction should stay low.</strong>
+                Buyers should be able to check out without creating a full
+                account.
+              </li>
+              <li>
+                <strong>Sellers need protected access.</strong>
+                Product, order, and review management should belong only to the
+                correct seller.
+              </li>
+              <li>
+                <strong>Inventory needs validation.</strong>
+                Checkout should recheck stock before orders are created.
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="section-header">
+              <p class="eyebrow">The Solution</p>
+              <h2>A Supabase-powered marketplace prototype.</h2>
+              <p>
+                I built a working prototype where guest buyers can place orders
+                and authenticated sellers can manage their store through a
+                dedicated dashboard.
+              </p>
+            </div>
+
+            <ul class="feature-list">
+              <li>
+                <strong>Guest checkout.</strong>
+                Buyers can submit order details and use a buyer code for future
+                lookups.
+              </li>
+              <li>
+                <strong>Multi-seller order splitting.</strong>
+                A cart with products from different sellers creates separate
+                seller-specific orders.
+              </li>
+              <li>
+                <strong>Seller dashboard.</strong>
+                Sellers manage products, orders, and reviews from one interface.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURES -->
+      <section id="features" class="section">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">Core Features</p>
+            <h2>Main workflows included in the prototype.</h2>
+            <p>
+              The project was designed to show a complete buyer-to-seller flow,
+              with backend rules supporting the user interface.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <article class="card">
+              <h3>Buyer Marketplace</h3>
+              <ul>
+                <li>Product browsing</li>
+                <li>Add to cart</li>
+                <li>Cart persistence</li>
+                <li>Stock-aware quantity controls</li>
+                <li>Guest checkout</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3>Order Flow</h3>
+              <ul>
+                <li>Buyer code lookup</li>
+                <li>Multi-seller cart grouping</li>
+                <li>Separate seller-specific orders</li>
+                <li>Order tracking by order number</li>
+                <li>Status updates visible to buyers</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3>Seller Dashboard</h3>
+              <ul>
+                <li>Seller login</li>
+                <li>Product add/edit/delete</li>
+                <li>Stock management</li>
+                <li>Order status control</li>
+                <li>Review moderation</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHECKOUT FLOW -->
+      <section class="section alt">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">Checkout Logic</p>
+            <h2>Multi-seller checkout is the strongest workflow.</h2>
+            <p>
+              A single cart can contain products from different sellers. During
+              checkout, the system groups the items by seller and creates
+              separate orders for each seller.
+            </p>
+          </div>
+
+          <div class="process">
+            <div class="process-item">
+              <h3>Buyer adds products to cart</h3>
+              <p>
+                Products are added with seller information, price, quantity, and
+                stock-related data.
+              </p>
+            </div>
+
+            <div class="process-item">
+              <h3>Cart is revalidated before checkout</h3>
+              <p>
+                The app checks whether products are still active and whether the
+                requested quantity is still available.
+              </p>
+            </div>
+
+            <div class="process-item">
+              <h3>Items are grouped by seller</h3>
+              <p>
+                Products from Seller A and Seller B are separated into different
+                seller-specific order groups.
+              </p>
+            </div>
+
+            <div class="process-item">
+              <h3>Orders are created and stock is deducted</h3>
+              <p>
+                Checkout creates orders, inserts order items, and deducts stock
+                through backend logic.
+              </p>
+            </div>
+          </div>
+
+          <div class="wide-image">
+            <img
+              src="img/multi-seller-orders.png"
+              alt="Multi-seller checkout result showing separate order numbers"
+            />
+            <p class="caption">
+              Placeholder screenshot:
+              <strong>img/multi-seller-orders.png</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREENSHOTS -->
+      <section id="screenshots" class="section">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">Screenshots</p>
+            <h2>Screenshots of the portfolio project.</h2>
+            <p></p>
+          </div>
+
+          <div class="grid-2">
+            <article class="card screenshot-card">
+              <img
+                src="img/marketplace-home.png"
+                alt="Marketplace home and product listing"
+              />
+              <div class="content">
+                <h3>Marketplace Home</h3>
+                <p>
+                  Buyer-facing product listing with product cards, prices, stock
+                  display, add-to-cart actions, and cart badge.
+                </p>
+              </div>
+            </article>
+
+            <article class="card screenshot-card">
+              <img src="img/cart-checkout.png" alt="Cart and checkout page" />
+              <div class="content">
+                <h3>Cart and Checkout</h3>
+                <p>
+                  Cart page with buyer details, quantity controls, checkout
+                  validation, and multi-seller cart support.
+                </p>
+              </div>
+            </article>
+
+            <article class="card screenshot-card">
+              <img src="img/order-tracking.png" alt="Order tracking page" />
+              <div class="content">
+                <h3>Order Tracking</h3>
+                <p>
+                  Public tracking page showing order status, ordered items,
+                  seller contact buttons, and review option for completed
+                  orders.
+                </p>
+              </div>
+            </article>
+
+            <article class="card screenshot-card">
+              <img src="img/seller-login.png" alt="Seller login page" />
+              <div class="content">
+                <h3>Seller Login</h3>
+                <p>
+                  Seller authentication page using Supabase Auth, with password
+                  recovery support and seller-focused UI.
+                </p>
+              </div>
+            </article>
+
+            <article class="card screenshot-card">
+              <img
+                src="img/seller-dashboard.png"
+                alt="Seller dashboard overview"
+              />
+              <div class="content">
+                <h3>Seller Dashboard</h3>
+                <p>
+                  Dashboard overview with revenue, pending orders, active
+                  products, pending reviews, and seller management tools.
+                </p>
+              </div>
+            </article>
+
+            <article class="card screenshot-card">
+              <img
+                src="img/product-crud-overlay.png"
+                alt="Product CRUD overlay"
+              />
+              <div class="content">
+                <h3>Product CRUD Overlay</h3>
+                <p>
+                  Product add/edit workflow with image handling, validation,
+                  price, stock, and product availability controls.
+                </p>
+              </div>
+            </article>
+
+            <article class="card screenshot-card">
+              <img src="img/seller-orders.png" alt="Seller orders management" />
+              <div class="content">
+                <h3>Seller Orders</h3>
+                <p>
+                  Seller order management interface with status updates that
+                  sync to the buyer tracking experience.
+                </p>
+              </div>
+            </article>
+
+            <article class="card screenshot-card">
+              <img src="img/reviews-moderation.png" alt="Reviews moderation" />
+              <div class="content">
+                <h3>Review Moderation</h3>
+                <p>
+                  Seller review moderation workflow where pending buyer reviews
+                  can be approved or hidden.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- BACKEND -->
+      <section id="backend" class="section dark">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">Backend Design</p>
+            <h2>
+              Built around Supabase, relational data, and seller ownership.
+            </h2>
+            <p>
+              The backend structure supports separate buyer and seller
+              workflows. Sellers authenticate through Supabase Auth, while
+              buyers can use a guest checkout flow.
+            </p>
+          </div>
+
+          <div class="grid-2">
+            <article class="card">
+              <h3>Database Tables</h3>
+              <ul>
+                <li>profiles</li>
+                <li>sellers</li>
+                <li>products</li>
+                <li>buyers</li>
+                <li>orders</li>
+                <li>order_items</li>
+                <li>reviews</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3>Backend Responsibilities</h3>
+              <ul>
+                <li>Map authenticated users to seller records</li>
+                <li>Protect seller-owned products and orders</li>
+                <li>Validate stock before checkout</li>
+                <li>Create seller-specific orders</li>
+                <li>Support review moderation through RLS policies</li>
+              </ul>
+            </article>
+          </div>
+          <div class="wide-image image-stack">
+            <img
+              src="img/supabase-schema-preview.png"
+              alt="Supabase backend screenshot showing database schema design"
+            />
+
+            <img
+              src="img/sql.png"
+              alt="Supabase backend screenshot showing SQL logic"
+            />
+
+            <p class="caption">
+              Supabase backend proof showing database structure and SQL logic
+              behind the marketplace workflow.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECH STACK -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">Tech Stack</p>
+            <h2>Tools and technologies used.</h2>
+            <p>
+              The project keeps the frontend simple while using Supabase for the
+              backend, authentication, storage, policies, and database logic.
+            </p>
+          </div>
+
+          <div class="tech-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">Vanilla JavaScript</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">npm packages / CLI</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Vite</span>
+            <span class="tag">Supabase Auth</span>
+            <span class="tag">Supabase Database</span>
+            <span class="tag">Supabase Storage</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">RLS Policies</span>
+            <span class="tag">RPC Transactions</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">Vercel</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- LESSONS -->
+      <section class="section alt">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">What This Project Demonstrates</p>
+            <h2>Backend-oriented full-stack implementation.</h2>
+            <p>
+              This project demonstrates practical implementation skills beyond a
+              static frontend demo.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <article class="card">
+              <h3>Supabase Architecture</h3>
+              <p>
+                Auth, tables, relationships, storage, and security policies were
+                combined into one working marketplace flow.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Business Logic</h3>
+              <p>
+                The project handles real marketplace concerns such as seller
+                ownership, stock control, checkout validation, and order status.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Debugging and Refinement</h3>
+              <p>
+                The project required resolving seller identity mismatches, RLS
+                access issues, order creation logic, and review moderation
+                rules.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROLE -->
+      <section class="section">
+        <div class="container grid-2">
+          <div>
+            <div class="section-header">
+              <p class="eyebrow">My Role</p>
+              <h2>
+                Supabase Backend &amp; DevOps Developer with full-stack
+                implementation.
+              </h2>
+              <p>
+                I designed and built the marketplace prototype using a simple
+                frontend stack connected to a real Supabase backend.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Focus Areas</h3>
+            <ul>
+              <li>Supabase backend setup</li>
+              <li>Database table design</li>
+              <li>Seller identity model</li>
+              <li>RLS policy debugging</li>
+              <li>Product and order workflows</li>
+              <li>Checkout transaction logic</li>
+              <li>Seller dashboard behavior</li>
+              <li>Portfolio-ready documentation</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- FUTURE IMPROVEMENTS -->
+      <section class="section alt">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">Future Improvements</p>
+            <h2>Possible next upgrades.</h2>
+            <p>
+              These are optional future improvements that could turn the
+              prototype into a more production-ready system.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <article class="card">
+              <h3>Payments</h3>
+              <p>
+                Add payment integration for online checkout and payment status
+                tracking.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Maps</h3>
+              <p>
+                Add seller pickup or meetup location support using Google Maps
+                or another map provider.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Admin Tools</h3>
+              <p>
+                Add platform-level admin tools for managing sellers, disputes,
+                products, and reports.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section id="contact" class="section">
+        <div class="container">
+          <div class="cta">
+            <h2>Need a Supabase-backed web system?</h2>
+            <p>
+              This marketplace prototype demonstrates backend workflows, seller
+              dashboards, database rules, and practical full-stack
+              implementation using Supabase and vanilla JavaScript.
+            </p>
+
+            <div class="cta-actions">
+              <a href="index.html#contact" class="btn primary">Contact Me</a>
+              <a href="index.html#work" class="btn secondary"
+                >Back to Portfolio</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <span>&copy; 2026 D &amp; P Systems. All rights reserved.</span>
+        <span>Supabase Backend &amp; DevOps Developer</span>
+      </div>
+    </footer>
+  </body>
+</html>
