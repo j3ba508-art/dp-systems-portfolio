@@ -877,3 +877,59 @@ body {
     padding: 18px;
   }
 }
+
+/* MOBILE OVERFLOW FINAL FIX */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container,
+.hero,
+.hero-content,
+.section,
+.card,
+.case-card,
+.fix-card,
+.cta-card,
+.contact-card {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 13vw, 4.5rem);
+  line-height: 0.95;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.hero p,
+.lead,
+.section p,
+.card p {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.three-grid,
+.bridge-grid,
+.case-breakdown,
+.project-gallery {
+  grid-template-columns: 1fr !important;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
