@@ -33,9 +33,17 @@ body {
 }
 
 img,
-svg {
+svg,
+video,
+iframe {
   max-width: 100%;
   display: block;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 a {
@@ -650,6 +658,7 @@ p {
   .proof-notes article,
   .contact-card,
   .cta-card {
+    overflow-wrap: anywhere;
     padding: 22px;
   }
 }
@@ -658,12 +667,7 @@ p {
   grid-template-columns: repeat(3, 1fr);
 }
 
-@media (max-width: 920px) {
-  .three-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-}
+
 /* v5 additions: legacy bridge and richer case study */
 .legacy-section {
   padding-top: 34px;
@@ -779,6 +783,27 @@ p {
   max-width: 900px;
 }
 
+.cta-actions,
+.hero-actions,
+.form-actions,
+.card-actions {
+  flex-wrap: wrap;
+}
+
+.cta-actions a,
+.hero-actions a,
+.form-actions button,
+.card-actions a {
+  max-width: 100%;
+}
+
+@media (max-width: 920px) {
+  .three-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 920px) {
   .bridge-grid,
   .case-breakdown,
@@ -831,5 +856,24 @@ body {
   .nav-links a[href="#schema"],
   .nav-links a[href="#fixes"] {
     display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .container {
+    width: min(100% - 24px, 1120px);
+  }
+
+  .section {
+    padding-block: 44px;
+  }
+
+  .card,
+  .fix-card,
+  .case-card,
+  .proof-notes article,
+  .contact-card,
+  .cta-card {
+    padding: 18px;
   }
 }
