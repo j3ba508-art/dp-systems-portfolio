@@ -20,10 +20,6 @@
   box-sizing: border-box;
 }
 
-body {
-  outline: 8px solid red !important;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -884,7 +880,7 @@ body {
   }
 }
 
-/* MOBILE OVERFLOW FINAL FIX */
+/* MOBILE OVERFLOW + FIXED NAV FINAL FIX */
 *,
 *::before,
 *::after {
@@ -898,6 +894,10 @@ body {
   overflow-x: hidden;
 }
 
+body {
+  padding-top: 72px;
+}
+
 .container,
 .hero,
 .hero-content,
@@ -906,9 +906,23 @@ body {
 .case-card,
 .fix-card,
 .cta-card,
-.contact-card {
+.contact-card,
+.bridge-card,
+.gallery-card {
   max-width: 100%;
   min-width: 0;
+}
+
+.site-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 9999 !important;
+  background: rgba(7, 11, 20, 0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
 }
 
 .hero h1 {
@@ -922,7 +936,11 @@ body {
 .hero p,
 .lead,
 .section p,
-.card p {
+.card p,
+.case-card p,
+.fix-card p,
+.bridge-card p,
+.gallery-card figcaption {
   max-width: 100%;
   overflow-wrap: anywhere;
 }
@@ -935,31 +953,76 @@ body {
 }
 
 img,
-svg {
+svg,
+video,
+iframe {
   max-width: 100%;
   height: auto;
 }
 
-/* FINAL STICKY NAV OVERRIDE */
-.site-header {
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 9999 !important;
-}
+@media (max-width: 920px) {
+  body {
+    padding-top: 140px;
+  }
 
-@media (max-width: 760px) {
-  .site-header {
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 9999 !important;
+  .nav {
+    min-height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 14px;
+    padding-block: 16px;
+  }
+
+  .brand {
+    width: 100%;
+  }
+
+  .nav-links {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px 14px;
+  }
+
+  .nav-links a {
+    white-space: normal;
+    line-height: 1.25;
   }
 }
 
-body {
-  outline: 8px solid red !important;
-}
+@media (max-width: 560px) {
+  body {
+    padding-top: 150px;
+  }
 
-/* TEMP TEST - REMOVE AFTER CONFIRMED */
-.site-header {
-  background: red !important;
+  .nav-links a[href="#schema"],
+  .nav-links a[href="#fixes"] {
+    display: none;
+  }
+
+  .hero-grid {
+    padding-block: 48px;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .section {
+    padding-block: 44px;
+  }
+
+  .card,
+  .fix-card,
+  .case-card,
+  .proof-notes article,
+  .contact-card,
+  .cta-card,
+  .bridge-card,
+  .case-breakdown article {
+    padding: 18px;
+  }
 }
