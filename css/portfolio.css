@@ -20,6 +20,10 @@
   box-sizing: border-box;
 }
 
+body {
+  outline: 8px solid red !important;
+}
+
 html {
   scroll-behavior: smooth;
 }
