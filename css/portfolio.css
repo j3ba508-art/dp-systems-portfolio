@@ -950,3 +950,7 @@ svg {
     z-index: 9999 !important;
   }
 }
+
+body {
+  outline: 8px solid red !important;
+}
