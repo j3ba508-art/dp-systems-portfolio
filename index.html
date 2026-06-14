@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Portfolio of a Supabase Backend & DevOps Developer specializing in Supabase Cloud, PostgreSQL, RLS, vanilla JavaScript integration, marketplace systems, dashboards, and production debugging."
+      content="Portfolio of a Supabase Backend & DevOps Developer specializing in Supabase Cloud, PostgreSQL, RLS, vanilla JavaScript integration, marketplace systems, dashboards, and production debugging, real-device mobile QA, and Chrome DevTools remote debugging."
     />
     <title>D &amp; P Systems | Supabase Backend &amp; DevOps Portfolio</title>
 
@@ -31,6 +31,7 @@
           <a href="#background">Background</a>
           <a href="#services">Services</a>
           <a href="#work">Featured Work</a>
+          <a href="#qa">Mobile QA</a>
           <a href="#schema">Database Proof</a>
           <a href="#fixes">Client Fixes</a>
           <a href="#contact">Contact</a>
@@ -70,6 +71,8 @@
               <span>RLS Policies</span>
               <span>Supabase CLI</span>
               <span>Vanilla JS</span>
+              <span>Chrome DevTools</span>
+              <span>Real-device QA</span>
             </div>
           </div>
 
@@ -340,29 +343,48 @@
               </article>
             </div>
 
-            <ul class="check-list">
+            <ul class="check-list technical-wins-list">
               <li>
-                <i class="fa-solid fa-check"></i> Seller login and onboarding
-                connected to Supabase profile data
+                <i class="fa-solid fa-check"></i> Seller login, onboarding, and
+                seller identity mapping connected to Supabase Auth, profiles,
+                and seller-owned records.
               </li>
               <li>
                 <i class="fa-solid fa-check"></i> Product CRUD with image
-                preview, validation, edit/delete workflow, and dashboard
-                integration
+                preview, validation, edit/delete workflow, stock visibility,
+                and low-stock dashboard behavior.
               </li>
               <li>
-                <i class="fa-solid fa-check"></i> Buyer cart, checkout splitting
-                by seller, and order tracking workflow
+                <i class="fa-solid fa-check"></i> Multi-seller checkout that
+                splits cart items by seller and creates separate order numbers
+                for seller-specific fulfillment.
               </li>
               <li>
-                <i class="fa-solid fa-check"></i> Inventory safety planning for
-                stock validation, active product checks, and safer checkout
-                behavior
+                <i class="fa-solid fa-check"></i> PostgreSQL/Supabase RPC
+                checkout transaction for safer order creation, stock checks,
+                active-product validation, and stock deduction.
               </li>
               <li>
-                <i class="fa-solid fa-check"></i> Debug-first workflow using
-                browser console, rollback baselines, and controlled production
-                changes
+                <i class="fa-solid fa-check"></i> Review system with completed
+                order gating, duplicate-review blocking, seller moderation,
+                and approved-review display on product cards.
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Real Android testing with
+                Chrome DevTools remote debugging workflow: USB debugging,
+                chrome://inspect, focus tab, inspect, screencast, and console
+                validation.
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Mobile web app behavior
+                hardening: landscape scroll fixes, keyboard usability checks,
+                Android Back handling, pushState/popstate, and
+                location.replace() navigation cleanup.
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Contact deep-link QA for
+                Call/Text, Messenger, TikTok, and Viber compatibility review
+                with unreliable links hidden from the buyer UI.
               </li>
             </ul>
 
@@ -394,6 +416,10 @@
               <span>PostgreSQL</span>
               <span>Storage</span>
               <span>CLI workflow</span>
+              <span>RPC transactions</span>
+              <span>Chrome DevTools</span>
+              <span>Android QA</span>
+              <span>History API</span>
             </div>
           </aside>
         </div>
@@ -446,6 +472,127 @@
               items, totals, and status update actions.
             </figcaption>
           </figure>
+        </div>
+      </section>
+
+      <section id="qa" class="section qa-section">
+        <div class="container qa-grid">
+          <div>
+            <p class="eyebrow">Real-Device QA &amp; DevTools</p>
+            <h2>Mobile behavior testing beyond simple responsive layout</h2>
+            <p>
+              The marketplace was tested on a real Android phone instead of
+              relying only on desktop resizing. The test path included portrait
+              and landscape checks, keyboard behavior, checkout redirects,
+              Android Back navigation, seller dashboard section history, and
+              external contact deep links.
+            </p>
+
+            <div class="qa-metrics" aria-label="Mobile QA highlights">
+              <div>
+                <strong>chrome://inspect</strong>
+                <span>Remote debugging workflow</span>
+              </div>
+              <div>
+                <strong>Android Back</strong>
+                <span>pushState / popstate cleanup</span>
+              </div>
+              <div>
+                <strong>Landscape QA</strong>
+                <span>Scroll, keyboard, and FAB fixes</span>
+              </div>
+            </div>
+          </div>
+          figure class="gallery-card wide contain-shot devtools-proof-card">
+            <img
+              src="img/devtools-remote-debugging.png"
+              alt="Chrome remote debugging page showing Android device tabs available through chrome inspect"
+            />
+            <figcaption>
+              <strong>Real Android Remote Debugging</strong>
+              Used Chrome <code>chrome://inspect</code> with USB debugging to inspect
+              live Android Chrome tabs, focus mobile pages, monitor console behavior, and
+              validate marketplace flows on a real phone.
+            </figcaption>
+          </figure>
+
+          <aside class="qa-card">
+            <h3>Debug workflow used</h3>
+            <ol class="qa-steps">
+              <li>Enabled Android developer options and USB debugging.</li>
+              <li>Connected the phone and opened <code>chrome://inspect</code>.</li>
+              <li>Focused the phone tab, opened DevTools Inspect, and used screencast/console checks.</li>
+              <li>Validated buyer pages, checkout, order tracking, seller dashboard views, and review flows on the real device.</li>
+              <li>Applied regression control: one fix at a time, then retested the previously stable desktop and mobile paths.</li>
+            </ol>
+          </aside>
+        </div>
+
+        <div class="container qa-proof-grid" aria-label="Real mobile QA screenshots">
+          <figure class="qa-shot wide-shot">
+            <img
+              src="img/mobile-track-landscape.jpg"
+              alt="Android Chrome landscape test showing the order tracking page and order result"
+            />
+            <figcaption>
+              <strong>Track page landscape validation</strong>
+              Confirmed that the order tracking page remained scrollable and
+              usable on a real phone in landscape mode.
+            </figcaption>
+          </figure>
+
+          <figure class="qa-shot">
+            <img
+              src="img/mobile-cart-landscape.jpg"
+              alt="Android Chrome landscape test showing the cart and buyer information form"
+            />
+            <figcaption>
+              <strong>Cart and checkout landscape QA</strong>
+              Tested buyer information, cart behavior, empty-cart navigation,
+              checkout redirects, and Android Back behavior.
+            </figcaption>
+          </figure>
+
+          <figure class="qa-shot">
+            <img
+              src="img/mobile-review-keyboard.jpg"
+              alt="Android Chrome landscape test showing review form with the on-screen keyboard open"
+            />
+            <figcaption>
+              <strong>Keyboard and review-form usability</strong>
+              Verified that the completed-order review form remained usable even
+              with the mobile keyboard consuming most of the landscape screen.
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="container qa-notes-grid">
+          <article class="qa-note-card">
+            <h3><i class="fa-solid fa-route"></i> Navigation hardening</h3>
+            <p>
+              Checkout success, track page Back to Shop, empty-cart return, and
+              Seller Hub internal views were cleaned up with replace(),
+              pushState(), and popstate handling to avoid Android Back loops.
+            </p>
+          </article>
+
+          <article class="qa-note-card">
+            <h3><i class="fa-solid fa-keyboard"></i> Landscape and keyboard QA</h3>
+            <p>
+              Buyer cart, tracking, and review screens were tested in landscape
+              with the mobile keyboard open, then adjusted for natural scrolling
+              instead of fragile height locks.
+            </p>
+          </article>
+
+          <article class="qa-note-card">
+            <h3><i class="fa-solid fa-link"></i> Contact-link validation</h3>
+            <p>
+              Call/Text, Messenger, and TikTok links were confirmed on device.
+              Viber direct chat was captured during onboarding but hidden from
+              the buyer UI after real-device and desktop tests proved unreliable.
+            </p>
+          </article>
         </div>
       </section>
 

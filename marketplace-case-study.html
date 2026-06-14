@@ -8,7 +8,7 @@
 
     <meta
       name="description"
-      content="A Supabase-powered multi-seller marketplace prototype case study featuring guest checkout, seller dashboard, product CRUD, order tracking, inventory safety, and review moderation."
+      content="A Supabase-powered multi-seller marketplace prototype case study featuring guest checkout, seller dashboard, PostgreSQL RPC checkout, real Android QA, order tracking, review moderation, and browser-history fixes."
     />
 
     <style>
@@ -486,10 +486,85 @@
         flex-wrap: wrap;
       }
 
+
+      .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 26px;
+      }
+
+      .metric-card {
+        padding: 18px;
+        border-radius: var(--radius-md);
+        background: #fff;
+        border: 1px solid var(--border);
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+      }
+
+      .metric-card strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--accent);
+        font-size: 1.15rem;
+      }
+
+      .metric-card span {
+        color: var(--text-muted);
+        font-size: 0.92rem;
+      }
+
+      .proof-card {
+        margin-top: 28px;
+      }
+
+      .proof-card img,
+      .devtools-proof img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        background: #fff;
+      }
+
+      .devtools-proof {
+        margin-top: 28px;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 14px;
+        box-shadow: var(--shadow);
+      }
+
+      .devtools-proof figcaption {
+        margin: 12px 6px 2px;
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+
+      .note-box {
+        margin-top: 24px;
+        padding: 20px;
+        border-radius: var(--radius-md);
+        background: rgba(229, 9, 20, 0.08);
+        border: 1px solid rgba(229, 9, 20, 0.22);
+        color: var(--text-muted);
+      }
+
+      .note-box strong {
+        color: var(--text-main);
+      }
+
+      .dark .metric-card,
+      .dark .feature-list li {
+        background: #111827;
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+
       @media (max-width: 900px) {
         .hero-grid,
         .grid-2,
-        .grid-3 {
+        .grid-3,
+        .metrics-grid {
           grid-template-columns: 1fr;
         }
 
@@ -549,6 +624,7 @@
           <a href="#features">Features</a>
           <a href="#screenshots">Screenshots</a>
           <a href="#backend">Backend</a>
+          <a href="#mobile-qa">Mobile QA</a>
           <a href="#contact">Contact</a>
         </nav>
       </div>
@@ -566,8 +642,8 @@
             <p class="lead">
               A working marketplace prototype built with vanilla JavaScript and
               Supabase, focused on seller workflows, guest checkout, inventory
-              safety, order tracking, review moderation, and multi-seller order
-              handling.
+              safety, PostgreSQL RPC checkout, order tracking, review moderation,
+              mobile QA, and multi-seller order handling.
             </p>
 
             <div class="hero-actions">
@@ -582,6 +658,7 @@
               <span class="pill">Supabase Backend</span>
               <span class="pill">Vanilla JavaScript</span>
               <span class="pill">PostgreSQL RPC</span>
+              <span class="pill">Real Android QA</span>
             </div>
           </div>
 
@@ -635,6 +712,52 @@
               <p>
                 The project uses Supabase Auth, relational tables, RLS policies,
                 Storage, and PostgreSQL RPC logic for safer order creation.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+
+      <!-- TECHNICAL WINS -->
+      <section class="section alt">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">Strongest Technical Wins</p>
+            <h2>Not just responsive screens — a tested marketplace workflow.</h2>
+            <p>
+              The prototype grew from a UI exercise into a real application
+              workflow with database ownership, checkout safety, review
+              moderation, real-device testing, and browser-history cleanup.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <article class="card">
+              <h3>Checkout safety</h3>
+              <p>
+                Checkout revalidates active products and stock, groups items by
+                seller, creates seller-specific orders, inserts order items, and
+                deducts inventory through backend logic.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Seller identity consistency</h3>
+              <p>
+                Dashboard queries use the seller record as the source of truth,
+                keeping products, orders, stats, and reviews aligned with the
+                authenticated seller.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Mobile behavior QA</h3>
+              <p>
+                Real Android testing covered landscape scrolling, floating cart
+                positioning, keyboard constraints, checkout redirects, and
+                Android Back behavior.
               </p>
             </article>
           </div>
@@ -755,6 +878,58 @@
         </div>
       </section>
 
+
+
+      <!-- REVIEWS WORKFLOW -->
+      <section id="reviews" class="section alt">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">Reviews & Moderation</p>
+            <h2>Buyer reviews are tied to completed orders.</h2>
+            <p>
+              Reviews were added as a real marketplace workflow, not just static
+              text. Buyers can review completed orders, duplicate reviews are
+              blocked, sellers moderate submissions, and approved reviews appear
+              on the product page.
+            </p>
+          </div>
+
+          <div class="process">
+            <div class="process-item">
+              <h3>Completed order unlocks review action</h3>
+              <p>
+                The tracking page shows review options only when an order status
+                is completed, keeping reviews tied to actual purchases.
+              </p>
+            </div>
+
+            <div class="process-item">
+              <h3>Duplicate review prevention</h3>
+              <p>
+                A buyer cannot repeatedly review the same product for the same
+                order. The UI reflects already-submitted reviews.
+              </p>
+            </div>
+
+            <div class="process-item">
+              <h3>Seller moderation</h3>
+              <p>
+                The Seller Hub includes a Reviews section where pending reviews
+                can be approved or hidden before appearing publicly.
+              </p>
+            </div>
+
+            <div class="process-item">
+              <h3>Approved review display</h3>
+              <p>
+                Product cards display approved reviews while pending or hidden
+                reviews stay out of the public marketplace view.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- CHECKOUT FLOW -->
       <section class="section alt">
         <div class="container">
@@ -764,7 +939,9 @@
             <p>
               A single cart can contain products from different sellers. During
               checkout, the system groups the items by seller and creates
-              separate orders for each seller.
+              separate orders for each seller. The final checkout path uses
+              backend validation and transaction-style logic to reduce stock
+              mismatch risks.
             </p>
           </div>
 
@@ -796,8 +973,9 @@
             <div class="process-item">
               <h3>Orders are created and stock is deducted</h3>
               <p>
-                Checkout creates orders, inserts order items, and deducts stock
-                through backend logic.
+                Checkout creates seller-specific orders, inserts order items,
+                and deducts stock through PostgreSQL RPC/backend logic so the
+                order and inventory update stay tied together.
               </p>
             </div>
           </div>
@@ -926,6 +1104,87 @@
         </div>
       </section>
 
+
+
+      <!-- MOBILE QA -->
+      <section id="mobile-qa" class="section alt">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">Real-Device QA & DevTools</p>
+            <h2>Mobile responsiveness was tested as behavior, not only layout.</h2>
+            <p>
+              The marketplace was tested on a real Android phone using Chrome
+              remote debugging. The QA pass covered portrait and landscape
+              orientation, keyboard behavior, floating buttons, checkout
+              redirects, Android Back navigation, dashboard section history, and
+              external contact links.
+            </p>
+          </div>
+
+          <div class="metrics-grid" aria-label="Mobile QA highlights">
+            <div class="metric-card">
+              <strong>chrome://inspect</strong>
+              <span>USB debugging and live Android tab inspection</span>
+            </div>
+            <div class="metric-card">
+              <strong>pushState</strong>
+              <span>Seller Hub sections and review forms handle Back behavior</span>
+            </div>
+            <div class="metric-card">
+              <strong>Landscape</strong>
+              <span>Scroll, keyboard, alert, table, and cart FAB checks</span>
+            </div>
+            <div class="metric-card">
+              <strong>Deep links</strong>
+              <span>Call/Text, Messenger, TikTok tested on device</span>
+            </div>
+          </div>
+
+          <figure class="devtools-proof">
+            <img
+              src="img/devtools-remote-debugging.png"
+              alt="Chrome inspect page showing Android Chrome tabs available for remote debugging"
+            />
+            <figcaption>
+              <strong>Chrome remote debugging proof.</strong> Used
+              <code>chrome://inspect</code> with Android USB debugging to focus
+              live mobile tabs, inspect page behavior, and validate marketplace
+              flows beyond desktop browser resizing.
+            </figcaption>
+          </figure>
+
+          <div class="grid-3" style="margin-top: 24px;">
+            <article class="card">
+              <h3>Android Back behavior</h3>
+              <p>
+                Checkout success, empty cart, Track “Back to Shop,” Seller Hub
+                Orders/Reviews, and buyer review forms were adjusted to avoid
+                confusing history loops or accidental app exits.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Landscape constraints</h3>
+              <p>
+                Buyer pages were hardened for short landscape screens: cart and
+                track scrolling, cart floating button position, table overflow,
+                and review form usability with the keyboard open.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Contact link QA</h3>
+              <p>
+                Call/Text, Messenger, and TikTok were confirmed working. Viber
+                deep links opened the app but did not reliably start chat, so
+                the Viber button was hidden while the onboarding field remains
+                available for future compatibility review.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <!-- BACKEND -->
       <section id="backend" class="section dark">
         <div class="container">
@@ -963,6 +1222,7 @@
                 <li>Validate stock before checkout</li>
                 <li>Create seller-specific orders</li>
                 <li>Support review moderation through RLS policies</li>
+                <li>Keep seller dashboard queries aligned with seller-owned records</li>
               </ul>
             </article>
           </div>
@@ -1013,6 +1273,10 @@
             <span class="tag">RPC Transactions</span>
             <span class="tag">GitHub</span>
             <span class="tag">Vercel</span>
+            <span class="tag">Chrome DevTools</span>
+            <span class="tag">chrome://inspect</span>
+            <span class="tag">Android Chrome QA</span>
+            <span class="tag">History API</span>
           </div>
         </div>
       </section>
@@ -1050,8 +1314,8 @@
               <h3>Debugging and Refinement</h3>
               <p>
                 The project required resolving seller identity mismatches, RLS
-                access issues, order creation logic, and review moderation
-                rules.
+                access issues, order creation logic, review moderation rules,
+                mobile landscape bugs, and browser-history edge cases.
               </p>
             </article>
           </div>
@@ -1085,6 +1349,9 @@
               <li>Product and order workflows</li>
               <li>Checkout transaction logic</li>
               <li>Seller dashboard behavior</li>
+              <li>Real Android device testing</li>
+              <li>Chrome DevTools remote debugging</li>
+              <li>Browser history and Android Back behavior</li>
               <li>Portfolio-ready documentation</li>
             </ul>
           </div>
@@ -1105,28 +1372,36 @@
 
           <div class="grid-3">
             <article class="card">
-              <h3>Payments</h3>
+              <h3>Order cancellation module</h3>
               <p>
-                Add payment integration for online checkout and payment status
-                tracking.
+                Add buyer/seller cancellation rules, status transitions, stock
+                restoration, and audit history as a separate workflow module.
               </p>
             </article>
 
             <article class="card">
-              <h3>Maps</h3>
+              <h3>Payments and refunds</h3>
               <p>
-                Add seller pickup or meetup location support using Google Maps
-                or another map provider.
+                Add payment integration, payment status tracking, receipt
+                handling, and refund rules for production checkout.
               </p>
             </article>
 
             <article class="card">
-              <h3>Admin Tools</h3>
+              <h3>iOS Safari QA</h3>
               <p>
-                Add platform-level admin tools for managing sellers, disputes,
-                products, and reports.
+                Extend the real-device QA pass to iOS Safari, including safe
+                areas, viewport height behavior, keyboard behavior, and contact
+                link handling.
               </p>
             </article>
+          </div>
+
+          <div class="note-box">
+            <strong>Scope note:</strong> Viber contact data is still captured in
+            onboarding, but the public Viber button is hidden until a reliable
+            direct-chat deep-link format is confirmed across devices. Call/Text,
+            Messenger, and TikTok were tested successfully.
           </div>
         </div>
       </section>

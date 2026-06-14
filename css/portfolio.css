@@ -771,6 +771,17 @@ p {
   background: #ffffff;
 }
 
+.devtools-proof-card {
+  margin: 28px 0;
+}
+
+.devtools-proof-card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: #ffffff;
+}
+
 .mini-gallery-heading {
   max-width: var(--max-width);
   margin: 60px auto 28px;
@@ -1023,6 +1034,163 @@ iframe {
   .cta-card,
   .bridge-card,
   .case-breakdown article {
+    padding: 18px;
+  }
+}
+
+/* v6 additions: real-device mobile QA and DevTools proof */
+.qa-section {
+  background: rgba(2, 6, 23, 0.42);
+  border-block: 1px solid var(--line);
+}
+
+.qa-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.qa-card,
+.qa-note-card,
+.qa-shot {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.94), rgba(17, 28, 51, 0.74));
+  box-shadow: 0 18px 48px rgba(2, 8, 23, 0.22);
+}
+
+.qa-card,
+.qa-note-card {
+  padding: 26px;
+}
+
+.qa-card h3,
+.qa-note-card h3 {
+  color: var(--text);
+}
+
+.qa-steps {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding-left: 1.15rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.qa-steps code {
+  padding: 2px 6px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(2, 6, 23, 0.55);
+  color: var(--blue);
+  font-size: 0.9em;
+}
+
+.qa-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--line);
+}
+
+.qa-metrics div {
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.94);
+}
+
+.qa-metrics strong,
+.qa-metrics span {
+  display: block;
+}
+
+.qa-metrics strong {
+  margin-bottom: 6px;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.qa-metrics span {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.qa-proof-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 18px;
+  margin-top: 34px;
+}
+
+.qa-shot {
+  margin: 0;
+  overflow: hidden;
+}
+
+.qa-shot img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top center;
+  background: #ffffff;
+}
+
+.qa-shot figcaption {
+  padding: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.qa-shot strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.qa-notes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.qa-note-card h3 {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.qa-note-card i {
+  color: var(--blue);
+}
+
+.qa-note-card p {
+  margin-bottom: 0;
+}
+
+.technical-wins-list li {
+  align-items: flex-start;
+}
+
+@media (max-width: 920px) {
+  .qa-grid,
+  .qa-proof-grid,
+  .qa-notes-grid,
+  .qa-metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .qa-card,
+  .qa-note-card {
     padding: 18px;
   }
 }
