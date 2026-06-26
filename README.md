@@ -18,9 +18,8 @@ The positioning is simple:
 
 ## Live Site
 
-[View Portfolio](YOUR_VERCEL_LINK)
+[View Portfolio](VERCEL_LINK)
 
-## First 15-Second Message
 
 This portfolio is designed to communicate quickly:
 
