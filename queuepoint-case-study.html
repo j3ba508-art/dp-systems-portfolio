@@ -1,0 +1,1032 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>QueuePoint Case Study | D &amp; P Systems</title>
+
+    <meta
+      name="description"
+      content="QueuePoint is a Supabase-powered multi-branch appointment and queue management SaaS MVP with public booking, branch-specific services, staff, settings, appointments, queue operations, RLS, and edit-lock UX protection."
+    />
+
+    <style>
+      :root {
+        --bg-main: #f8fafc;
+        --bg-soft: #f1f5f9;
+        --bg-dark: #09110a;
+        --bg-card: #ffffff;
+        --text-main: #0f172a;
+        --text-muted: #64748b;
+        --text-light: #f8fafc;
+        --accent: #84cc16;
+        --accent-2: #facc15;
+        --accent-dark: #4d7c0f;
+        --border: #e2e8f0;
+        --shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
+        --radius-lg: 22px;
+        --radius-md: 16px;
+        --max-width: 1160px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--text-main);
+        background: var(--bg-main);
+        line-height: 1.6;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      ul {
+        padding-left: 1.2rem;
+      }
+
+      li {
+        margin-bottom: 8px;
+      }
+
+      code {
+        padding: 2px 6px;
+        border-radius: 8px;
+        background: rgba(15, 23, 42, 0.08);
+      }
+
+      .container {
+        width: min(100% - 32px, var(--max-width));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(248, 250, 252, 0.92);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav {
+        min-height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .brand {
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        font-size: 1.1rem;
+      }
+
+      .brand span {
+        color: var(--accent-dark);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent-dark);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 18px;
+        border-radius: 999px;
+        font-weight: 700;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: 0.2s ease;
+      }
+
+      .btn.primary {
+        color: #111703;
+        background: linear-gradient(135deg, var(--accent-2), var(--accent));
+        box-shadow: 0 14px 30px rgba(132, 204, 22, 0.26);
+      }
+
+      .btn.primary:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.04);
+      }
+
+      .btn.secondary {
+        background: #fff;
+        color: var(--text-main);
+        border-color: var(--border);
+      }
+
+      .btn.secondary:hover {
+        border-color: var(--accent-dark);
+        color: var(--accent-dark);
+        transform: translateY(-1px);
+      }
+
+      .hero {
+        background:
+          radial-gradient(circle at top left, rgba(250, 204, 21, 0.18), transparent 28%),
+          radial-gradient(circle at 80% 20%, rgba(132, 204, 22, 0.18), transparent 28%),
+          linear-gradient(135deg, #050805 0%, #09110a 45%, #030603 100%);
+        color: var(--text-light);
+        padding: 92px 0 68px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 44px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 14px;
+        color: var(--accent-2);
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+      }
+
+      .hero h1 {
+        margin: 0;
+        font-size: clamp(2.35rem, 5vw, 4.8rem);
+        line-height: 1;
+        letter-spacing: -0.06em;
+      }
+
+      .hero .lead {
+        margin: 22px 0 0;
+        color: #d9f99d;
+        font-size: 1.12rem;
+        max-width: 740px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 28px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        color: #fef9c3;
+        font-size: 0.9rem;
+      }
+
+      .hero-card {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: var(--radius-lg);
+        padding: 18px;
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
+      }
+
+      .hero-card img {
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: #111827;
+      }
+
+      .image-note {
+        margin: 12px 0 0;
+        color: #d9f99d;
+        font-size: 0.92rem;
+      }
+
+      .section {
+        padding: 74px 0;
+      }
+
+      .section.alt {
+        background: var(--bg-soft);
+      }
+
+      .section.dark {
+        background: var(--bg-dark);
+        color: var(--text-light);
+      }
+
+      .section-header {
+        max-width: 840px;
+        margin-bottom: 32px;
+      }
+
+      .section-header h2 {
+        margin: 0;
+        font-size: clamp(1.9rem, 3vw, 3rem);
+        line-height: 1.1;
+        letter-spacing: -0.04em;
+      }
+
+      .section-header p {
+        margin: 14px 0 0;
+        color: var(--text-muted);
+        font-size: 1.02rem;
+      }
+
+      .dark .section-header p,
+      .dark .card p,
+      .dark .card li {
+        color: #d9f99d;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 26px;
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+      }
+
+      .dark .card {
+        background: #111703;
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .card h3 {
+        margin: 0 0 10px;
+        font-size: 1.25rem;
+        letter-spacing: -0.02em;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--text-muted);
+      }
+
+      .feature-list {
+        display: grid;
+        gap: 14px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .feature-list li {
+        margin: 0;
+        padding: 16px 18px;
+        border-radius: var(--radius-md);
+        background: #fff;
+        border: 1px solid var(--border);
+        color: var(--text-muted);
+      }
+
+      .feature-list strong {
+        color: var(--text-main);
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .process {
+        counter-reset: step;
+        display: grid;
+        gap: 16px;
+      }
+
+      .process-item {
+        position: relative;
+        padding: 22px 22px 22px 70px;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+      }
+
+      .process-item::before {
+        counter-increment: step;
+        content: counter(step);
+        position: absolute;
+        left: 22px;
+        top: 22px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent-2), var(--accent));
+        color: #111703;
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+      }
+
+      .process-item h3 {
+        margin: 0 0 6px;
+      }
+
+      .process-item p {
+        margin: 0;
+        color: var(--text-muted);
+      }
+
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 9px 12px;
+        border-radius: 999px;
+        background: #fff;
+        border: 1px solid var(--border);
+        color: var(--text-muted);
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+
+      .dark .tag {
+        background: rgba(255, 255, 255, 0.08);
+        color: #fef9c3;
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .wide-image {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 14px;
+        box-shadow: var(--shadow);
+        margin-top: 28px;
+      }
+
+      .wide-image img {
+        border-radius: 14px;
+        width: 100%;
+        background: #e2e8f0;
+      }
+
+      .caption {
+        margin: 12px 6px 0;
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+
+      .metric-card {
+        padding: 18px;
+        border-radius: var(--radius-md);
+        background: #fff;
+        border: 1px solid var(--border);
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+      }
+
+      .metric-card strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--accent-dark);
+        font-size: 1.15rem;
+      }
+
+      .metric-card span {
+        color: var(--text-muted);
+        font-size: 0.92rem;
+      }
+
+      .note-box {
+        margin-top: 24px;
+        padding: 20px;
+        border-radius: var(--radius-md);
+        background: rgba(132, 204, 22, 0.09);
+        border: 1px solid rgba(132, 204, 22, 0.28);
+        color: var(--text-muted);
+      }
+
+      .note-box strong {
+        color: var(--text-main);
+      }
+
+      .cta {
+        text-align: center;
+        background:
+          radial-gradient(circle at top, rgba(250, 204, 21, 0.16), transparent 30%),
+          #09110a;
+        color: #fff;
+        border-radius: var(--radius-lg);
+        padding: 48px 28px;
+        box-shadow: var(--shadow);
+      }
+
+      .cta h2 {
+        margin: 0;
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+        letter-spacing: -0.04em;
+      }
+
+      .cta p {
+        max-width: 720px;
+        margin: 14px auto 26px;
+        color: #d9f99d;
+      }
+
+      .cta-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .site-footer {
+        padding: 28px 0;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid,
+        .grid-2,
+        .grid-3,
+        .grid-4 {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding-top: 68px;
+        }
+
+        .nav {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 16px 0;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .container {
+          width: min(100% - 24px, var(--max-width));
+        }
+
+        .section {
+          padding: 54px 0;
+        }
+
+        .hero-actions,
+        .cta-actions {
+          flex-direction: column;
+        }
+
+        .btn {
+          width: 100%;
+        }
+
+        .process-item {
+          padding-left: 22px;
+          padding-top: 68px;
+        }
+
+        .process-item::before {
+          top: 22px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a href="index.html" class="brand">D &amp; P <span>Systems</span></a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="#overview">Overview</a>
+          <a href="#features">Features</a>
+          <a href="#backend">Backend</a>
+          <a href="#challenges">Challenges</a>
+          <a href="#status">MVP Status</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Portfolio Case Study</p>
+
+            <h1>QueuePoint Appointment &amp; Queue SaaS MVP</h1>
+
+            <p class="lead">
+              A multi-branch appointment and queue management SaaS MVP built
+              with vanilla JavaScript and Supabase. QueuePoint helps small
+              service businesses manage public bookings, short appointment
+              codes, daily queues, branch-specific services, staff records,
+              and booking settings.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#features" class="btn primary">View Features</a>
+              <a href="index.html#work" class="btn secondary">Back to Portfolio</a>
+            </div>
+
+            <div class="hero-meta">
+              <span class="pill">Working SaaS MVP</span>
+              <span class="pill">Supabase Backend</span>
+              <span class="pill">PostgreSQL RLS</span>
+              <span class="pill">Vanilla JavaScript</span>
+              <span class="pill">Multi-branch dashboard</span>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <img
+              src="img/queuepoint-dashboard.png"
+              alt="QueuePoint dashboard screenshot placeholder"
+            />
+            <p class="image-note">
+              Screenshot placeholder:
+              <strong>img/queuepoint-dashboard.png</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="overview" class="section">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">Project Overview</p>
+            <h2>A branch-aware operations dashboard for small service businesses.</h2>
+            <p>
+              QueuePoint is designed for small businesses that currently manage
+              appointments through notebooks, Messenger chats, phone calls,
+              spreadsheets, and informal PM-based workflows. It gives owners and
+              front-desk staff one place to manage appointments, walk-ins,
+              services, staff, queue flow, and branch-specific booking rules.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <article class="card">
+              <h3>For customers</h3>
+              <p>
+                Customers can use a public booking page, receive a short
+                appointment code, and track booking status without creating an
+                account.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>For front desk</h3>
+              <p>
+                Staff can view today&apos;s appointments, move customers through
+                booked, waiting, serving, and closed states, and keep queue flow
+                visible.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>For owners</h3>
+              <p>
+                Owners can manage branches, services, staff, settings, and
+                business data through an authenticated dashboard protected by
+                Supabase RLS.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt">
+        <div class="container grid-2">
+          <div>
+            <div class="section-header">
+              <p class="eyebrow">The Problem</p>
+              <h2>Small service businesses need structure without enterprise complexity.</h2>
+              <p>
+                Many small businesses need appointment and queue control, but
+                not a large scheduling suite. The system needs to be simple
+                enough for front-desk use while still protecting business data.
+              </p>
+            </div>
+
+            <ul class="feature-list">
+              <li>
+                <strong>Manual booking creates confusion.</strong>
+                Messenger threads, phone calls, and notebooks can make it hard
+                to know which customer is booked, waiting, or already served.
+              </li>
+              <li>
+                <strong>Branches need separation.</strong>
+                One branch should not accidentally see or manage another
+                branch&apos;s services, staff, appointments, or settings.
+              </li>
+              <li>
+                <strong>Long codes are not user-friendly.</strong>
+                Customers need appointment codes that are short enough to write
+                down and use later.
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="section-header">
+              <p class="eyebrow">The Solution</p>
+              <h2>A practical Supabase-backed SaaS MVP.</h2>
+              <p>
+                QueuePoint combines public booking with an authenticated
+                business dashboard. The selected branch controls the services,
+                staff, appointments, queue, and settings shown to the user.
+              </p>
+            </div>
+
+            <ul class="feature-list">
+              <li>
+                <strong>Branch selector.</strong>
+                The dashboard reloads services, staff, appointments, queue, and
+                settings based on the active branch.
+              </li>
+              <li>
+                <strong>Operational workflow.</strong>
+                Appointments can be moved through real-world statuses such as
+                booked, confirmed, waiting, serving, completed, cancelled, and
+                no-show.
+              </li>
+              <li>
+                <strong>Safety-first UX.</strong>
+                A global edit-lock blocks branch switching, sidebar navigation,
+                and logout while a form is being edited.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="section">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">Core Features</p>
+            <h2>Main workflows included in the MVP.</h2>
+            <p>
+              The current MVP is more than a booking form. It includes
+              authenticated branch operations, public booking, queue flow, and
+              reusable module patterns for services, staff, and settings.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <article class="card">
+              <h3>Business &amp; Branches</h3>
+              <ul>
+                <li>Authenticated dashboard</li>
+                <li>Business / branch CRUD</li>
+                <li>Branch selector</li>
+                <li>Business slot rule planning</li>
+                <li>Branch-specific data loading</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3>Services &amp; Staff</h3>
+              <ul>
+                <li>Services per branch</li>
+                <li>Staff records per branch</li>
+                <li>Add / edit forms</li>
+                <li>Deactivate / reactivate instead of delete</li>
+                <li>Work-day parsing and schedule display</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3>Appointments &amp; Queue</h3>
+              <ul>
+                <li>Public booking page</li>
+                <li>Short appointment codes</li>
+                <li>Appointment tracking page</li>
+                <li>Status updates</li>
+                <li>Queue board for daily operations</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="grid-4" style="margin-top: 26px">
+            <article class="metric-card">
+              <strong>Multi-branch</strong>
+              <span>Services, staff, settings, appointments, and queues reload per branch.</span>
+            </article>
+            <article class="metric-card">
+              <strong>RLS-first</strong>
+              <span>Authenticated users access only branches they belong to.</span>
+            </article>
+            <article class="metric-card">
+              <strong>Public-safe</strong>
+              <span>Public booking uses only safe business and booking data.</span>
+            </article>
+            <article class="metric-card">
+              <strong>Edit lock</strong>
+              <span>Unsaved changes block branch switching, navigation, and logout.</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="backend" class="section dark">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">Backend &amp; Security</p>
+            <h2>Supabase tables, RLS policies, and branch isolation.</h2>
+            <p>
+              QueuePoint uses Supabase Auth, PostgreSQL tables, Row Level
+              Security, and RPC functions to keep public booking and
+              authenticated dashboard workflows separated.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <article class="card">
+              <h3>Core tables</h3>
+              <ul>
+                <li><code>businesses</code></li>
+                <li><code>business_users</code></li>
+                <li><code>services</code></li>
+                <li><code>staff_members</code></li>
+                <li><code>business_settings</code></li>
+                <li><code>customers</code></li>
+                <li><code>appointments</code></li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3>Tenant rule</h3>
+              <p>
+                No business should see another business&apos;s customers,
+                appointments, services, staff, settings, or queue entries.
+                Dashboard modules filter by the selected branch and RLS enforces
+                ownership at the database layer.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Public/private split</h3>
+              <p>
+                Public booking can read safe business data and active services,
+                while authenticated users manage private operational data through
+                owner/admin policies.
+              </p>
+            </article>
+          </div>
+
+          <div class="tech-tags" style="margin-top: 26px">
+            <span class="tag">Supabase Auth</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Row Level Security</span>
+            <span class="tag">RPC booking flow</span>
+            <span class="tag">ES Modules</span>
+            <span class="tag">Vercel deployment</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="challenges" class="section alt">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">Key Challenges Solved</p>
+            <h2>Important implementation and debugging wins.</h2>
+            <p>
+              The strongest parts of the project came from the problems that
+              appeared while turning a simple booking app into a multi-branch
+              SaaS-style dashboard.
+            </p>
+          </div>
+
+          <div class="process">
+            <div class="process-item">
+              <h3>Multi-tenant branch isolation</h3>
+              <p>
+                Services, staff, appointments, queue, business details, and
+                settings had to reload cleanly when the selected branch changed.
+                This forced the dashboard to use the active branch as the
+                operating context.
+              </p>
+            </div>
+
+            <div class="process-item">
+              <h3>Global edit-lock protection</h3>
+              <p>
+                Users could originally switch branches or log out while editing
+                forms. QueuePoint now blocks branch switching, sidebar
+                navigation, and logout while a module is in add/edit mode.
+              </p>
+            </div>
+
+            <div class="process-item">
+              <h3>Auth/session vs RLS debugging</h3>
+              <p>
+                An apparent RLS error was traced back to a missing authenticated
+                session. The fix clarified the difference between a recognized
+                user and a usable Supabase session/JWT for authenticated
+                database requests.
+              </p>
+            </div>
+
+            <div class="process-item">
+              <h3>Short appointment codes</h3>
+              <p>
+                Long codes were not practical for customers. QueuePoint now uses
+                shorter per-branch/per-day appointment codes that are easier to
+                write down and use on the tracking page.
+              </p>
+            </div>
+
+            <div class="process-item">
+              <h3>Settings insert/update behavior</h3>
+              <p>
+                Branches without settings use defaults until saved. Saving
+                either updates the existing row or inserts a new branch-specific
+                row.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="screenshots" class="section">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">Screenshots</p>
+            <h2>Planned screenshots for final portfolio polish.</h2>
+            <p>
+              Final screenshots should be captured after mobile testing so the
+              case study reflects the polished layout.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <article class="card">
+              <h3>Dashboard overview</h3>
+              <p>
+                Suggested image: <strong>img/queuepoint-dashboard.png</strong>
+                showing branch selector, sidebar, and dashboard layout.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Services / Staff</h3>
+              <p>
+                Suggested image:
+                <strong>img/queuepoint-services-staff.png</strong> showing
+                branch-specific services and staff cards.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Settings / Queue</h3>
+              <p>
+                Suggested image:
+                <strong>img/queuepoint-settings-queue.png</strong> showing
+                branch settings and operational queue flow.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="status" class="section alt">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">Current MVP Status</p>
+            <h2>Strong portfolio MVP, ready for pilot-style feedback.</h2>
+            <p>
+              QueuePoint is currently viable as a portfolio-grade SaaS MVP and
+              small pilot demo. It is not yet a fully automated commercial SaaS,
+              but the core operational system is in place.
+            </p>
+          </div>
+
+          <div class="grid-2">
+            <article class="card">
+              <h3>Completed MVP modules</h3>
+              <ul>
+                <li>Business / Branch MVP</li>
+                <li>Services MVP</li>
+                <li>Staff MVP</li>
+                <li>Settings MVP</li>
+                <li>Appointments and Queue</li>
+                <li>Public booking and tracking</li>
+                <li>Auth/session guard</li>
+                <li>RLS policies and branch filtering</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3>Future improvements</h3>
+              <ul>
+                <li>Self-service signup</li>
+                <li>Staff login accounts</li>
+                <li>Service-to-staff assignment UI</li>
+                <li>Public staff availability picker</li>
+                <li>Payment/deposit instructions or QR workflow</li>
+                <li>SMS/Viber reminders</li>
+                <li>Mobile final polish</li>
+                <li>Owner subscription controls</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="note-box">
+            <strong>Positioning note:</strong> QueuePoint is best presented as a
+            business organizer that helps protect appointments, reduce
+            front-desk confusion, and keep daily service flow visible.
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="container">
+          <div class="cta">
+            <h2>Need a small-business appointment or queue system?</h2>
+            <p>
+              QueuePoint demonstrates SaaS-style branch isolation, Supabase RLS,
+              public booking, authenticated operations, and practical dashboard
+              UX using vanilla JavaScript and Supabase.
+            </p>
+
+            <div class="cta-actions">
+              <a href="index.html#contact" class="btn primary">Contact Me</a>
+              <a href="index.html#work" class="btn secondary">Back to Portfolio</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <span>&copy; 2026 D &amp; P Systems. All rights reserved.</span>
+        <span>Supabase Backend &amp; DevOps Developer</span>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1194,3 +1194,30 @@ iframe {
     padding: 18px;
   }
 }
+
+
+/* v6 additions: QueuePoint case study preview */
+.queuepoint-case-study {
+  background:
+    radial-gradient(circle at top left, rgba(250, 204, 21, 0.08), transparent 32%),
+    rgba(2, 6, 23, 0.34);
+}
+
+.queuepoint-case-study .case-breakdown h3,
+.queuepoint-case-study .eyebrow {
+  color: #facc15;
+}
+
+.queuepoint-case-study .btn.primary {
+  background: linear-gradient(135deg, #facc15, #84cc16);
+  color: #111703;
+}
+
+.queuepoint-case-study .case-card {
+  border-color: rgba(250, 204, 21, 0.24);
+}
+
+.queuepoint-case-study .stack-list span {
+  border-color: rgba(250, 204, 21, 0.26);
+}
+
