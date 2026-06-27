@@ -582,9 +582,9 @@
             <p class="lead">
               A multi-branch appointment and queue management SaaS MVP built
               with vanilla JavaScript and Supabase. QueuePoint helps small
-              service businesses manage public bookings, short appointment
+              service businesses organize public bookings, short appointment
               codes, daily queues, branch-specific services, staff records,
-              and booking settings.
+              booking settings, and mobile-safe front-desk workflows.
             </p>
 
             <div class="hero-actions">
@@ -624,7 +624,8 @@
               appointments through notebooks, Messenger chats, phone calls,
               spreadsheets, and informal PM-based workflows. It gives owners and
               front-desk staff one place to manage appointments, walk-ins,
-              services, staff, queue flow, and branch-specific booking rules.
+              services, staff, queue flow, branch-specific booking rules, and
+              customer-facing tracking without forcing customers to create accounts.
             </p>
           </div>
 
@@ -632,9 +633,9 @@
             <article class="card">
               <h3>For customers</h3>
               <p>
-                Customers can use a public booking page, receive a short
-                appointment code, and track booking status without creating an
-                account.
+                Customers can choose a business location, use a public booking
+                page, receive a short appointment code, and track booking status
+                without creating an account.
               </p>
             </article>
 
@@ -643,7 +644,7 @@
               <p>
                 Staff can view today&apos;s appointments, move customers through
                 booked, waiting, serving, and closed states, and keep queue flow
-                visible.
+                visible from a mobile-tested dashboard.
               </p>
             </article>
 
@@ -652,7 +653,7 @@
               <p>
                 Owners can manage branches, services, staff, settings, and
                 business data through an authenticated dashboard protected by
-                Supabase RLS.
+                Supabase RLS and branch-aware filtering.
               </p>
             </article>
           </div>
@@ -676,12 +677,18 @@
               <li>
                 <strong>Manual booking creates confusion.</strong>
                 Messenger threads, phone calls, and notebooks can make it hard
-                to know which customer is booked, waiting, or already served.
+                to know which customer is booked, waiting, serving, completed,
+                cancelled, or no-show.
               </li>
               <li>
                 <strong>Branches need separation.</strong>
                 One branch should not accidentally see or manage another
                 branch&apos;s services, staff, appointments, or settings.
+              </li>
+              <li>
+                <strong>Mobile users need protection from accidental exits.</strong>
+                Front-desk users and customers can lose work through Back,
+                navigation taps, branch switches, or keyboard layout problems.
               </li>
               <li>
                 <strong>Long codes are not user-friendly.</strong>
@@ -698,7 +705,8 @@
               <p>
                 QueuePoint combines public booking with an authenticated
                 business dashboard. The selected branch controls the services,
-                staff, appointments, queue, and settings shown to the user.
+                staff, appointments, queue, and settings shown to the user, while
+                public pages stay simple for customers.
               </p>
             </div>
 
@@ -743,6 +751,7 @@
                 <li>Authenticated dashboard</li>
                 <li>Business / branch CRUD</li>
                 <li>Branch selector</li>
+                <li>Public location picker</li>
                 <li>Business slot rule planning</li>
                 <li>Branch-specific data loading</li>
               </ul>
@@ -762,11 +771,12 @@
             <article class="card">
               <h3>Appointments &amp; Queue</h3>
               <ul>
-                <li>Public booking page</li>
+                <li>Public booking page with location switching</li>
                 <li>Short appointment codes</li>
-                <li>Appointment tracking page</li>
+                <li>Appointment tracking page with result focus</li>
                 <li>Status updates</li>
                 <li>Queue board for daily operations</li>
+                <li>Booking draft protection against accidental navigation</li>
               </ul>
             </article>
           </div>
@@ -786,7 +796,7 @@
             </article>
             <article class="metric-card">
               <strong>Edit lock</strong>
-              <span>Unsaved changes block branch switching, navigation, and logout.</span>
+              <span>Unsaved changes block branch switching, navigation, logout, and Back.</span>
             </article>
           </div>
         </div>
@@ -800,7 +810,8 @@
             <p>
               QueuePoint uses Supabase Auth, PostgreSQL tables, Row Level
               Security, and RPC functions to keep public booking and
-              authenticated dashboard workflows separated.
+              authenticated dashboard workflows separated while preserving
+              branch-specific operating context.
             </p>
           </div>
 
@@ -831,9 +842,9 @@
             <article class="card">
               <h3>Public/private split</h3>
               <p>
-                Public booking can read safe business data and active services,
-                while authenticated users manage private operational data through
-                owner/admin policies.
+                Public booking can read safe business/location data and active
+                services, while authenticated users manage private operational
+                data through owner/admin policies.
               </p>
             </article>
           </div>
@@ -875,9 +886,10 @@
             <div class="process-item">
               <h3>Global edit-lock protection</h3>
               <p>
-                Users could originally switch branches or log out while editing
-                forms. QueuePoint now blocks branch switching, sidebar
-                navigation, and logout while a module is in add/edit mode.
+                Users could originally switch branches, navigate away, log out,
+                or press Android Back while editing forms. QueuePoint now blocks
+                branch switching, sidebar navigation, logout, and Back while a
+                module is in add/edit mode.
               </p>
             </div>
 
@@ -908,6 +920,26 @@
                 row.
               </p>
             </div>
+
+            <div class="process-item">
+              <h3>Public booking location picker</h3>
+              <p>
+                The public booking page now lets customers choose the business
+                location while still using branch codes internally. Draft locks
+                block location changes, top navigation, and Back while customer
+                booking details are already entered.
+              </p>
+            </div>
+
+            <div class="process-item">
+              <h3>Landscape keyboard dock</h3>
+              <p>
+                Real-phone testing showed that normal responsive layout was not
+                enough in landscape. QueuePoint now uses a focused-field dock for
+                text inputs so the active field remains readable when the Android
+                keyboard consumes most of the screen.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -915,11 +947,12 @@
       <section id="screenshots" class="section">
         <div class="container">
           <div class="section-header">
-            <p class="eyebrow">Screenshots</p>
-            <h2>Planned screenshots for final portfolio polish.</h2>
+            <p class="eyebrow">Screenshot Plan</p>
+            <h2>Image slots to fill after writeup polish.</h2>
             <p>
-              Final screenshots should be captured after mobile testing so the
-              case study reflects the polished layout.
+              The writeup is prepared first. Final screenshots can be inserted
+              after the remaining mobile regression so the case study reflects
+              the stable version of QueuePoint.
             </p>
           </div>
 
@@ -960,8 +993,9 @@
             <h2>Strong portfolio MVP, ready for pilot-style feedback.</h2>
             <p>
               QueuePoint is currently viable as a portfolio-grade SaaS MVP and
-              small pilot demo. It is not yet a fully automated commercial SaaS,
-              but the core operational system is in place.
+              small guided-pilot demo. It is not yet a fully automated commercial
+              SaaS, but the core operational workflow is in place and strong
+              enough for controlled feedback from friendly pilot users.
             </p>
           </div>
 
@@ -974,9 +1008,12 @@
                 <li>Staff MVP</li>
                 <li>Settings MVP</li>
                 <li>Appointments and Queue</li>
-                <li>Public booking and tracking</li>
+                <li>Public booking, location picker, and tracking</li>
+                <li>Booking draft guard</li>
                 <li>Auth/session guard</li>
                 <li>RLS policies and branch filtering</li>
+                <li>Edit-lock and Back-button protection</li>
+                <li>Landscape keyboard dock for mobile input</li>
               </ul>
             </article>
 
@@ -989,7 +1026,7 @@
                 <li>Public staff availability picker</li>
                 <li>Payment/deposit instructions or QR workflow</li>
                 <li>SMS/Viber reminders</li>
-                <li>Mobile final polish</li>
+                <li>Final screenshots and pilot feedback polish</li>
                 <li>Owner subscription controls</li>
               </ul>
             </article>
@@ -1009,8 +1046,8 @@
             <h2>Need a small-business appointment or queue system?</h2>
             <p>
               QueuePoint demonstrates SaaS-style branch isolation, Supabase RLS,
-              public booking, authenticated operations, and practical dashboard
-              UX using vanilla JavaScript and Supabase.
+              public booking, authenticated operations, mobile-safe form handling,
+              and practical dashboard UX using vanilla JavaScript and Supabase.
             </p>
 
             <div class="cta-actions">
@@ -1025,7 +1062,7 @@
     <footer class="site-footer">
       <div class="container footer-row">
         <span>&copy; 2026 D &amp; P Systems. All rights reserved.</span>
-        <span>Supabase Backend &amp; DevOps Developer</span>
+        <span>Business Systems Developer · Supabase Implementation</span>
       </div>
     </footer>
   </body>

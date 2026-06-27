@@ -8,9 +8,9 @@
 
 # D & P Systems Portfolio
 
-**Business systems developer building modern Supabase-backed web applications for real workflows, data isolation, and operational usability.**
+**Business systems developer turning real workflows into modern Supabase-backed applications with data isolation, operational usability, and mobile-tested behavior.**
 
-This portfolio presents D & P Systems as a practical software builder for small-business systems: marketplaces, booking tools, queue dashboards, internal admin panels, and lightweight SaaS-style applications built with Supabase, PostgreSQL, Row Level Security, vanilla JavaScript, GitHub, Vercel, and real-device mobile QA.
+This portfolio presents D & P Systems as a practical software builder for small-business systems: marketplaces, booking tools, queue dashboards, internal admin panels, and lightweight SaaS-style applications built with Supabase, PostgreSQL, Row Level Security, vanilla JavaScript, GitHub, Vercel, and real-device mobile QA. It is intentionally positioned around business workflow thinking first, with modern implementation as the proof.
 
 The positioning is simple:
 
@@ -63,6 +63,7 @@ A multi-branch appointment and queue management SaaS MVP for small service busin
 Key features:
 
 - Public appointment booking
+- Public business/location picker
 - Customer appointment tracking
 - Short appointment codes
 - Authenticated business dashboard
@@ -81,6 +82,8 @@ Key features:
 - Android Back trapping during edit mode
 - Mobile sticky dashboard navigation
 - Booking draft protection against accidental navigation
+- Android Back trapping during public booking drafts
+- Landscape focused-field dock for mobile keyboard usability
 
 **What it proves:** SaaS-style branch isolation, multi-tenant thinking, public/private workflow separation, mobile usability hardening, and pilot-ready appointment/queue operations.
 
@@ -150,7 +153,7 @@ The projects document real mobile issues that were tested and fixed:
 - Android Back behavior
 - edit-lock protection
 - booking draft protection
-- landscape keyboard pressure
+- landscape keyboard pressure and focused-field docking
 - native date picker behavior
 - mobile form usability
 - status badge readability
@@ -197,11 +200,13 @@ Completed / near-complete:
 - Login mobile polish
 - Track result focus behavior
 - Refresh feedback
+- Public booking location picker
+- Public booking Back/draft protection
+- Landscape focused-field dock
 
 Remaining before final portfolio lock:
 
 - final real-phone regression
-- landscape keyboard comfort check
 - SQL cleanup
 - CSS cleanup
 - final screenshots
