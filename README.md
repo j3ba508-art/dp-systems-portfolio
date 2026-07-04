@@ -18,7 +18,7 @@ The positioning is simple:
 
 ## Live Site
 
-[View Portfolio]https://dp-systems-portfolio.vercel.app/
+[View Portfolio] https://dp-systems-portfolio.vercel.app/
 
 
 This portfolio is designed to communicate quickly:
@@ -203,14 +203,6 @@ Completed / near-complete:
 - Public booking Back/draft protection
 - Landscape focused-field dock
 
-Remaining before final portfolio lock:
-
-- final real-phone regression
-- SQL cleanup
-- CSS cleanup
-- final screenshots
-- QueuePoint case study screenshot insertion
-- README and deployment finalization
 
 Future Phase 2 / Pilot Feedback features:
 
@@ -226,15 +218,7 @@ Future Phase 2 / Pilot Feedback features:
 
 ## Positioning
 
-The portfolio should avoid sounding like a developer merely "returning" or "catching up."
-
-Preferred positioning:
-
-> Business systems developer with earlier systems-analysis experience and modern Supabase full-stack implementation skills.
-
-Supporting message:
-
-> I bring earlier business-software experience into modern web development, building practical SaaS-style applications with Supabase, PostgreSQL, RLS, RPC workflows, Vercel deployment, and mobile-tested user flows.
+I bring earlier business-software experience into modern web development, building practical SaaS-style applications with Supabase, PostgreSQL, RLS, RPC workflows, Vercel deployment, and mobile-tested user flows.
 
 ## Project Narrative
 
@@ -253,37 +237,4 @@ Together, they position D & P Systems for:
 - Supabase-backed operational software
 - small-business workflow automation
 
-## Notes for Portfolio Finalization
 
-Before final publishing:
-
-1. Insert final QueuePoint screenshots.
-2. Update live demo links.
-3. Replace placeholder image notes.
-4. Confirm Marketplace and QueuePoint case-study links.
-5. Confirm mobile layout on real phone.
-6. Confirm no outdated QueuePoint status claims remain.
-7. Confirm README matches the final deployed homepage.
-8. Confirm GitHub and Vercel links are correct.
-
-## Debugging / QA Lessons Captured
-
-These lessons can be reused in the future mobile-porting position paper:
-
-- **Before pasting code, press Esc.**
-- **Before blaming Supabase, check the session.**
-- **Before blaming scroll, check `display: none`.**
-- **Before trusting mobile, beware the Back Button.**
-- **Responsive layout makes the app fit. Responsive interaction makes the app usable.**
-
-Working joke / field note:
-
-> Hadō #47: Escape Before Paste — prevents hidden VS Code multi-cursors from duplicating code into forbidden dimensions.
-
-## Status
-
-This README is a stronger positioning draft for the updated portfolio that includes both Marketplace and QueuePoint.
-
-It is meant to support a sharper first impression:
-
-> D & P Systems builds practical Supabase-backed business systems with real workflow logic, data isolation, and mobile-tested usability.
