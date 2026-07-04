@@ -18,7 +18,7 @@ The positioning is simple:
 
 ## Live Site
 
-[View Portfolio](VERCEL_LINK)
+[View Portfolio]https://dp-systems-portfolio.vercel.app/
 
 
 This portfolio is designed to communicate quickly:

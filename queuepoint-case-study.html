@@ -424,6 +424,50 @@
         font-size: 0.95rem;
       }
 
+      .screenshot-card {
+        overflow: hidden;
+        padding: 0;
+      }
+
+      .screenshot-card img {
+        width: 100%;
+        aspect-ratio: 9 / 16;
+        object-fit: contain;
+        object-position: top center;
+        background: #09110a;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .screenshot-card.wide-shot img {
+        aspect-ratio: 16 / 9;
+      }
+
+      .screenshot-card .content {
+        padding: 22px;
+      }
+
+      .screenshot-card .content h3 {
+        margin-bottom: 8px;
+      }
+
+      .screenshot-card .content p {
+        color: var(--text-muted);
+      }
+
+      .screenshot-group {
+        margin-top: 34px;
+      }
+
+      .screenshot-group h3 {
+        margin-bottom: 8px;
+        font-size: 1.35rem;
+      }
+
+      .screenshot-group > p {
+        max-width: 780px;
+        color: var(--text-muted);
+      }
+
       .metric-card {
         padding: 18px;
         border-radius: var(--radius-md);
@@ -563,6 +607,7 @@
           <a href="index.html">Home</a>
           <a href="#overview">Overview</a>
           <a href="#features">Features</a>
+          <a href="#screenshots">Screenshots</a>
           <a href="#backend">Backend</a>
           <a href="#challenges">Challenges</a>
           <a href="#status">MVP Status</a>
@@ -604,11 +649,11 @@
           <div class="hero-card">
             <img
               src="img/queuepoint-dashboard.png"
-              alt="QueuePoint dashboard screenshot placeholder"
+              alt="QueuePoint dashboard showing branch selector, stats, and module navigation"
             />
             <p class="image-note">
-              Screenshot placeholder:
-              <strong>img/queuepoint-dashboard.png</strong>
+              Main dashboard view with branch selector, operating stats, and
+              module navigation.
             </p>
           </div>
         </div>
@@ -947,41 +992,209 @@
       <section id="screenshots" class="section">
         <div class="container">
           <div class="section-header">
-            <p class="eyebrow">Screenshot Plan</p>
-            <h2>Image slots to fill after writeup polish.</h2>
+            <p class="eyebrow">Screenshots</p>
+            <h2>QueuePoint customer flow and branch operations.</h2>
             <p>
-              The writeup is prepared first. Final screenshots can be inserted
-              after the remaining mobile regression so the case study reflects
-              the stable version of QueuePoint.
+              These screenshots show the stable MVP flow: customers choose a
+              location, book an appointment, receive a short code, track status,
+              and staff manage daily operations through a branch-aware dashboard.
             </p>
           </div>
 
-          <div class="grid-3">
-            <article class="card">
-              <h3>Dashboard overview</h3>
-              <p>
-                Suggested image: <strong>img/queuepoint-dashboard.png</strong>
-                showing branch selector, sidebar, and dashboard layout.
-              </p>
-            </article>
+          <div class="wide-image">
+            <img
+              src="img/queuepoint-dashboard.png"
+              alt="QueuePoint dashboard with branch selector, stats cards, and module navigation"
+            />
+            <p class="caption">
+              <strong>Dashboard overview.</strong> The authenticated dashboard
+              centers branch selection, operating stats, and the main modules:
+              services, staff, appointments, queue, business, and settings.
+            </p>
+          </div>
 
-            <article class="card">
-              <h3>Services / Staff</h3>
-              <p>
-                Suggested image:
-                <strong>img/queuepoint-services-staff.png</strong> showing
-                branch-specific services and staff cards.
-              </p>
-            </article>
+          <div class="screenshot-group">
+            <h3>Public customer flow</h3>
+            <p>
+              QueuePoint keeps the public side simple: choose a location, enter
+              booking details, receive a short code, and track the appointment
+              without creating an account.
+            </p>
 
-            <article class="card">
-              <h3>Settings / Queue</h3>
-              <p>
-                Suggested image:
-                <strong>img/queuepoint-settings-queue.png</strong> showing
-                branch settings and operational queue flow.
+            <div class="grid-3">
+              <article class="card screenshot-card">
+                <img
+                  src="img/queuepoint-landing.png"
+                  alt="QueuePoint public landing page with booking, tracking, and login navigation"
+                />
+                <div class="content">
+                  <h3>Public landing page</h3>
+                  <p>
+                    Customer-facing entry point with clear paths for booking,
+                    tracking, and business login.
+                  </p>
+                </div>
+              </article>
+
+              <article class="card screenshot-card">
+                <img
+                  src="img/queuepoint-public-booking-location.png"
+                  alt="QueuePoint public booking page with location picker"
+                />
+                <div class="content">
+                  <h3>Location-aware booking</h3>
+                  <p>
+                    The public booking page lets customers choose the business
+                    location before selecting service, date, and time.
+                  </p>
+                </div>
+              </article>
+
+              <article class="card screenshot-card">
+                <img
+                  src="img/queuepoint-booking-success-code.png"
+                  alt="QueuePoint successful booking card with appointment code and tracking action"
+                />
+                <div class="content">
+                  <h3>Short appointment code</h3>
+                  <p>
+                    After booking, the customer receives a readable appointment
+                    code with actions to track the booking or start another one.
+                  </p>
+                </div>
+              </article>
+
+              <article class="card screenshot-card">
+                <img
+                  src="img/queuepoint-track-result.png"
+                  alt="QueuePoint appointment tracking result showing customer, service, date, time, and status"
+                />
+                <div class="content">
+                  <h3>Status tracking</h3>
+                  <p>
+                    Customers can look up their appointment status using the
+                    business code and short appointment code.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="screenshot-group">
+            <h3>Business dashboard modules</h3>
+            <p>
+              The authenticated side is branch-aware: services, staff, settings,
+              appointments, and queue data reload based on the selected branch.
+            </p>
+
+            <div class="grid-3">
+              <article class="card screenshot-card">
+                <img
+                  src="img/queuepoint-services.png"
+                  alt="QueuePoint services module showing branch-specific service cards"
+                />
+                <div class="content">
+                  <h3>Services</h3>
+                  <p>
+                    Branch-specific service catalog with duration, price, and
+                    active/inactive service controls.
+                  </p>
+                </div>
+              </article>
+
+              <article class="card screenshot-card">
+                <img
+                  src="img/queuepoint-staff-2.png"
+                  alt="QueuePoint staff module showing staff records and schedule details"
+                />
+                <div class="content">
+                  <h3>Staff records</h3>
+                  <p>
+                    Staff cards show branch-specific staff, role, schedule, and
+                    active/inactive state without deleting historical context.
+                  </p>
+                </div>
+              </article>
+
+              <article class="card screenshot-card">
+                <img
+                  src="img/queuepoint-appointments-1.png"
+                  alt="QueuePoint appointments module showing filters and appointment cards"
+                />
+                <div class="content">
+                  <h3>Appointments</h3>
+                  <p>
+                    Daily appointment view with date/status filters and status
+                    updates for front-desk workflow.
+                  </p>
+                </div>
+              </article>
+
+              <article class="card screenshot-card">
+                <img
+                  src="img/queuepoint-queue-1.png"
+                  alt="QueuePoint queue board with booked, waiting, serving, and closed columns"
+                />
+                <div class="content">
+                  <h3>Queue board</h3>
+                  <p>
+                    Queue workflow groups appointments into booked, waiting,
+                    serving, and closed operational states.
+                  </p>
+                </div>
+              </article>
+
+              <article class="card screenshot-card">
+                <img
+                  src="img/queuepoint-business-branches-1.png"
+                  alt="QueuePoint business and branch module with plan, subscription, and slot status"
+                />
+                <div class="content">
+                  <h3>Business / branches</h3>
+                  <p>
+                    Business status strip shows plan, subscription, and branch
+                    slot usage while keeping branch data separate.
+                  </p>
+                </div>
+              </article>
+
+              <article class="card screenshot-card">
+                <img
+                  src="img/queuepoint-settings.png"
+                  alt="QueuePoint settings module showing branch booking settings"
+                />
+                <div class="content">
+                  <h3>Settings</h3>
+                  <p>
+                    Branch-specific settings control booking hours, slot length,
+                    booking capacity, walk-ins, and customer messages.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="screenshot-group">
+            <h3>Real mobile QA proof</h3>
+            <p>
+              QueuePoint was tested beyond desktop resizing. Mobile fixes
+              included sticky dashboard navigation, Android Back protection,
+              booking draft protection, and a landscape keyboard dock for short
+              screens.
+            </p>
+
+            <div class="wide-image">
+              <img
+                src="img/queuepoint-mobile-proof.jpg"
+                alt="QueuePoint landscape mobile keyboard dock proof on a real phone"
+              />
+              <p class="caption">
+                <strong>Landscape keyboard dock.</strong> Real-phone testing
+                exposed keyboard pressure in landscape mode. The focused-field
+                dock keeps text inputs readable when the Android keyboard takes
+                most of the screen.
               </p>
-            </article>
+            </div>
           </div>
         </div>
       </section>
@@ -1026,7 +1239,7 @@
                 <li>Public staff availability picker</li>
                 <li>Payment/deposit instructions or QR workflow</li>
                 <li>SMS/Viber reminders</li>
-                <li>Final screenshots and pilot feedback polish</li>
+                <li>Pilot feedback polish</li>
                 <li>Owner subscription controls</li>
               </ul>
             </article>

@@ -58,6 +58,44 @@
         box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
       }
 
+
+      .offer-list {
+        margin: 18px 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 10px;
+      }
+
+      .offer-list li {
+        display: flex;
+        gap: 10px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .offer-list i {
+        color: var(--green);
+        margin-top: 4px;
+      }
+
+      .freelance-fit-card {
+        margin-top: 22px;
+        padding: 26px;
+      }
+
+      .freelance-fit-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      @media (max-width: 920px) {
+        .freelance-fit-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
       @media (max-width: 768px) {
         .brand-logo {
           width: min(185px, 55vw);
@@ -86,6 +124,7 @@
         <div class="nav-links">
           <a href="#background">Background</a>
           <a href="#services">Services</a>
+          <a href="#offers">Freelance Offers</a>
           <a href="#work">Featured Work</a>
           <a href="#qa">Mobile QA</a>
           <a href="#schema">Database Proof</a>
@@ -311,6 +350,104 @@
           </article>
         </div>
       </section>
+      <section id="offers" class="section container">
+        <div class="section-heading">
+          <p class="eyebrow">Freelance Starting Points</p>
+          <h2>Clear ways to start without a risky big-bang project.</h2>
+          <p>
+            The easiest way to work with me is to begin with a focused business
+            workflow: a booking flow, seller dashboard, Supabase backend, RLS
+            policy review, or a broken prototype that needs to become stable
+            enough for real users.
+          </p>
+        </div>
+
+        <div class="cards three-grid">
+          <article class="card">
+            <div class="icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+            <h3>Workflow Review &amp; Supabase Health Check</h3>
+            <p>
+              A focused review for an existing app, database, or prototype. I
+              look at the workflow, tables, RLS rules, auth flow, deployment
+              setup, console errors, and mobile behavior, then return a practical
+              fix plan.
+            </p>
+            <ul class="offer-list">
+              <li><i class="fa-solid fa-check"></i><span>Good first step before a larger build.</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Useful for messy prototypes or stuck Supabase projects.</span></li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="icon"><i class="fa-solid fa-calendar-days"></i></div>
+            <h3>Booking, Queue, or Internal Dashboard MVP</h3>
+            <p>
+              A small-business operations system based on your actual daily
+              process: appointments, queues, services, staff, status updates,
+              simple owner dashboards, and customer-facing tracking.
+            </p>
+            <ul class="offer-list">
+              <li><i class="fa-solid fa-check"></i><span>Best for clinics, service shops, repair desks, and appointment-heavy workflows.</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Can start as a guided pilot before expanding features.</span></li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="icon"><i class="fa-solid fa-store"></i></div>
+            <h3>Marketplace, Seller Tool, or Admin Panel Build</h3>
+            <p>
+              Seller dashboards, product CRUD, order tracking, review workflows,
+              stock checks, buyer lookup, and admin tools backed by Supabase
+              tables, policies, and practical JavaScript screens.
+            </p>
+            <ul class="offer-list">
+              <li><i class="fa-solid fa-check"></i><span>Best for lightweight commerce and operations workflows.</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Focuses on working data rules, not decorative screens alone.</span></li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="freelance-fit-card card">
+          <div class="section-heading compact">
+            <p class="eyebrow">Good Fit</p>
+            <h2>Send me the process. I will help turn it into a system.</h2>
+            <p>
+              I am strongest when the problem involves records, permissions,
+              status changes, owner/staff views, mobile usability, and a workflow
+              that currently lives in chat messages, spreadsheets, notebooks, or
+              scattered manual steps.
+            </p>
+          </div>
+
+          <div class="freelance-fit-grid">
+            <article>
+              <h3>What to send</h3>
+              <p>
+                Screenshots, table notes, current URLs, error messages, sample
+                forms, or a plain-language description of how the business works.
+              </p>
+            </article>
+
+            <article>
+              <h3>What I return</h3>
+              <p>
+                A practical build or fix plan, then working Supabase-backed
+                screens with safer data access, clearer workflows, and mobile
+                behavior checks.
+              </p>
+            </article>
+
+            <article>
+              <h3>Best first conversation</h3>
+              <p>
+                “Here is how we currently handle bookings/orders/customers. Can
+                you help make this workflow cleaner and trackable?”
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section id="capabilities" class="section container">
         <div class="section-heading">
           <p class="eyebrow">Additional Capabilities</p>
@@ -900,14 +1037,24 @@
             <h2>Send the workflow you want to turn into a working system</h2>
             <p>
               Describe the business process, dashboard, booking flow, marketplace,
-              or internal tool you need. Screenshots, table notes, and console
-              errors are welcome.
+              or internal tool you need. Screenshots, table notes, database
+              structure, and console errors are welcome.
             </p>
+
+            <div class="hero-actions">
+              <a
+                class="btn primary"
+                href="mailto:j3ba508@gmail.com?subject=D%26P%20Systems%20Workflow%20Review"
+              >
+                Email a workflow brief
+              </a>
+              <a class="btn secondary" href="#offers">See starting points</a>
+            </div>
           </div>
 
           <form
             class="contact-card"
-            action="j3ba508@gmail.com"
+            action="mailto:j3ba508@gmail.com?subject=D%26P%20Systems%20Project%20Inquiry"
             method="post"
             enctype="text/plain"
           >
@@ -929,6 +1076,7 @@
             <label>
               Project Type
               <select name="project_type">
+                <option>Workflow review / Supabase health check</option>
                 <option>Supabase backend setup</option>
                 <option>Marketplace / dashboard build</option>
                 <option>Appointment / queue system</option>
