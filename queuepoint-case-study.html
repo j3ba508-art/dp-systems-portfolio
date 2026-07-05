@@ -1,17 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>QueuePoint Case Study | D &amp; P Systems</title>
-
-    <meta
-      name="description"
-      content="QueuePoint is a Supabase-powered multi-branch appointment and queue management SaaS MVP with public booking, branch-specific services, staff, settings, appointments, queue operations, RLS, and edit-lock UX protection."
-    />
-
-    <style>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QueuePoint Case Study | D &amp; P Systems</title>
+<meta content="A technical case study for QueuePoint, a Supabase-backed appointment and queue SaaS MVP with multi-branch isolation, public booking, short appointment codes, staff/services/settings modules, RLS, RPC booking flow, edit locks, mobile QA, and front-desk workflow safety." name="description"/>
+<style>
       :root {
         --bg-main: #f8fafc;
         --bg-soft: #f1f5f9;
@@ -545,7 +540,148 @@
         flex-wrap: wrap;
       }
 
+      
+      .case-summary-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 26px;
+      }
+
+      .summary-card,
+      .decision-card,
+      .flow-card,
+      .proof-row {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+      }
+
+      .summary-card {
+        padding: 18px;
+      }
+
+      .summary-card strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--accent);
+        font-size: 1.04rem;
+      }
+
+      .summary-card span {
+        color: var(--text-muted);
+        font-size: 0.93rem;
+      }
+
+      .dark .summary-card,
+      .dark .decision-card,
+      .dark .flow-card,
+      .dark .proof-row {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .dark .summary-card span,
+      .dark .decision-card p,
+      .dark .flow-card p,
+      .dark .proof-row p {
+        color: #cbd5e1;
+      }
+
+      .architecture-grid,
+      .decision-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .decision-card {
+        padding: 22px;
+      }
+
+      .decision-card h3,
+      .flow-card h3,
+      .proof-row h3 {
+        margin: 0 0 8px;
+      }
+
+      .decision-card p,
+      .flow-card p,
+      .proof-row p {
+        margin: 0;
+        color: var(--text-muted);
+      }
+
+      .flow-strip {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 24px;
+      }
+
+      .flow-strip span {
+        display: grid;
+        place-items: center;
+        min-height: 54px;
+        padding: 10px;
+        border-radius: 14px;
+        background: #fff;
+        border: 1px solid var(--border);
+        color: var(--text-main);
+        font-weight: 800;
+        text-align: center;
+        font-size: 0.86rem;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+      }
+
+      .dark .flow-strip span {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text-light);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .proof-rows {
+        display: grid;
+        gap: 14px;
+      }
+
+      .proof-row {
+        display: grid;
+        grid-template-columns: 0.7fr 1.3fr;
+        gap: 18px;
+        align-items: start;
+        padding: 20px;
+      }
+
+      .proof-row strong {
+        color: var(--accent);
+      }
+
+      .status-note {
+        margin-top: 24px;
+        padding: 18px 20px;
+        border-radius: var(--radius-md);
+        background: rgba(15, 23, 42, 0.04);
+        border: 1px solid var(--border);
+        color: var(--text-muted);
+      }
+
+      .status-note strong {
+        color: var(--text-main);
+      }
+
       @media (max-width: 900px) {
+        .case-summary-grid,
+        .architecture-grid,
+        .decision-grid,
+        .flow-strip,
+        .proof-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+@media (max-width: 900px) {
         .hero-grid,
         .grid-2,
         .grid-3,
@@ -596,687 +732,666 @@
         }
       }
     </style>
-  </head>
-
-  <body>
-    <header class="site-header">
-      <div class="container nav">
-        <a href="index.html" class="brand">D &amp; P <span>Systems</span></a>
-
-        <nav class="nav-links" aria-label="Main navigation">
-          <a href="index.html">Home</a>
-          <a href="#overview">Overview</a>
-          <a href="#features">Features</a>
-          <a href="#screenshots">Screenshots</a>
-          <a href="#backend">Backend</a>
-          <a href="#challenges">Challenges</a>
-          <a href="#status">MVP Status</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <section class="hero">
-        <div class="container hero-grid">
-          <div>
-            <p class="eyebrow">Portfolio Case Study</p>
-
-            <h1>QueuePoint Appointment &amp; Queue SaaS MVP</h1>
-
-            <p class="lead">
-              A multi-branch appointment and queue management SaaS MVP built
-              with vanilla JavaScript and Supabase. QueuePoint helps small
-              service businesses organize public bookings, short appointment
-              codes, daily queues, branch-specific services, staff records,
-              booking settings, and mobile-safe front-desk workflows.
-            </p>
-
-            <div class="hero-actions">
-              <a href="#features" class="btn primary">View Features</a>
-              <a href="index.html#work" class="btn secondary">Back to Portfolio</a>
-            </div>
-
-            <div class="hero-meta">
-              <span class="pill">Working SaaS MVP</span>
-              <span class="pill">Supabase Backend</span>
-              <span class="pill">PostgreSQL RLS</span>
-              <span class="pill">Vanilla JavaScript</span>
-              <span class="pill">Multi-branch dashboard</span>
-            </div>
-          </div>
-
-          <div class="hero-card">
-            <img
-              src="img/queuepoint-dashboard.png"
-              alt="QueuePoint dashboard showing branch selector, stats, and module navigation"
-            />
-            <p class="image-note">
+</head>
+<body>
+<header class="site-header">
+<div class="container nav">
+<a class="brand" href="index.html">D &amp; P <span>Systems</span></a>
+<nav aria-label="Main navigation" class="nav-links"><a href="index.html">Home</a><a href="#overview">Overview</a><a href="#architecture">Architecture</a><a href="#features">Features</a><a href="#backend">Backend</a><a href="#challenges">Challenges</a><a href="#screenshots">Screenshots</a><a href="#status">MVP Status</a></nav>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="container hero-grid">
+<div>
+<p class="eyebrow">Portfolio Case Study</p>
+<h1>QueuePoint Appointment &amp; Queue SaaS MVP</h1>
+<p class="lead">A branch-aware appointment and queue SaaS case study built with vanilla JavaScript and Supabase. The goal was to prove a small service business can manage public booking, short appointment codes, staff/services/settings, daily queue status, branch isolation, and mobile-safe front-desk workflows from one practical dashboard.</p>
+<div class="hero-actions">
+<a class="btn primary" href="#features">View Features</a>
+<a class="btn secondary" href="index.html#work">Back to Portfolio</a>
+</div>
+<div class="hero-meta">
+<span class="pill">Working SaaS MVP</span>
+<span class="pill">Supabase Backend</span>
+<span class="pill">PostgreSQL RLS</span>
+<span class="pill">Vanilla JavaScript</span>
+<span class="pill">Multi-branch dashboard</span>
+</div>
+</div>
+<div class="hero-card">
+<img alt="QueuePoint dashboard showing branch selector, stats, and module navigation" src="img/queuepoint-dashboard.png"/>
+<p class="image-note">
               Main dashboard view with branch selector, operating stats, and
               module navigation.
             </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="overview" class="section">
-        <div class="container">
-          <div class="section-header">
-            <p class="eyebrow">Project Overview</p>
-            <h2>A branch-aware operations dashboard for small service businesses.</h2>
-            <p>
-              QueuePoint is designed for small businesses that currently manage
-              appointments through notebooks, Messenger chats, phone calls,
-              spreadsheets, and informal PM-based workflows. It gives owners and
-              front-desk staff one place to manage appointments, walk-ins,
-              services, staff, queue flow, branch-specific booking rules, and
-              customer-facing tracking without forcing customers to create accounts.
-            </p>
-          </div>
-
-          <div class="grid-3">
-            <article class="card">
-              <h3>For customers</h3>
-              <p>
+</div>
+</div>
+</section>
+<section class="section" id="overview">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Project Overview</p>
+<h2>A service-operations system built around branches, bookings, and daily queue flow.</h2>
+<p>QueuePoint is designed for businesses that currently manage appointments through notebooks, Messenger chats, phone calls, spreadsheets, and informal PM-based workflows. The case study focuses on the technical work needed to separate public booking from authenticated operations while keeping every branch’s data isolated.</p>
+</div>
+<div class="grid-3">
+<article class="card">
+<h3>For customers</h3>
+<p>
                 Customers can choose a business location, use a public booking
                 page, receive a short appointment code, and track booking status
                 without creating an account.
               </p>
-            </article>
-
-            <article class="card">
-              <h3>For front desk</h3>
-              <p>
-                Staff can view today&apos;s appointments, move customers through
+</article>
+<article class="card">
+<h3>For front desk</h3>
+<p>
+                Staff can view today's appointments, move customers through
                 booked, waiting, serving, and closed states, and keep queue flow
                 visible from a mobile-tested dashboard.
               </p>
-            </article>
-
-            <article class="card">
-              <h3>For owners</h3>
-              <p>
+</article>
+<article class="card">
+<h3>For owners</h3>
+<p>
                 Owners can manage branches, services, staff, settings, and
                 business data through an authenticated dashboard protected by
                 Supabase RLS and branch-aware filtering.
               </p>
-            </article>
-          </div>
-        </div>
-      </section>
+</article>
+</div>
+</div>
+</section>
+<section class="section alt" id="architecture">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Technical Architecture</p>
+<h2>How QueuePoint separates public booking from private operations.</h2>
+<p>
+              The homepage presents QueuePoint as a business system. This case study carries the heavier details:
+              branch context, RLS boundaries, public/private data access, edit locks, short codes, and mobile behavior.
+            </p>
+</div>
+<div class="case-summary-grid">
+<article class="summary-card">
+<strong>Public side</strong>
+<span>Location picker, service/date/time selection, customer details, booking success, and code-based tracking.</span>
+</article>
+<article class="summary-card">
+<strong>Dashboard side</strong>
+<span>Authenticated branch modules for services, staff, settings, appointments, queue, and business details.</span>
+</article>
+<article class="summary-card">
+<strong>Data safety</strong>
+<span>Supabase Auth, RLS policies, branch filtering, public RPC, and dashboard access controls.</span>
+</article>
+<article class="summary-card">
+<strong>UX safety</strong>
+<span>Edit locks, draft guards, Android Back handling, branch-switch protection, and landscape keyboard support.</span>
+</article>
+</div>
+<div aria-label="QueuePoint workflow" class="flow-strip">
+<span>Choose branch</span>
+<span>Book</span>
+<span>Get code</span>
+<span>Track</span>
+<span>Confirm</span>
+<span>Queue</span>
+<span>Close</span>
+</div>
+</div>
+</section>
 
-      <section class="section alt">
-        <div class="container grid-2">
-          <div>
-            <div class="section-header">
-              <p class="eyebrow">The Problem</p>
-              <h2>Small service businesses need structure without enterprise complexity.</h2>
-              <p>
+<section class="section alt">
+<div class="container grid-2">
+<div>
+<div class="section-header">
+<p class="eyebrow">The Problem</p>
+<h2>Small service businesses need booking structure without enterprise complexity.</h2>
+<p>
                 Many small businesses need appointment and queue control, but
                 not a large scheduling suite. The system needs to be simple
                 enough for front-desk use while still protecting business data.
               </p>
-            </div>
-
-            <ul class="feature-list">
-              <li>
-                <strong>Manual booking creates confusion.</strong>
+</div>
+<ul class="feature-list">
+<li>
+<strong>Manual booking creates confusion.</strong>
                 Messenger threads, phone calls, and notebooks can make it hard
                 to know which customer is booked, waiting, serving, completed,
                 cancelled, or no-show.
               </li>
-              <li>
-                <strong>Branches need separation.</strong>
+<li>
+<strong>Branches need separation.</strong>
                 One branch should not accidentally see or manage another
-                branch&apos;s services, staff, appointments, or settings.
+                branch's services, staff, appointments, or settings.
               </li>
-              <li>
-                <strong>Mobile users need protection from accidental exits.</strong>
+<li>
+<strong>Mobile users need protection from accidental exits.</strong>
                 Front-desk users and customers can lose work through Back,
                 navigation taps, branch switches, or keyboard layout problems.
               </li>
-              <li>
-                <strong>Long codes are not user-friendly.</strong>
+<li>
+<strong>Long codes are not user-friendly.</strong>
                 Customers need appointment codes that are short enough to write
                 down and use later.
               </li>
-            </ul>
-          </div>
-
-          <div>
-            <div class="section-header">
-              <p class="eyebrow">The Solution</p>
-              <h2>A practical Supabase-backed SaaS MVP.</h2>
-              <p>
+</ul>
+</div>
+<div>
+<div class="section-header">
+<p class="eyebrow">The Solution</p>
+<h2>A Supabase-backed operations dashboard with public booking.</h2>
+<p>
                 QueuePoint combines public booking with an authenticated
                 business dashboard. The selected branch controls the services,
                 staff, appointments, queue, and settings shown to the user, while
                 public pages stay simple for customers.
               </p>
-            </div>
-
-            <ul class="feature-list">
-              <li>
-                <strong>Branch selector.</strong>
+</div>
+<ul class="feature-list">
+<li>
+<strong>Branch selector.</strong>
                 The dashboard reloads services, staff, appointments, queue, and
                 settings based on the active branch.
               </li>
-              <li>
-                <strong>Operational workflow.</strong>
+<li>
+<strong>Operational workflow.</strong>
                 Appointments can be moved through real-world statuses such as
                 booked, confirmed, waiting, serving, completed, cancelled, and
                 no-show.
               </li>
-              <li>
-                <strong>Safety-first UX.</strong>
+<li>
+<strong>Safety-first UX.</strong>
                 A global edit-lock blocks branch switching, sidebar navigation,
                 and logout while a form is being edited.
               </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section id="features" class="section">
-        <div class="container">
-          <div class="section-header">
-            <p class="eyebrow">Core Features</p>
-            <h2>Main workflows included in the MVP.</h2>
-            <p>
+</ul>
+</div>
+</div>
+</section>
+<section class="section" id="features">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Core Features</p>
+<h2>Customer, front-desk, owner, and branch workflows included.</h2>
+<p>
               The current MVP is more than a booking form. It includes
               authenticated branch operations, public booking, queue flow, and
               reusable module patterns for services, staff, and settings.
             </p>
-          </div>
-
-          <div class="grid-3">
-            <article class="card">
-              <h3>Business &amp; Branches</h3>
-              <ul>
-                <li>Authenticated dashboard</li>
-                <li>Business / branch CRUD</li>
-                <li>Branch selector</li>
-                <li>Public location picker</li>
-                <li>Business slot rule planning</li>
-                <li>Branch-specific data loading</li>
-              </ul>
-            </article>
-
-            <article class="card">
-              <h3>Services &amp; Staff</h3>
-              <ul>
-                <li>Services per branch</li>
-                <li>Staff records per branch</li>
-                <li>Add / edit forms</li>
-                <li>Deactivate / reactivate instead of delete</li>
-                <li>Work-day parsing and schedule display</li>
-              </ul>
-            </article>
-
-            <article class="card">
-              <h3>Appointments &amp; Queue</h3>
-              <ul>
-                <li>Public booking page with location switching</li>
-                <li>Short appointment codes</li>
-                <li>Appointment tracking page with result focus</li>
-                <li>Status updates</li>
-                <li>Queue board for daily operations</li>
-                <li>Booking draft protection against accidental navigation</li>
-              </ul>
-            </article>
-          </div>
-
-          <div class="grid-4" style="margin-top: 26px">
-            <article class="metric-card">
-              <strong>Multi-branch</strong>
-              <span>Services, staff, settings, appointments, and queues reload per branch.</span>
-            </article>
-            <article class="metric-card">
-              <strong>RLS-first</strong>
-              <span>Authenticated users access only branches they belong to.</span>
-            </article>
-            <article class="metric-card">
-              <strong>Public-safe</strong>
-              <span>Public booking uses only safe business and booking data.</span>
-            </article>
-            <article class="metric-card">
-              <strong>Edit lock</strong>
-              <span>Unsaved changes block branch switching, navigation, logout, and Back.</span>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="backend" class="section dark">
-        <div class="container">
-          <div class="section-header">
-            <p class="eyebrow">Backend &amp; Security</p>
-            <h2>Supabase tables, RLS policies, and branch isolation.</h2>
-            <p>
+</div>
+<div class="grid-3">
+<article class="card">
+<h3>Business &amp; Branches</h3>
+<ul>
+<li>Authenticated dashboard</li>
+<li>Business / branch CRUD</li>
+<li>Branch selector</li>
+<li>Public location picker</li>
+<li>Business slot rule planning</li>
+<li>Branch-specific data loading</li>
+</ul>
+</article>
+<article class="card">
+<h3>Services &amp; Staff</h3>
+<ul>
+<li>Services per branch</li>
+<li>Staff records per branch</li>
+<li>Add / edit forms</li>
+<li>Deactivate / reactivate instead of delete</li>
+<li>Work-day parsing and schedule display</li>
+</ul>
+</article>
+<article class="card">
+<h3>Appointments &amp; Queue</h3>
+<ul>
+<li>Public booking page with location switching</li>
+<li>Short appointment codes</li>
+<li>Appointment tracking page with result focus</li>
+<li>Status updates</li>
+<li>Queue board for daily operations</li>
+<li>Booking draft protection against accidental navigation</li>
+</ul>
+</article>
+</div>
+<div class="grid-4" style="margin-top: 26px">
+<article class="metric-card">
+<strong>Multi-branch</strong>
+<span>Services, staff, settings, appointments, and queues reload per branch.</span>
+</article>
+<article class="metric-card">
+<strong>RLS-first</strong>
+<span>Authenticated users access only branches they belong to.</span>
+</article>
+<article class="metric-card">
+<strong>Public-safe</strong>
+<span>Public booking uses only safe business and booking data.</span>
+</article>
+<article class="metric-card">
+<strong>Edit lock</strong>
+<span>Unsaved changes block branch switching, navigation, logout, and Back.</span>
+</article>
+</div>
+</div>
+</section>
+<section class="section dark" id="backend">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Backend &amp; Security</p>
+<h2>Supabase tables, RLS policies, RPCs, and branch isolation.</h2>
+<p>
               QueuePoint uses Supabase Auth, PostgreSQL tables, Row Level
               Security, and RPC functions to keep public booking and
               authenticated dashboard workflows separated while preserving
               branch-specific operating context.
             </p>
-          </div>
-
-          <div class="grid-3">
-            <article class="card">
-              <h3>Core tables</h3>
-              <ul>
-                <li><code>businesses</code></li>
-                <li><code>business_users</code></li>
-                <li><code>services</code></li>
-                <li><code>staff_members</code></li>
-                <li><code>business_settings</code></li>
-                <li><code>customers</code></li>
-                <li><code>appointments</code></li>
-              </ul>
-            </article>
-
-            <article class="card">
-              <h3>Tenant rule</h3>
-              <p>
-                No business should see another business&apos;s customers,
+</div>
+<div class="grid-3">
+<article class="card">
+<h3>Core tables</h3>
+<ul>
+<li><code>businesses</code></li>
+<li><code>business_users</code></li>
+<li><code>services</code></li>
+<li><code>staff_members</code></li>
+<li><code>business_settings</code></li>
+<li><code>customers</code></li>
+<li><code>appointments</code></li>
+</ul>
+</article>
+<article class="card">
+<h3>Tenant rule</h3>
+<p>
+                No business should see another business's customers,
                 appointments, services, staff, settings, or queue entries.
                 Dashboard modules filter by the selected branch and RLS enforces
                 ownership at the database layer.
               </p>
-            </article>
-
-            <article class="card">
-              <h3>Public/private split</h3>
-              <p>
+</article>
+<article class="card">
+<h3>Public/private split</h3>
+<p>
                 Public booking can read safe business/location data and active
                 services, while authenticated users manage private operational
                 data through owner/admin policies.
               </p>
-            </article>
-          </div>
+</article>
+</div>
+<div class="proof-rows" style="margin-top: 26px">
+<article class="proof-row">
+<h3>Tenant boundary</h3>
+<p><strong>Rule:</strong> one business or branch should never see another business's customers, appointments, services, staff, settings, or queue entries. RLS and branch-aware queries both enforce the operating context.</p>
+</article>
+<article class="proof-row">
+<h3>Public booking RPC</h3>
+<p><strong>Rule:</strong> customers can create appointments without logging in, but public inserts are routed through a controlled backend workflow instead of exposing broad table access.</p>
+</article>
+<article class="proof-row">
+<h3>Business slot enforcement</h3>
+<p><strong>Rule:</strong> each active business or branch consumes an allowed slot. The backend checks ownership and plan limits before allowing new branch creation.</p>
+</article>
+<article class="proof-row">
+<h3>Short appointment codes</h3>
+<p><strong>Rule:</strong> customer-facing codes must be readable enough to write down, while still remaining unique within the business/date context.</p>
+</article>
+</div>
 
-          <div class="tech-tags" style="margin-top: 26px">
-            <span class="tag">Supabase Auth</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">Row Level Security</span>
-            <span class="tag">RPC booking flow</span>
-            <span class="tag">ES Modules</span>
-            <span class="tag">Vercel deployment</span>
-          </div>
-        </div>
-      </section>
+<div class="tech-tags" style="margin-top: 26px">
+<span class="tag">Supabase Auth</span>
+<span class="tag">PostgreSQL</span>
+<span class="tag">Row Level Security</span>
+<span class="tag">RPC booking flow</span>
+<span class="tag">ES Modules</span>
+<span class="tag">Vercel deployment</span>
+</div>
+</div>
+</section>
 
-      <section id="challenges" class="section alt">
-        <div class="container">
-          <div class="section-header">
-            <p class="eyebrow">Key Challenges Solved</p>
-            <h2>Important implementation and debugging wins.</h2>
-            <p>
+<section class="section">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Engineering Notes</p>
+<h2>Technical details that carry the SaaS credibility.</h2>
+<p>
+              QueuePoint is strongest where the UI depends on backend rules: branch context, public/private access,
+              owner limits, status transitions, and safe editing behavior.
+            </p>
+</div>
+<div class="decision-grid">
+<article class="decision-card">
+<h3>Branch as operating context</h3>
+<p>
+                Dashboard modules do not behave as isolated pages. Services, staff, settings, appointments,
+                queue entries, and business details reload from the currently selected branch.
+              </p>
+</article>
+<article class="decision-card">
+<h3>Status-driven operations</h3>
+<p>
+                Appointments move through real front-desk states: booked, confirmed, waiting, serving, completed,
+                cancelled, and no-show. Queue views are grouped from these operating states.
+              </p>
+</article>
+<article class="decision-card">
+<h3>Draft and edit protection</h3>
+<p>
+                Booking drafts and dashboard edit forms are protected against branch changes, navigation, logout,
+                and Back-button exits when a user has already entered data.
+              </p>
+</article>
+<article class="decision-card">
+<h3>Public tracking without customer accounts</h3>
+<p>
+                Customers can track appointments using business and appointment codes. The system keeps customer
+                lookup simple while preserving private dashboard access for staff and owners.
+              </p>
+</article>
+</div>
+</div>
+</section>
+<section class="section alt" id="challenges">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Key Challenges Solved</p>
+<h2>Implementation problems solved during the build.</h2>
+<p>
               The strongest parts of the project came from the problems that
               appeared while turning a simple booking app into a multi-branch
               SaaS-style dashboard.
             </p>
-          </div>
-
-          <div class="process">
-            <div class="process-item">
-              <h3>Multi-tenant branch isolation</h3>
-              <p>
+</div>
+<div class="process">
+<div class="process-item">
+<h3>Multi-tenant branch isolation</h3>
+<p>
                 Services, staff, appointments, queue, business details, and
                 settings had to reload cleanly when the selected branch changed.
                 This forced the dashboard to use the active branch as the
                 operating context.
               </p>
-            </div>
-
-            <div class="process-item">
-              <h3>Global edit-lock protection</h3>
-              <p>
+</div>
+<div class="process-item">
+<h3>Global edit-lock protection</h3>
+<p>
                 Users could originally switch branches, navigate away, log out,
                 or press Android Back while editing forms. QueuePoint now blocks
                 branch switching, sidebar navigation, logout, and Back while a
                 module is in add/edit mode.
               </p>
-            </div>
-
-            <div class="process-item">
-              <h3>Auth/session vs RLS debugging</h3>
-              <p>
+</div>
+<div class="process-item">
+<h3>Auth/session vs RLS debugging</h3>
+<p>
                 An apparent RLS error was traced back to a missing authenticated
                 session. The fix clarified the difference between a recognized
                 user and a usable Supabase session/JWT for authenticated
                 database requests.
               </p>
-            </div>
-
-            <div class="process-item">
-              <h3>Short appointment codes</h3>
-              <p>
+</div>
+<div class="process-item">
+<h3>Short appointment codes</h3>
+<p>
                 Long codes were not practical for customers. QueuePoint now uses
                 shorter per-branch/per-day appointment codes that are easier to
                 write down and use on the tracking page.
               </p>
-            </div>
-
-            <div class="process-item">
-              <h3>Settings insert/update behavior</h3>
-              <p>
+</div>
+<div class="process-item">
+<h3>Settings insert/update behavior</h3>
+<p>
                 Branches without settings use defaults until saved. Saving
                 either updates the existing row or inserts a new branch-specific
                 row.
               </p>
-            </div>
-
-            <div class="process-item">
-              <h3>Public booking location picker</h3>
-              <p>
+</div>
+<div class="process-item">
+<h3>Public booking location picker</h3>
+<p>
                 The public booking page now lets customers choose the business
                 location while still using branch codes internally. Draft locks
                 block location changes, top navigation, and Back while customer
                 booking details are already entered.
               </p>
-            </div>
-
-            <div class="process-item">
-              <h3>Landscape keyboard dock</h3>
-              <p>
+</div>
+<div class="process-item">
+<h3>Landscape keyboard dock</h3>
+<p>
                 Real-phone testing showed that normal responsive layout was not
                 enough in landscape. QueuePoint now uses a focused-field dock for
                 text inputs so the active field remains readable when the Android
                 keyboard consumes most of the screen.
               </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="screenshots" class="section">
-        <div class="container">
-          <div class="section-header">
-            <p class="eyebrow">Screenshots</p>
-            <h2>QueuePoint customer flow and branch operations.</h2>
-            <p>
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="screenshots">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Screenshots</p>
+<h2>Screenshots of the customer and branch-operations flows.</h2>
+<p>
               These screenshots show the stable MVP flow: customers choose a
               location, book an appointment, receive a short code, track status,
               and staff manage daily operations through a branch-aware dashboard.
             </p>
-          </div>
-
-          <div class="wide-image">
-            <img
-              src="img/queuepoint-dashboard.png"
-              alt="QueuePoint dashboard with branch selector, stats cards, and module navigation"
-            />
-            <p class="caption">
-              <strong>Dashboard overview.</strong> The authenticated dashboard
+</div>
+<div class="wide-image">
+<img alt="QueuePoint dashboard with branch selector, stats cards, and module navigation" src="img/queuepoint-dashboard.png"/>
+<p class="caption">
+<strong>Dashboard overview.</strong> The authenticated dashboard
               centers branch selection, operating stats, and the main modules:
               services, staff, appointments, queue, business, and settings.
             </p>
-          </div>
-
-          <div class="screenshot-group">
-            <h3>Public customer flow</h3>
-            <p>
+</div>
+<div class="screenshot-group">
+<h3>Public customer flow</h3>
+<p>
               QueuePoint keeps the public side simple: choose a location, enter
               booking details, receive a short code, and track the appointment
               without creating an account.
             </p>
-
-            <div class="grid-3">
-              <article class="card screenshot-card">
-                <img
-                  src="img/queuepoint-landing.png"
-                  alt="QueuePoint public landing page with booking, tracking, and login navigation"
-                />
-                <div class="content">
-                  <h3>Public landing page</h3>
-                  <p>
+<div class="grid-3">
+<article class="card screenshot-card">
+<img alt="QueuePoint public landing page with booking, tracking, and login navigation" src="img/queuepoint-landing.png"/>
+<div class="content">
+<h3>Public landing page</h3>
+<p>
                     Customer-facing entry point with clear paths for booking,
                     tracking, and business login.
                   </p>
-                </div>
-              </article>
-
-              <article class="card screenshot-card">
-                <img
-                  src="img/queuepoint-public-booking-location.png"
-                  alt="QueuePoint public booking page with location picker"
-                />
-                <div class="content">
-                  <h3>Location-aware booking</h3>
-                  <p>
+</div>
+</article>
+<article class="card screenshot-card">
+<img alt="QueuePoint public booking page with location picker" src="img/queuepoint-public-booking-location.png"/>
+<div class="content">
+<h3>Location-aware booking</h3>
+<p>
                     The public booking page lets customers choose the business
                     location before selecting service, date, and time.
                   </p>
-                </div>
-              </article>
-
-              <article class="card screenshot-card">
-                <img
-                  src="img/queuepoint-booking-success-code.png"
-                  alt="QueuePoint successful booking card with appointment code and tracking action"
-                />
-                <div class="content">
-                  <h3>Short appointment code</h3>
-                  <p>
+</div>
+</article>
+<article class="card screenshot-card">
+<img alt="QueuePoint successful booking card with appointment code and tracking action" src="img/queuepoint-booking-success-code.png"/>
+<div class="content">
+<h3>Short appointment code</h3>
+<p>
                     After booking, the customer receives a readable appointment
                     code with actions to track the booking or start another one.
                   </p>
-                </div>
-              </article>
-
-              <article class="card screenshot-card">
-                <img
-                  src="img/queuepoint-track-result.png"
-                  alt="QueuePoint appointment tracking result showing customer, service, date, time, and status"
-                />
-                <div class="content">
-                  <h3>Status tracking</h3>
-                  <p>
+</div>
+</article>
+<article class="card screenshot-card">
+<img alt="QueuePoint appointment tracking result showing customer, service, date, time, and status" src="img/queuepoint-track-result.png"/>
+<div class="content">
+<h3>Status tracking</h3>
+<p>
                     Customers can look up their appointment status using the
                     business code and short appointment code.
                   </p>
-                </div>
-              </article>
-            </div>
-          </div>
-
-          <div class="screenshot-group">
-            <h3>Business dashboard modules</h3>
-            <p>
+</div>
+</article>
+</div>
+</div>
+<div class="screenshot-group">
+<h3>Business dashboard modules</h3>
+<p>
               The authenticated side is branch-aware: services, staff, settings,
               appointments, and queue data reload based on the selected branch.
             </p>
-
-            <div class="grid-3">
-              <article class="card screenshot-card">
-                <img
-                  src="img/queuepoint-services.png"
-                  alt="QueuePoint services module showing branch-specific service cards"
-                />
-                <div class="content">
-                  <h3>Services</h3>
-                  <p>
+<div class="grid-3">
+<article class="card screenshot-card">
+<img alt="QueuePoint services module showing branch-specific service cards" src="img/queuepoint-services.png"/>
+<div class="content">
+<h3>Services</h3>
+<p>
                     Branch-specific service catalog with duration, price, and
                     active/inactive service controls.
                   </p>
-                </div>
-              </article>
-
-              <article class="card screenshot-card">
-                <img
-                  src="img/queuepoint-staff-2.png"
-                  alt="QueuePoint staff module showing staff records and schedule details"
-                />
-                <div class="content">
-                  <h3>Staff records</h3>
-                  <p>
+</div>
+</article>
+<article class="card screenshot-card">
+<img alt="QueuePoint staff module showing staff records and schedule details" src="img/queuepoint-staff-2.png"/>
+<div class="content">
+<h3>Staff records</h3>
+<p>
                     Staff cards show branch-specific staff, role, schedule, and
                     active/inactive state without deleting historical context.
                   </p>
-                </div>
-              </article>
-
-              <article class="card screenshot-card">
-                <img
-                  src="img/queuepoint-appointments-1.png"
-                  alt="QueuePoint appointments module showing filters and appointment cards"
-                />
-                <div class="content">
-                  <h3>Appointments</h3>
-                  <p>
+</div>
+</article>
+<article class="card screenshot-card">
+<img alt="QueuePoint appointments module showing filters and appointment cards" src="img/queuepoint-appointments-1.png"/>
+<div class="content">
+<h3>Appointments</h3>
+<p>
                     Daily appointment view with date/status filters and status
                     updates for front-desk workflow.
                   </p>
-                </div>
-              </article>
-
-              <article class="card screenshot-card">
-                <img
-                  src="img/queuepoint-queue-1.png"
-                  alt="QueuePoint queue board with booked, waiting, serving, and closed columns"
-                />
-                <div class="content">
-                  <h3>Queue board</h3>
-                  <p>
+</div>
+</article>
+<article class="card screenshot-card">
+<img alt="QueuePoint queue board with booked, waiting, serving, and closed columns" src="img/queuepoint-queue-1.png"/>
+<div class="content">
+<h3>Queue board</h3>
+<p>
                     Queue workflow groups appointments into booked, waiting,
                     serving, and closed operational states.
                   </p>
-                </div>
-              </article>
-
-              <article class="card screenshot-card">
-                <img
-                  src="img/queuepoint-business-branches-1.png"
-                  alt="QueuePoint business and branch module with plan, subscription, and slot status"
-                />
-                <div class="content">
-                  <h3>Business / branches</h3>
-                  <p>
+</div>
+</article>
+<article class="card screenshot-card">
+<img alt="QueuePoint business and branch module with plan, subscription, and slot status" src="img/queuepoint-business-branches-1.png"/>
+<div class="content">
+<h3>Business / branches</h3>
+<p>
                     Business status strip shows plan, subscription, and branch
                     slot usage while keeping branch data separate.
                   </p>
-                </div>
-              </article>
-
-              <article class="card screenshot-card">
-                <img
-                  src="img/queuepoint-settings.png"
-                  alt="QueuePoint settings module showing branch booking settings"
-                />
-                <div class="content">
-                  <h3>Settings</h3>
-                  <p>
+</div>
+</article>
+<article class="card screenshot-card">
+<img alt="QueuePoint settings module showing branch booking settings" src="img/queuepoint-settings.png"/>
+<div class="content">
+<h3>Settings</h3>
+<p>
                     Branch-specific settings control booking hours, slot length,
                     booking capacity, walk-ins, and customer messages.
                   </p>
-                </div>
-              </article>
-            </div>
-          </div>
-
-          <div class="screenshot-group">
-            <h3>Real mobile QA proof</h3>
-            <p>
+</div>
+</article>
+</div>
+</div>
+<div class="screenshot-group">
+<h3>Real mobile QA proof</h3>
+<p>
               QueuePoint was tested beyond desktop resizing. Mobile fixes
               included sticky dashboard navigation, Android Back protection,
               booking draft protection, and a landscape keyboard dock for short
               screens.
             </p>
-
-            <div class="wide-image">
-              <img
-                src="img/queuepoint-mobile-proof.jpg"
-                alt="QueuePoint landscape mobile keyboard dock proof on a real phone"
-              />
-              <p class="caption">
-                <strong>Landscape keyboard dock.</strong> Real-phone testing
+<div class="wide-image">
+<img alt="QueuePoint landscape mobile keyboard dock proof on a real phone" src="img/queuepoint-mobile-proof.jpg"/>
+<p class="caption">
+<strong>Landscape keyboard dock.</strong> Real-phone testing
                 exposed keyboard pressure in landscape mode. The focused-field
                 dock keeps text inputs readable when the Android keyboard takes
                 most of the screen.
               </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="status" class="section alt">
-        <div class="container">
-          <div class="section-header">
-            <p class="eyebrow">Current MVP Status</p>
-            <h2>Strong portfolio MVP, ready for pilot-style feedback.</h2>
-            <p>
-              QueuePoint is currently viable as a portfolio-grade SaaS MVP and
-              small guided-pilot demo. It is not yet a fully automated commercial
-              SaaS, but the core operational workflow is in place and strong
-              enough for controlled feedback from friendly pilot users.
-            </p>
-          </div>
-
-          <div class="grid-2">
-            <article class="card">
-              <h3>Completed MVP modules</h3>
-              <ul>
-                <li>Business / Branch MVP</li>
-                <li>Services MVP</li>
-                <li>Staff MVP</li>
-                <li>Settings MVP</li>
-                <li>Appointments and Queue</li>
-                <li>Public booking, location picker, and tracking</li>
-                <li>Booking draft guard</li>
-                <li>Auth/session guard</li>
-                <li>RLS policies and branch filtering</li>
-                <li>Edit-lock and Back-button protection</li>
-                <li>Landscape keyboard dock for mobile input</li>
-              </ul>
-            </article>
-
-            <article class="card">
-              <h3>Future improvements</h3>
-              <ul>
-                <li>Self-service signup</li>
-                <li>Staff login accounts</li>
-                <li>Service-to-staff assignment UI</li>
-                <li>Public staff availability picker</li>
-                <li>Payment/deposit instructions or QR workflow</li>
-                <li>SMS/Viber reminders</li>
-                <li>Pilot feedback polish</li>
-                <li>Owner subscription controls</li>
-              </ul>
-            </article>
-          </div>
-
-          <div class="note-box">
-            <strong>Positioning note:</strong> QueuePoint is best presented as a
+</div>
+</div>
+</div>
+</section>
+<section class="section alt" id="status">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Current MVP Status</p>
+<h2>Current MVP status and next production steps.</h2>
+<p>QueuePoint is a portfolio-grade SaaS MVP and guided-pilot demo. The current version proves the operational model; the next step would be production hardening around self-service onboarding, payments/deposits, reminders, staff logins, and owner subscription controls.</p>
+</div>
+<div class="grid-2">
+<article class="card">
+<h3>Completed MVP modules</h3>
+<ul>
+<li>Business / Branch MVP</li>
+<li>Services MVP</li>
+<li>Staff MVP</li>
+<li>Settings MVP</li>
+<li>Appointments and Queue</li>
+<li>Public booking, location picker, and tracking</li>
+<li>Booking draft guard</li>
+<li>Auth/session guard</li>
+<li>RLS policies and branch filtering</li>
+<li>Edit-lock and Back-button protection</li>
+<li>Landscape keyboard dock for mobile input</li>
+</ul>
+</article>
+<article class="card">
+<h3>Future improvements</h3>
+<ul>
+<li>Self-service signup</li>
+<li>Staff login accounts</li>
+<li>Service-to-staff assignment UI</li>
+<li>Public staff availability picker</li>
+<li>Payment/deposit instructions or QR workflow</li>
+<li>SMS/Viber reminders</li>
+<li>Pilot feedback polish</li>
+<li>Owner subscription controls</li>
+</ul>
+</article>
+</div>
+<div class="note-box">
+<strong>Positioning note:</strong> QueuePoint is best presented as a
             business organizer that helps protect appointments, reduce
             front-desk confusion, and keep daily service flow visible.
           </div>
-        </div>
-      </section>
-
-      <section id="contact" class="section">
-        <div class="container">
-          <div class="cta">
-            <h2>Need a small-business appointment or queue system?</h2>
-            <p>
+</div>
+</section>
+<section class="section" id="contact">
+<div class="container">
+<div class="cta">
+<h2>Need a small-business appointment or queue system?</h2>
+<p>
               QueuePoint demonstrates SaaS-style branch isolation, Supabase RLS,
               public booking, authenticated operations, mobile-safe form handling,
               and practical dashboard UX using vanilla JavaScript and Supabase.
             </p>
-
-            <div class="cta-actions">
-              <a href="index.html#contact" class="btn primary">Contact Me</a>
-              <a href="index.html#work" class="btn secondary">Back to Portfolio</a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-row">
-        <span>&copy; 2026 D &amp; P Systems. All rights reserved.</span>
-        <span>Business Systems Developer · Supabase Implementation</span>
-      </div>
-    </footer>
-  </body>
+<div class="cta-actions">
+<a class="btn primary" href="index.html#contact">Contact Me</a>
+<a class="btn secondary" href="index.html#work">Back to Portfolio</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container footer-row">
+<span>© 2026 D &amp; P Systems. All rights reserved.</span>
+<span>Business Systems Developer · Supabase Implementation</span>
+</div>
+</footer>
+</body>
 </html>

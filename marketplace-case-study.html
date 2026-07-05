@@ -1,17 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Multi-Seller Marketplace Case Study | D & P Systems</title>
-
-    <meta
-      name="description"
-      content="A Supabase-powered multi-seller marketplace prototype case study featuring guest checkout, seller dashboard, PostgreSQL RPC checkout, real Android QA, order tracking, review moderation, and browser-history fixes."
-    />
-
-    <style>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Multi-Seller Marketplace Case Study | D &amp; P Systems</title>
+<meta content="A technical case study for a Supabase-backed multi-seller marketplace portfolio build with guest checkout, seller-owned dashboards, PostgreSQL RPC checkout, stock validation, moderated reviews and ratings, RLS planning, order tracking, and real Android QA." name="description"/>
+<style>
       :root {
         --bg-main: #f8fafc;
         --bg-soft: #eef2f7;
@@ -560,7 +555,148 @@
         border-color: rgba(255, 255, 255, 0.1);
       }
 
+      
+      .case-summary-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 26px;
+      }
+
+      .summary-card,
+      .decision-card,
+      .flow-card,
+      .proof-row {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+      }
+
+      .summary-card {
+        padding: 18px;
+      }
+
+      .summary-card strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--accent);
+        font-size: 1.04rem;
+      }
+
+      .summary-card span {
+        color: var(--text-muted);
+        font-size: 0.93rem;
+      }
+
+      .dark .summary-card,
+      .dark .decision-card,
+      .dark .flow-card,
+      .dark .proof-row {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .dark .summary-card span,
+      .dark .decision-card p,
+      .dark .flow-card p,
+      .dark .proof-row p {
+        color: #cbd5e1;
+      }
+
+      .architecture-grid,
+      .decision-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .decision-card {
+        padding: 22px;
+      }
+
+      .decision-card h3,
+      .flow-card h3,
+      .proof-row h3 {
+        margin: 0 0 8px;
+      }
+
+      .decision-card p,
+      .flow-card p,
+      .proof-row p {
+        margin: 0;
+        color: var(--text-muted);
+      }
+
+      .flow-strip {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 24px;
+      }
+
+      .flow-strip span {
+        display: grid;
+        place-items: center;
+        min-height: 54px;
+        padding: 10px;
+        border-radius: 14px;
+        background: #fff;
+        border: 1px solid var(--border);
+        color: var(--text-main);
+        font-weight: 800;
+        text-align: center;
+        font-size: 0.86rem;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+      }
+
+      .dark .flow-strip span {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text-light);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .proof-rows {
+        display: grid;
+        gap: 14px;
+      }
+
+      .proof-row {
+        display: grid;
+        grid-template-columns: 0.7fr 1.3fr;
+        gap: 18px;
+        align-items: start;
+        padding: 20px;
+      }
+
+      .proof-row strong {
+        color: var(--accent);
+      }
+
+      .status-note {
+        margin-top: 24px;
+        padding: 18px 20px;
+        border-radius: var(--radius-md);
+        background: rgba(15, 23, 42, 0.04);
+        border: 1px solid var(--border);
+        color: var(--text-muted);
+      }
+
+      .status-note strong {
+        color: var(--text-main);
+      }
+
       @media (max-width: 900px) {
+        .case-summary-grid,
+        .architecture-grid,
+        .decision-grid,
+        .flow-strip,
+        .proof-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+@media (max-width: 900px) {
         .hero-grid,
         .grid-2,
         .grid-3,
@@ -611,828 +747,780 @@
         }
       }
     </style>
-  </head>
-
-  <body>
-    <header class="site-header">
-      <div class="container nav">
-        <a href="index.html" class="brand">D &amp; P <span>Systems</span></a>
-
-        <nav class="nav-links" aria-label="Main navigation">
-          <a href="index.html">Home</a>
-          <a href="#overview">Overview</a>
-          <a href="#features">Features</a>
-          <a href="#screenshots">Screenshots</a>
-          <a href="#backend">Backend</a>
-          <a href="#mobile-qa">Mobile QA</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <!-- HERO -->
-      <section class="hero">
-        <div class="container hero-grid">
-          <div>
-            <p class="eyebrow">Portfolio Case Study</p>
-
-            <h1>Multi-Seller Marketplace Prototype</h1>
-
-            <p class="lead">
-              A working marketplace prototype built with vanilla JavaScript and
-              Supabase, focused on seller workflows, guest checkout, inventory
-              safety, PostgreSQL RPC checkout, order tracking, review moderation,
-              mobile QA, and multi-seller order handling.
-            </p>
-
-            <div class="hero-actions">
-              <a href="#screenshots" class="btn primary">View Screenshots</a>
-              <a href="index.html#work" class="btn secondary"
-                >Back to Portfolio</a
-              >
-            </div>
-
-            <div class="hero-meta">
-              <span class="pill">Working prototype / portfolio case study</span>
-              <span class="pill">Supabase Backend</span>
-              <span class="pill">Vanilla JavaScript</span>
-              <span class="pill">PostgreSQL RPC</span>
-              <span class="pill">Real Android QA</span>
-            </div>
-          </div>
-
-          <div class="hero-card">
-            <img
-              src="img/marketplace-home.png"
-              alt="Marketplace product listing screenshot"
-            />
-            <p class="image-note">
-              Placeholder screenshot: <strong>img/marketplace-home.png</strong>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- OVERVIEW -->
-      <section id="overview" class="section">
-        <div class="container">
-          <div class="section-header">
-            <p class="eyebrow">Project Overview</p>
-            <h2>A marketplace workflow built around real backend logic.</h2>
-            <p>
-              This project is not only a product listing page. It includes a
-              buyer storefront, cart and checkout flow, public order tracking,
-              seller authentication, seller dashboard, product management, order
-              status updates, and review moderation.
-            </p>
-          </div>
-
-          <div class="grid-3">
-            <article class="card">
-              <h3>Buyer Side</h3>
-              <p>
+</head>
+<body>
+<header class="site-header">
+<div class="container nav">
+<a class="brand" href="index.html">D &amp; P <span>Systems</span></a>
+<nav aria-label="Main navigation" class="nav-links"><a href="index.html">Home</a><a href="#overview">Overview</a><a href="#architecture">Architecture</a><a href="#features">Features</a><a href="#reviews">Reviews</a><a href="#backend">Backend</a><a href="#mobile-qa">Mobile QA</a><a href="#contact">Contact</a></nav>
+</div>
+</header>
+<main>
+<!-- HERO -->
+<section class="hero">
+<div class="container hero-grid">
+<div>
+<p class="eyebrow">Portfolio Case Study</p>
+<h1>Multi-Seller Marketplace Portfolio Build</h1>
+<p class="lead">A seller-operations and checkout case study built with vanilla JavaScript and Supabase. The goal was to prove that a small-business marketplace can support guest buying, seller-owned dashboards, stock-safe checkout, order tracking, moderated reviews and ratings, and real mobile behavior without hiding the backend complexity.</p>
+<div class="hero-actions">
+<a class="btn primary" href="#screenshots">View Screenshots</a>
+<a class="btn secondary" href="index.html#work">Back to Portfolio</a>
+</div>
+<div class="hero-meta">
+<span class="pill">Portfolio demo / final polish</span>
+<span class="pill">Supabase Backend</span>
+<span class="pill">Vanilla JavaScript</span>
+<span class="pill">PostgreSQL RPC</span>
+<span class="pill">Real Android QA</span>
+</div>
+</div>
+<div class="hero-card">
+<img alt="Marketplace product listing screenshot" src="img/marketplace-home.png"/>
+<p class="image-note">Buyer-facing storefront used to test product browsing, cart behavior, checkout, tracking, seller contact, and review flows.</p>
+</div>
+</div>
+</section>
+<!-- OVERVIEW -->
+<section class="section" id="overview">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Project Overview</p>
+<h2>A commerce workflow with real data ownership and checkout rules.</h2>
+<p>The case study focuses on the difficult parts behind a marketplace interface: who owns each record, how seller dashboards stay isolated, how checkout avoids stale stock, how public tracking works without buyer login, and how reviews are moderated before they appear publicly.</p>
+</div>
+<div class="grid-3">
+<article class="card">
+<h3>Buyer Side</h3>
+<p>
                 Buyers can browse products, add items to cart, check out as
                 guests, track orders, contact sellers, and leave reviews for
                 completed orders.
               </p>
-            </article>
-
-            <article class="card">
-              <h3>Seller Side</h3>
-              <p>
+</article>
+<article class="card">
+<h3>Seller Side</h3>
+<p>
                 Sellers can log in, complete onboarding, manage products, update
                 order statuses, and moderate customer reviews from a dedicated
                 dashboard.
               </p>
-            </article>
-
-            <article class="card">
-              <h3>Backend Focus</h3>
-              <p>
+</article>
+<article class="card">
+<h3>Backend Focus</h3>
+<p>
                 The project uses Supabase Auth, relational tables, RLS policies,
                 Storage, and PostgreSQL RPC logic for safer order creation.
               </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-
-
-      <!-- TECHNICAL WINS -->
-      <section class="section alt">
-        <div class="container">
-          <div class="section-header">
-            <p class="eyebrow">Strongest Technical Wins</p>
-            <h2>Not just responsive screens — a tested marketplace workflow.</h2>
-            <p>
-              The prototype grew from a UI exercise into a real application
-              workflow with database ownership, checkout safety, review
-              moderation, real-device testing, and browser-history cleanup.
+</article>
+</div>
+</div>
+</section>
+<section class="section alt" id="architecture">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Technical Architecture</p>
+<h2>How the marketplace is organized behind the screens.</h2>
+<p>
+              The homepage shows the business value. This case study carries the heavier technical proof:
+              database ownership, checkout rules, review moderation, mobile QA, and implementation decisions.
             </p>
-          </div>
-
-          <div class="grid-3">
-            <article class="card">
-              <h3>Checkout safety</h3>
-              <p>
+</div>
+<div class="case-summary-grid">
+<article class="summary-card">
+<strong>Buyer flow</strong>
+<span>Guest storefront, cart, checkout, order tracking, seller contact, and completed-order reviews.</span>
+</article>
+<article class="summary-card">
+<strong>Seller flow</strong>
+<span>Supabase Auth, onboarding, product CRUD, stock management, order status, and review moderation.</span>
+</article>
+<article class="summary-card">
+<strong>Backend rules</strong>
+<span>Seller-owned records, RLS planning, relational tables, Storage, and PostgreSQL RPC checkout.</span>
+</article>
+<article class="summary-card">
+<strong>QA proof</strong>
+<span>Android Chrome testing for checkout, tracking, review form, landscape layout, and Back behavior.</span>
+</article>
+</div>
+<div aria-label="Marketplace workflow" class="flow-strip">
+<span>Browse</span>
+<span>Cart</span>
+<span>Checkout</span>
+<span>Seller order</span>
+<span>Stock update</span>
+<span>Track</span>
+<span>Review</span>
+</div>
+</div>
+</section>
+<!-- TECHNICAL WINS -->
+<section class="section alt">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Strongest Technical Wins</p>
+<h2>Technical decisions that made the demo behave like a real system.</h2>
+<p>The strongest parts of the build are not the card layout or dashboard visuals. They are the backend checks, ownership model, moderation path, and mobile edge-case fixes that protect the workflow.</p>
+</div>
+<div class="grid-3">
+<article class="card">
+<h3>Checkout safety</h3>
+<p>
                 Checkout revalidates active products and stock, groups items by
                 seller, creates seller-specific orders, inserts order items, and
                 deducts inventory through backend logic.
               </p>
-            </article>
-
-            <article class="card">
-              <h3>Seller identity consistency</h3>
-              <p>
+</article>
+<article class="card">
+<h3>Seller identity consistency</h3>
+<p>
                 Dashboard queries use the seller record as the source of truth,
                 keeping products, orders, stats, and reviews aligned with the
                 authenticated seller.
               </p>
-            </article>
-
-            <article class="card">
-              <h3>Mobile behavior QA</h3>
-              <p>
+</article>
+<article class="card">
+<h3>Mobile behavior QA</h3>
+<p>
                 Real Android testing covered landscape scrolling, floating cart
                 positioning, keyboard constraints, checkout redirects, and
                 Android Back behavior.
               </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- PROBLEM / SOLUTION -->
-      <section class="section alt">
-        <div class="container grid-2">
-          <div>
-            <div class="section-header">
-              <p class="eyebrow">The Problem</p>
-              <h2>
-                Small sellers need a simple but structured way to sell online.
-              </h2>
-              <p>
+</article>
+</div>
+</div>
+</section>
+<!-- PROBLEM / SOLUTION -->
+<section class="section alt">
+<div class="container grid-2">
+<div>
+<div class="section-header">
+<p class="eyebrow">The Problem</p>
+<h2>Small sellers need order, stock, and review control without a heavy platform.</h2>
+<p>
                 Many small sellers need product listings, order tracking, buyer
                 communication, and basic inventory control without the
                 complexity of a full enterprise e-commerce system.
               </p>
-            </div>
-
-            <ul class="feature-list">
-              <li>
-                <strong>Buyer friction should stay low.</strong>
+</div>
+<ul class="feature-list">
+<li>
+<strong>Buyer friction should stay low.</strong>
                 Buyers should be able to check out without creating a full
                 account.
               </li>
-              <li>
-                <strong>Sellers need protected access.</strong>
+<li>
+<strong>Sellers need protected access.</strong>
                 Product, order, and review management should belong only to the
                 correct seller.
               </li>
-              <li>
-                <strong>Inventory needs validation.</strong>
+<li>
+<strong>Inventory needs validation.</strong>
                 Checkout should recheck stock before orders are created.
               </li>
-            </ul>
-          </div>
-
-          <div>
-            <div class="section-header">
-              <p class="eyebrow">The Solution</p>
-              <h2>A Supabase-powered marketplace prototype.</h2>
-              <p>
-                I built a working prototype where guest buyers can place orders
+</ul>
+</div>
+<div>
+<div class="section-header">
+<p class="eyebrow">The Solution</p>
+<h2>A Supabase-backed commerce system with protected seller operations.</h2>
+<p>
+                I built a working portfolio build where guest buyers can place orders
                 and authenticated sellers can manage their store through a
                 dedicated dashboard.
               </p>
-            </div>
-
-            <ul class="feature-list">
-              <li>
-                <strong>Guest checkout.</strong>
+</div>
+<ul class="feature-list">
+<li>
+<strong>Guest checkout.</strong>
                 Buyers can submit order details and use a buyer code for future
                 lookups.
               </li>
-              <li>
-                <strong>Multi-seller order splitting.</strong>
+<li>
+<strong>Multi-seller order splitting.</strong>
                 A cart with products from different sellers creates separate
                 seller-specific orders.
               </li>
-              <li>
-                <strong>Seller dashboard.</strong>
+<li>
+<strong>Seller dashboard.</strong>
                 Sellers manage products, orders, and reviews from one interface.
               </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- FEATURES -->
-      <section id="features" class="section">
-        <div class="container">
-          <div class="section-header">
-            <p class="eyebrow">Core Features</p>
-            <h2>Main workflows included in the prototype.</h2>
-            <p>
+</ul>
+</div>
+</div>
+</section>
+<!-- FEATURES -->
+<section class="section" id="features">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Core Features</p>
+<h2>Buyer, seller, order, and review flows included.</h2>
+<p>
               The project was designed to show a complete buyer-to-seller flow,
               with backend rules supporting the user interface.
             </p>
-          </div>
-
-          <div class="grid-3">
-            <article class="card">
-              <h3>Buyer Marketplace</h3>
-              <ul>
-                <li>Product browsing</li>
-                <li>Add to cart</li>
-                <li>Cart persistence</li>
-                <li>Stock-aware quantity controls</li>
-                <li>Guest checkout</li>
-              </ul>
-            </article>
-
-            <article class="card">
-              <h3>Order Flow</h3>
-              <ul>
-                <li>Buyer code lookup</li>
-                <li>Multi-seller cart grouping</li>
-                <li>Separate seller-specific orders</li>
-                <li>Order tracking by order number</li>
-                <li>Status updates visible to buyers</li>
-              </ul>
-            </article>
-
-            <article class="card">
-              <h3>Seller Dashboard</h3>
-              <ul>
-                <li>Seller login</li>
-                <li>Product add/edit/delete</li>
-                <li>Stock management</li>
-                <li>Order status control</li>
-                <li>Review moderation</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-
-
-      <!-- REVIEWS WORKFLOW -->
-      <section id="reviews" class="section alt">
-        <div class="container">
-          <div class="section-header">
-            <p class="eyebrow">Reviews & Moderation</p>
-            <h2>Buyer reviews are tied to completed orders.</h2>
-            <p>
+</div>
+<div class="grid-3">
+<article class="card">
+<h3>Buyer Marketplace</h3>
+<ul>
+<li>Product browsing</li>
+<li>Add to cart</li>
+<li>Cart persistence</li>
+<li>Stock-aware quantity controls</li>
+<li>Guest checkout</li>
+</ul>
+</article>
+<article class="card">
+<h3>Order Flow</h3>
+<ul>
+<li>Buyer code lookup</li>
+<li>Multi-seller cart grouping</li>
+<li>Separate seller-specific orders</li>
+<li>Order tracking by order number</li>
+<li>Status updates visible to buyers</li>
+</ul>
+</article>
+<article class="card">
+<h3>Seller Dashboard</h3>
+<ul>
+<li>Seller login</li>
+<li>Product add/edit/delete</li>
+<li>Stock management</li>
+<li>Order status control</li>
+<li>Review moderation</li>
+</ul>
+</article>
+</div>
+</div>
+</section>
+<!-- REVIEWS WORKFLOW -->
+<section class="section alt" id="reviews">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Reviews &amp; Moderation</p>
+<h2>Buyer reviews are tied to completed orders.</h2>
+<p>
               Reviews were added as a real marketplace workflow, not just static
               text. Buyers can review completed orders, duplicate reviews are
               blocked, sellers moderate submissions, and approved reviews appear
               on the product page.
             </p>
-          </div>
-
-          <div class="process">
-            <div class="process-item">
-              <h3>Completed order unlocks review action</h3>
-              <p>
+</div>
+<div class="process">
+<div class="process-item">
+<h3>Completed order unlocks review action</h3>
+<p>
                 The tracking page shows review options only when an order status
                 is completed, keeping reviews tied to actual purchases.
               </p>
-            </div>
-
-            <div class="process-item">
-              <h3>Duplicate review prevention</h3>
-              <p>
+</div>
+<div class="process-item">
+<h3>Duplicate review prevention</h3>
+<p>
                 A buyer cannot repeatedly review the same product for the same
                 order. The UI reflects already-submitted reviews.
               </p>
-            </div>
-
-            <div class="process-item">
-              <h3>Seller moderation</h3>
-              <p>
+</div>
+<div class="process-item">
+<h3>Seller moderation</h3>
+<p>
                 The Seller Hub includes a Reviews section where pending reviews
                 can be approved or hidden before appearing publicly.
               </p>
-            </div>
-
-            <div class="process-item">
-              <h3>Approved review display</h3>
-              <p>
+</div>
+<div class="process-item">
+<h3>Approved review display</h3>
+<p>
                 Product cards display approved reviews while pending or hidden
                 reviews stay out of the public marketplace view.
               </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CHECKOUT FLOW -->
-      <section class="section alt">
-        <div class="container">
-          <div class="section-header">
-            <p class="eyebrow">Checkout Logic</p>
-            <h2>Multi-seller checkout is the strongest workflow.</h2>
-            <p>
+</div>
+</div>
+</div>
+</section>
+<!-- CHECKOUT FLOW -->
+<section class="section alt">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Checkout Logic</p>
+<h2>Multi-seller checkout is the core backend workflow.</h2>
+<p>
               A single cart can contain products from different sellers. During
               checkout, the system groups the items by seller and creates
               separate orders for each seller. The final checkout path uses
               backend validation and transaction-style logic to reduce stock
               mismatch risks.
             </p>
-          </div>
-
-          <div class="process">
-            <div class="process-item">
-              <h3>Buyer adds products to cart</h3>
-              <p>
+</div>
+<div class="process">
+<div class="process-item">
+<h3>Buyer adds products to cart</h3>
+<p>
                 Products are added with seller information, price, quantity, and
                 stock-related data.
               </p>
-            </div>
-
-            <div class="process-item">
-              <h3>Cart is revalidated before checkout</h3>
-              <p>
+</div>
+<div class="process-item">
+<h3>Cart is revalidated before checkout</h3>
+<p>
                 The app checks whether products are still active and whether the
                 requested quantity is still available.
               </p>
-            </div>
-
-            <div class="process-item">
-              <h3>Items are grouped by seller</h3>
-              <p>
+</div>
+<div class="process-item">
+<h3>Items are grouped by seller</h3>
+<p>
                 Products from Seller A and Seller B are separated into different
                 seller-specific order groups.
               </p>
-            </div>
-
-            <div class="process-item">
-              <h3>Orders are created and stock is deducted</h3>
-              <p>
+</div>
+<div class="process-item">
+<h3>Orders are created and stock is deducted</h3>
+<p>
                 Checkout creates seller-specific orders, inserts order items,
                 and deducts stock through PostgreSQL RPC/backend logic so the
                 order and inventory update stay tied together.
               </p>
-            </div>
-          </div>
-
-          <div class="wide-image">
-            <img
-              src="img/multi-seller-orders.png"
-              alt="Multi-seller checkout result showing separate order numbers"
-            />
-            <p class="caption">
-              Placeholder screenshot:
-              <strong>img/multi-seller-orders.png</strong>
+</div>
+</div>
+<div class="wide-image">
+<img alt="Multi-seller checkout result showing separate order numbers" src="img/multi-seller-orders.png"/>
+<p class="caption">Multi-seller checkout proof showing separate order results for carts that contain products from more than one seller.</p>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Engineering Notes</p>
+<h2>Implementation details that matter in a real marketplace.</h2>
+<p>
+              These are the kinds of details that separate a working business system from a static marketplace mockup.
             </p>
-          </div>
-        </div>
-      </section>
+</div>
+<div class="decision-grid">
+<article class="decision-card">
+<h3>Seller record as source of truth</h3>
+<p>
+                Authenticated users are mapped to seller records before dashboard queries run. Products, orders,
+                stats, and reviews are read through the seller context, not through loose profile assumptions.
+              </p>
+</article>
+<article class="decision-card">
+<h3>Checkout revalidation</h3>
+<p>
+                The cart cannot be trusted by itself. Checkout rechecks active products and available stock
+                before creating seller-specific orders and deducting inventory through backend logic.
+              </p>
+</article>
+<article class="decision-card">
+<h3>Review moderation path</h3>
+<p>
+                Reviews are tied to completed orders, duplicate product/order reviews are blocked, and seller
+                moderation controls which reviews become visible in the public marketplace.
+              </p>
+</article>
+<article class="decision-card">
+<h3>History and mobile safety</h3>
+<p>
+                Buyer tracking, review forms, empty cart redirects, checkout success, and Seller Hub sections were
+                tested against Android Back behavior so users do not get trapped or accidentally exit a flow.
+              </p>
+</article>
+</div>
+</div>
+</section>
+<!-- SCREENSHOTS -->
+<section class="section" id="screenshots">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Screenshots</p>
+<h2>Screenshots of the tested marketplace flows.</h2>
 
-      <!-- SCREENSHOTS -->
-      <section id="screenshots" class="section">
-        <div class="container">
-          <div class="section-header">
-            <p class="eyebrow">Screenshots</p>
-            <h2>Screenshots of the portfolio project.</h2>
-            <p></p>
-          </div>
-
-          <div class="grid-2">
-            <article class="card screenshot-card">
-              <img
-                src="img/marketplace-home.png"
-                alt="Marketplace home and product listing"
-              />
-              <div class="content">
-                <h3>Marketplace Home</h3>
-                <p>
+</div>
+<div class="grid-2">
+<article class="card screenshot-card">
+<img alt="Marketplace home and product listing" src="img/marketplace-home.png"/>
+<div class="content">
+<h3>Marketplace Home</h3>
+<p>
                   Buyer-facing product listing with product cards, prices, stock
                   display, add-to-cart actions, and cart badge.
                 </p>
-              </div>
-            </article>
-
-            <article class="card screenshot-card">
-              <img src="img/cart-checkout.png" alt="Cart and checkout page" />
-              <div class="content">
-                <h3>Cart and Checkout</h3>
-                <p>
+</div>
+</article>
+<article class="card screenshot-card">
+<img alt="Cart and checkout page" src="img/cart-checkout.png"/>
+<div class="content">
+<h3>Cart and Checkout</h3>
+<p>
                   Cart page with buyer details, quantity controls, checkout
                   validation, and multi-seller cart support.
                 </p>
-              </div>
-            </article>
-
-            <article class="card screenshot-card">
-              <img src="img/order-tracking.png" alt="Order tracking page" />
-              <div class="content">
-                <h3>Order Tracking</h3>
-                <p>
+</div>
+</article>
+<article class="card screenshot-card">
+<img alt="Order tracking page" src="img/order-tracking.png"/>
+<div class="content">
+<h3>Order Tracking</h3>
+<p>
                   Public tracking page showing order status, ordered items,
                   seller contact buttons, and review option for completed
                   orders.
                 </p>
-              </div>
-            </article>
-
-            <article class="card screenshot-card">
-              <img src="img/seller-login.png" alt="Seller login page" />
-              <div class="content">
-                <h3>Seller Login</h3>
-                <p>
+</div>
+</article>
+<article class="card screenshot-card">
+<img alt="Seller login page" src="img/seller-login.png"/>
+<div class="content">
+<h3>Seller Login</h3>
+<p>
                   Seller authentication page using Supabase Auth, with password
                   recovery support and seller-focused UI.
                 </p>
-              </div>
-            </article>
-
-            <article class="card screenshot-card">
-              <img
-                src="img/seller-dashboard.png"
-                alt="Seller dashboard overview"
-              />
-              <div class="content">
-                <h3>Seller Dashboard</h3>
-                <p>
+</div>
+</article>
+<article class="card screenshot-card">
+<img alt="Seller dashboard overview" src="img/seller-dashboard.png"/>
+<div class="content">
+<h3>Seller Dashboard</h3>
+<p>
                   Dashboard overview with revenue, pending orders, active
                   products, pending reviews, and seller management tools.
                 </p>
-              </div>
-            </article>
-
-            <article class="card screenshot-card">
-              <img
-                src="img/product-crud-overlay.png"
-                alt="Product CRUD overlay"
-              />
-              <div class="content">
-                <h3>Product CRUD Overlay</h3>
-                <p>
+</div>
+</article>
+<article class="card screenshot-card">
+<img alt="Product CRUD overlay" src="img/product-crud-overlay.png"/>
+<div class="content">
+<h3>Product CRUD Overlay</h3>
+<p>
                   Product add/edit workflow with image handling, validation,
                   price, stock, and product availability controls.
                 </p>
-              </div>
-            </article>
-
-            <article class="card screenshot-card">
-              <img src="img/seller-orders.png" alt="Seller orders management" />
-              <div class="content">
-                <h3>Seller Orders</h3>
-                <p>
+</div>
+</article>
+<article class="card screenshot-card">
+<img alt="Seller orders management" src="img/seller-orders.png"/>
+<div class="content">
+<h3>Seller Orders</h3>
+<p>
                   Seller order management interface with status updates that
                   sync to the buyer tracking experience.
                 </p>
-              </div>
-            </article>
-
-            <article class="card screenshot-card">
-              <img src="img/reviews-moderation.png" alt="Reviews moderation" />
-              <div class="content">
-                <h3>Review Moderation</h3>
-                <p>
+</div>
+</article>
+<article class="card screenshot-card">
+<img alt="Reviews moderation" src="img/reviews-moderation.png"/>
+<div class="content">
+<h3>Review Moderation</h3>
+<p>
                   Seller review moderation workflow where pending buyer reviews
                   can be approved or hidden.
                 </p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-
-
-      <!-- MOBILE QA -->
-      <section id="mobile-qa" class="section alt">
-        <div class="container">
-          <div class="section-header">
-            <p class="eyebrow">Real-Device QA & DevTools</p>
-            <h2>Mobile responsiveness was tested as behavior, not only layout.</h2>
-            <p>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- MOBILE QA -->
+<section class="section alt" id="mobile-qa">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Real-Device QA &amp; DevTools</p>
+<h2>Mobile responsiveness was tested as behavior, not only layout.</h2>
+<p>
               The marketplace was tested on a real Android phone using Chrome
               remote debugging. The QA pass covered portrait and landscape
               orientation, keyboard behavior, floating buttons, checkout
               redirects, Android Back navigation, dashboard section history, and
               external contact links.
             </p>
-          </div>
-
-          <div class="metrics-grid" aria-label="Mobile QA highlights">
-            <div class="metric-card">
-              <strong>chrome://inspect</strong>
-              <span>USB debugging and live Android tab inspection</span>
-            </div>
-            <div class="metric-card">
-              <strong>pushState</strong>
-              <span>Seller Hub sections and review forms handle Back behavior</span>
-            </div>
-            <div class="metric-card">
-              <strong>Landscape</strong>
-              <span>Scroll, keyboard, alert, table, and cart FAB checks</span>
-            </div>
-            <div class="metric-card">
-              <strong>Deep links</strong>
-              <span>Call/Text, Messenger, TikTok tested on device</span>
-            </div>
-          </div>
-
-          <figure class="devtools-proof">
-            <img
-              src="img/devtools-remote-debugging.png"
-              alt="Chrome inspect page showing Android Chrome tabs available for remote debugging"
-            />
-            <figcaption>
-              <strong>Chrome remote debugging proof.</strong> Used
+</div>
+<div aria-label="Mobile QA highlights" class="metrics-grid">
+<div class="metric-card">
+<strong>chrome://inspect</strong>
+<span>USB debugging and live Android tab inspection</span>
+</div>
+<div class="metric-card">
+<strong>pushState</strong>
+<span>Seller Hub sections and review forms handle Back behavior</span>
+</div>
+<div class="metric-card">
+<strong>Landscape</strong>
+<span>Scroll, keyboard, alert, table, and cart FAB checks</span>
+</div>
+<div class="metric-card">
+<strong>Deep links</strong>
+<span>Call/Text, Messenger, TikTok tested on device</span>
+</div>
+</div>
+<figure class="devtools-proof">
+<img alt="Chrome inspect page showing Android Chrome tabs available for remote debugging" src="img/devtools-remote-debugging.png"/>
+<figcaption>
+<strong>Chrome remote debugging proof.</strong> Used
               <code>chrome://inspect</code> with Android USB debugging to focus
               live mobile tabs, inspect page behavior, and validate marketplace
               flows beyond desktop browser resizing.
             </figcaption>
-          </figure>
-
-          <div class="grid-3" style="margin-top: 24px;">
-            <article class="card">
-              <h3>Android Back behavior</h3>
-              <p>
+</figure>
+<div class="grid-3" style="margin-top: 24px;">
+<article class="card">
+<h3>Android Back behavior</h3>
+<p>
                 Checkout success, empty cart, Track “Back to Shop,” Seller Hub
                 Orders/Reviews, and buyer review forms were adjusted to avoid
                 confusing history loops or accidental app exits.
               </p>
-            </article>
-
-            <article class="card">
-              <h3>Landscape constraints</h3>
-              <p>
+</article>
+<article class="card">
+<h3>Landscape constraints</h3>
+<p>
                 Buyer pages were hardened for short landscape screens: cart and
                 track scrolling, cart floating button position, table overflow,
                 and review form usability with the keyboard open.
               </p>
-            </article>
-
-            <article class="card">
-              <h3>Contact link QA</h3>
-              <p>
+</article>
+<article class="card">
+<h3>Contact link QA</h3>
+<p>
                 Call/Text, Messenger, and TikTok were confirmed working. Viber
                 deep links opened the app but did not reliably start chat, so
                 the Viber button was hidden while the onboarding field remains
                 available for future compatibility review.
               </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- BACKEND -->
-      <section id="backend" class="section dark">
-        <div class="container">
-          <div class="section-header">
-            <p class="eyebrow">Backend Design</p>
-            <h2>
-              Built around Supabase, relational data, and seller ownership.
-            </h2>
-            <p>
+</article>
+</div>
+</div>
+</section>
+<!-- BACKEND -->
+<section class="section dark" id="backend">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Backend Design</p>
+<h2>Supabase schema, seller ownership, RLS, and RPC checkout.</h2>
+<p>
               The backend structure supports separate buyer and seller
               workflows. Sellers authenticate through Supabase Auth, while
               buyers can use a guest checkout flow.
             </p>
-          </div>
-
-          <div class="grid-2">
-            <article class="card">
-              <h3>Database Tables</h3>
-              <ul>
-                <li>profiles</li>
-                <li>sellers</li>
-                <li>products</li>
-                <li>buyers</li>
-                <li>orders</li>
-                <li>order_items</li>
-                <li>reviews</li>
-              </ul>
-            </article>
-
-            <article class="card">
-              <h3>Backend Responsibilities</h3>
-              <ul>
-                <li>Map authenticated users to seller records</li>
-                <li>Protect seller-owned products and orders</li>
-                <li>Validate stock before checkout</li>
-                <li>Create seller-specific orders</li>
-                <li>Support review moderation through RLS policies</li>
-                <li>Keep seller dashboard queries aligned with seller-owned records</li>
-              </ul>
-            </article>
-          </div>
-          <div class="wide-image image-stack">
-            <img
-              src="img/supabase-schema-preview.png"
-              alt="Supabase backend screenshot showing database schema design"
-            />
-
-            <img
-              src="img/sql.png"
-              alt="Supabase backend screenshot showing SQL logic"
-            />
-
-            <p class="caption">
+</div>
+<div class="grid-2">
+<article class="card">
+<h3>Database Tables</h3>
+<ul>
+<li>profiles</li>
+<li>sellers</li>
+<li>products</li>
+<li>buyers</li>
+<li>orders</li>
+<li>order_items</li>
+<li>reviews</li>
+</ul>
+</article>
+<article class="card">
+<h3>Backend Responsibilities</h3>
+<ul>
+<li>Map authenticated users to seller records</li>
+<li>Protect seller-owned products and orders</li>
+<li>Validate stock before checkout</li>
+<li>Create seller-specific orders</li>
+<li>Support review moderation through RLS policies</li>
+<li>Keep seller dashboard queries aligned with seller-owned records</li>
+</ul>
+</article>
+</div>
+<div class="proof-rows" style="margin-top: 26px">
+<article class="proof-row">
+<h3>Ownership model</h3>
+<p><strong>Why it matters:</strong> seller dashboards must not leak products, orders, stats, or reviews across sellers. The case study uses seller-owned records as the operating context for dashboard behavior.</p>
+</article>
+<article class="proof-row">
+<h3>RPC checkout</h3>
+<p><strong>Why it matters:</strong> order creation and stock deduction need to stay tied together. Checkout logic belongs in controlled backend steps instead of relying only on client-side cart state.</p>
+</article>
+<article class="proof-row">
+<h3>Moderation rules</h3>
+<p><strong>Why it matters:</strong> public reviews affect trust. The project separates buyer submission, seller moderation, and public approved display.</p>
+</article>
+</div>
+<div class="wide-image image-stack">
+<img alt="Supabase backend screenshot showing database schema design" src="img/supabase-schema-preview.png"/>
+<img alt="Supabase backend screenshot showing SQL logic" src="img/sql.png"/>
+<p class="caption">
               Supabase backend proof showing database structure and SQL logic
               behind the marketplace workflow.
             </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- TECH STACK -->
-      <section class="section">
-        <div class="container">
-          <div class="section-header">
-            <p class="eyebrow">Tech Stack</p>
-            <h2>Tools and technologies used.</h2>
-            <p>
+</div>
+</div>
+</section>
+<!-- TECH STACK -->
+<section class="section">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Tech Stack</p>
+<h2>Stack used to build and harden the system.</h2>
+<p>
               The project keeps the frontend simple while using Supabase for the
               backend, authentication, storage, policies, and database logic.
             </p>
-          </div>
-
-          <div class="tech-tags">
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">Vanilla JavaScript</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">npm packages / CLI</span>
-            <span class="tag">Docker</span>
-            <span class="tag">Vite</span>
-            <span class="tag">Supabase Auth</span>
-            <span class="tag">Supabase Database</span>
-            <span class="tag">Supabase Storage</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">RLS Policies</span>
-            <span class="tag">RPC Transactions</span>
-            <span class="tag">GitHub</span>
-            <span class="tag">Vercel</span>
-            <span class="tag">Chrome DevTools</span>
-            <span class="tag">chrome://inspect</span>
-            <span class="tag">Android Chrome QA</span>
-            <span class="tag">History API</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- LESSONS -->
-      <section class="section alt">
-        <div class="container">
-          <div class="section-header">
-            <p class="eyebrow">What This Project Demonstrates</p>
-            <h2>Backend-oriented full-stack implementation.</h2>
-            <p>
+</div>
+<div class="tech-tags">
+<span class="tag">HTML</span>
+<span class="tag">CSS</span>
+<span class="tag">Vanilla JavaScript</span>
+<span class="tag">Node.js</span>
+<span class="tag">npm packages / CLI</span>
+<span class="tag">Docker</span>
+<span class="tag">Vite</span>
+<span class="tag">Supabase Auth</span>
+<span class="tag">Supabase Database</span>
+<span class="tag">Supabase Storage</span>
+<span class="tag">PostgreSQL</span>
+<span class="tag">RLS Policies</span>
+<span class="tag">RPC Transactions</span>
+<span class="tag">GitHub</span>
+<span class="tag">Vercel</span>
+<span class="tag">Chrome DevTools</span>
+<span class="tag">chrome://inspect</span>
+<span class="tag">Android Chrome QA</span>
+<span class="tag">History API</span>
+</div>
+</div>
+</section>
+<!-- LESSONS -->
+<section class="section alt">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">What This Project Demonstrates</p>
+<h2>What this case study proves.</h2>
+<p>
               This project demonstrates practical implementation skills beyond a
               static frontend demo.
             </p>
-          </div>
-
-          <div class="grid-3">
-            <article class="card">
-              <h3>Supabase Architecture</h3>
-              <p>
+</div>
+<div class="grid-3">
+<article class="card">
+<h3>Supabase Architecture</h3>
+<p>
                 Auth, tables, relationships, storage, and security policies were
                 combined into one working marketplace flow.
               </p>
-            </article>
-
-            <article class="card">
-              <h3>Business Logic</h3>
-              <p>
+</article>
+<article class="card">
+<h3>Business Logic</h3>
+<p>
                 The project handles real marketplace concerns such as seller
                 ownership, stock control, checkout validation, and order status.
               </p>
-            </article>
-
-            <article class="card">
-              <h3>Debugging and Refinement</h3>
-              <p>
+</article>
+<article class="card">
+<h3>Debugging and Refinement</h3>
+<p>
                 The project required resolving seller identity mismatches, RLS
                 access issues, order creation logic, review moderation rules,
                 mobile landscape bugs, and browser-history edge cases.
               </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- ROLE -->
-      <section class="section">
-        <div class="container grid-2">
-          <div>
-            <div class="section-header">
-              <p class="eyebrow">My Role</p>
-              <h2>
-                Supabase Backend &amp; DevOps Developer with full-stack
-                implementation.
-              </h2>
-              <p>
-                I designed and built the marketplace prototype using a simple
-                frontend stack connected to a real Supabase backend.
-              </p>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>Focus Areas</h3>
-            <ul>
-              <li>Supabase backend setup</li>
-              <li>Database table design</li>
-              <li>Seller identity model</li>
-              <li>RLS policy debugging</li>
-              <li>Product and order workflows</li>
-              <li>Checkout transaction logic</li>
-              <li>Seller dashboard behavior</li>
-              <li>Real Android device testing</li>
-              <li>Chrome DevTools remote debugging</li>
-              <li>Browser history and Android Back behavior</li>
-              <li>Portfolio-ready documentation</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- FUTURE IMPROVEMENTS -->
-      <section class="section alt">
-        <div class="container">
-          <div class="section-header">
-            <p class="eyebrow">Future Improvements</p>
-            <h2>Possible next upgrades.</h2>
-            <p>
+</article>
+</div>
+</div>
+</section>
+<!-- ROLE -->
+<section class="section">
+<div class="container grid-2">
+<div>
+<div class="section-header">
+<p class="eyebrow">My Role</p>
+<h2>My role in the build.</h2>
+<p>I designed and built the marketplace as a backend-oriented full-stack portfolio case study, with focus on business rules, seller ownership, SQL-backed checkout, QA, and documentation.</p>
+</div>
+</div>
+<div class="card">
+<h3>Focus Areas</h3>
+<ul>
+<li>Supabase backend setup</li>
+<li>Database table design</li>
+<li>Seller identity model</li>
+<li>RLS policy debugging</li>
+<li>Product and order workflows</li>
+<li>Checkout transaction logic</li>
+<li>Seller dashboard behavior</li>
+<li>Real Android device testing</li>
+<li>Chrome DevTools remote debugging</li>
+<li>Browser history and Android Back behavior</li>
+<li>Portfolio-ready documentation</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- FUTURE IMPROVEMENTS -->
+<section class="section alt">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Future Improvements</p>
+<h2>What would make this production-grade.</h2>
+<p>
               These are optional future improvements that could turn the
-              prototype into a more production-ready system.
+              portfolio build into a more production-ready system.
             </p>
-          </div>
-
-          <div class="grid-3">
-            <article class="card">
-              <h3>Order cancellation module</h3>
-              <p>
+</div>
+<div class="grid-3">
+<article class="card">
+<h3>Order cancellation module</h3>
+<p>
                 Add buyer/seller cancellation rules, status transitions, stock
                 restoration, and audit history as a separate workflow module.
               </p>
-            </article>
-
-            <article class="card">
-              <h3>Payments and refunds</h3>
-              <p>
+</article>
+<article class="card">
+<h3>Payments and refunds</h3>
+<p>
                 Add payment integration, payment status tracking, receipt
                 handling, and refund rules for production checkout.
               </p>
-            </article>
-
-            <article class="card">
-              <h3>iOS Safari QA</h3>
-              <p>
+</article>
+<article class="card">
+<h3>iOS Safari QA</h3>
+<p>
                 Extend the real-device QA pass to iOS Safari, including safe
                 areas, viewport height behavior, keyboard behavior, and contact
                 link handling.
               </p>
-            </article>
-          </div>
-
-          <div class="note-box">
-            <strong>Scope note:</strong> Viber contact data is still captured in
+</article>
+</div>
+<div class="note-box">
+<strong>Scope note:</strong> Viber contact data is still captured in
             onboarding, but the public Viber button is hidden until a reliable
             direct-chat deep-link format is confirmed across devices. Call/Text,
             Messenger, and TikTok were tested successfully.
           </div>
-        </div>
-      </section>
-
-      <!-- CTA -->
-      <section id="contact" class="section">
-        <div class="container">
-          <div class="cta">
-            <h2>Need a Supabase-backed web system?</h2>
-            <p>
-              This marketplace prototype demonstrates backend workflows, seller
+</div>
+</section>
+<!-- CTA -->
+<section class="section" id="contact">
+<div class="container">
+<div class="cta">
+<h2>Need a Supabase-backed web system?</h2>
+<p>
+              This marketplace portfolio build demonstrates backend workflows, seller
               dashboards, database rules, and practical full-stack
               implementation using Supabase and vanilla JavaScript.
             </p>
-
-            <div class="cta-actions">
-              <a href="index.html#contact" class="btn primary">Contact Me</a>
-              <a href="index.html#work" class="btn secondary"
-                >Back to Portfolio</a
-              >
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-row">
-        <span>&copy; 2026 D &amp; P Systems. All rights reserved.</span>
-        <span>Supabase Backend &amp; DevOps Developer</span>
-      </div>
-    </footer>
-  </body>
+<div class="cta-actions">
+<a class="btn primary" href="index.html#contact">Contact Me</a>
+<a class="btn secondary" href="index.html#work">Back to Portfolio</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container footer-row">
+<span>© 2026 D &amp; P Systems. All rights reserved.</span>
+<span>Supabase Backend &amp; DevOps Developer</span>
+</div>
+</footer>
+</body>
 </html>
