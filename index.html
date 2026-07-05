@@ -1,37 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Portfolio of a business systems developer building modern Supabase-backed web apps for real workflows: marketplaces, appointment and queue SaaS dashboards, PostgreSQL, RLS, RPC workflows, Vercel deployment, and real-device mobile QA."
-    />
-    <title>D &amp; P Systems | Business Systems Developer Portfolio</title>
-
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/portfolio.css?v=5" />
-    <link
-      rel="icon"
-      type="image/png"
-      href="img/branding/dp-systems-mark-square.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      href="img/branding/dp-systems-mark-square.png"
-    />
-
-    <style>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="D &amp; P Systems portfolio: custom Supabase-backed business systems for small-business bookings, orders, dashboards, tracking, admin panels, PostgreSQL, RLS, RPC workflows, deployment, and real-device mobile QA." name="description"/>
+<title>D &amp; P Systems | Business Systems Developer Portfolio</title>
+<link href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="css/portfolio.css?v=7" rel="stylesheet"/>
+<link href="img/branding/dp-systems-javelin-app-icon.png" rel="icon" type="image/png"/>
+<link href="img/branding/dp-systems-javelin-app-icon.png" rel="apple-touch-icon"/>
+<style>
       .brand {
         display: inline-flex;
         align-items: center;
@@ -109,566 +92,334 @@
         }
       }
     </style>
-  </head>
-
-  <body>
-    <header class="site-header">
-      <nav class="nav container" aria-label="Main navigation">
-        <a class="brand" href="#home" aria-label="D &amp; P Systems home">
-          <img
-            class="brand-logo"
-            src="img/branding/dp-systems-logo-horizontal.png"
-            alt="D&amp;P Systems logo"
-          />
-        </a>
-        <div class="nav-links">
-          <a href="#background">Background</a>
-          <a href="#services">Services</a>
-          <a href="#offers">Freelance Offers</a>
-          <a href="#work">Featured Work</a>
-          <a href="#qa">Mobile QA</a>
-          <a href="#schema">Database Proof</a>
-          <a href="#fixes">Client Fixes</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
-    </header>
-
-    <main id="home">
-      <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-grid container">
-          <div class="hero-copy">
-            <img
-              class="hero-brand-mark"
-              src="img/branding/dp-systems-logo-horizontal.png"
-              alt="D&amp;P Systems logo with Connect, Manage, Grow tagline"
-            />
-
-            <p class="eyebrow">
-              <i class="fa-solid fa-location-dot"></i> Lucena City, Quezon · Business Systems Developer
+</head>
+<body>
+<!-- Branding assets expected in img/branding/: dp-systems-javelin-logo-horizontal.png, dp-systems-javelin-banner.png, dp-systems-javelin-app-icon.png -->
+<header class="site-header">
+<nav aria-label="Main navigation" class="nav container">
+<a aria-label="D &amp; P Systems home" class="brand" href="#home">
+<img alt="D&amp;P Systems javelin logo" class="brand-logo" src="img/branding/dp-systems-javelin-logo-horizontal.png"/>
+</a>
+<div class="nav-links"><a href="#fixes">Problems I Fix</a><a href="#services">Services</a><a href="#offers">Start Here</a><a href="#work">Proof</a><a href="#skills">Skills</a><a href="#qa">QA Proof</a><a href="#contact">Contact</a></div>
+</nav>
+</header>
+<main id="home">
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="hero-grid container">
+<div class="hero-copy">
+<img alt="D&amp;P Systems javelin banner with Design • Build • Optimize tagline" class="hero-brand-mark" src="img/branding/dp-systems-javelin-banner.png"/>
+<p class="eyebrow">
+<i class="fa-solid fa-location-dot"></i> Lucena City, Quezon · Business Systems Developer
             </p>
-            <h1>
-              I turn real business workflows into modern Supabase-backed systems.
-            </h1>
-            <p class="hero-text">
-              I build practical web applications for small-business operations:
-              booking and queue tools, seller dashboards, internal admin panels,
-              and lightweight SaaS prototypes. The work combines systems-analysis
-              instincts with Supabase Auth, PostgreSQL, RLS, RPC workflows,
-              Vercel deployment, and real-device mobile QA.
-            </p>
-
-            <div class="hero-actions">
-              <a class="btn primary" href="#work">View flagship projects</a>
-              <a class="btn secondary" href="queuepoint-case-study.html">
-                View QueuePoint MVP
-              </a>
-              <a class="btn secondary" href="marketplace-case-study.html">
-                View Marketplace case study
-              </a>
-            </div>
-
-            <div class="hero-badges" aria-label="Core proof points">
-              <span>Supabase Auth</span>
-              <span>PostgreSQL</span>
-              <span>RLS Policies</span>
-              <span>RPC Workflows</span>
-              <span>Vanilla JavaScript</span>
-              <span>Vercel Deployment</span>
-              <span>Mobile QA</span>
-            </div>
-          </div>
-
-          <aside
-            class="app-hero-card"
-            aria-label="Seller inventory dashboard preview"
-          >
-            <div class="browser-bar">
-              <span></span><span></span><span></span>
-              <strong>Business Systems · SaaS Preview</strong>
-            </div>
-            <div class="screenshot-wrap">
-              <img
-                src="img/product-crud-overlay.png"
-                alt="Seller Hub inventory dashboard showing product cards, stock counts, low-stock badges, and edit buttons"
-              />
-              <div class="screenshot-note top-note">
-                <i class="fa-solid fa-boxes-stacked"></i> Product CRUD
+<h1>Turn scattered bookings, orders, and follow-ups into systems your team can track.</h1>
+<p class="hero-text">I help small businesses replace chat-based tracking, spreadsheets, notebooks, and manual follow-ups with web systems for booking, queue, seller, order, admin, and dashboard workflows — backed by Supabase and tested on real devices.</p>
+<div class="hero-actions"><a class="btn primary" href="#fixes">See problems I fix</a><a class="btn secondary" href="#work">View proof</a><a class="btn secondary" href="#contact">Request workflow review</a></div>
+<div aria-label="Core proof points" class="hero-badges"><span>Booking Systems</span><span>Order Tracking</span><span>Admin Dashboards</span><span>Seller Tools</span><span>Supabase</span><span>PostgreSQL</span><span>Access Control</span><span>Mobile QA</span></div>
+</div>
+<aside aria-label="Seller inventory dashboard preview" class="app-hero-card">
+<div class="browser-bar">
+<span></span><span></span><span></span>
+<strong>Business Systems · SaaS Preview</strong>
+</div>
+<div class="screenshot-wrap">
+<img alt="Seller Hub inventory dashboard showing product cards, stock counts, low-stock badges, and edit buttons" src="img/product-crud-overlay.png"/>
+<div class="screenshot-note top-note">
+<i class="fa-solid fa-boxes-stacked"></i> Product CRUD
               </div>
-              <div class="screenshot-note bottom-note">
-                <i class="fa-solid fa-triangle-exclamation"></i> Low-stock
+<div class="screenshot-note bottom-note">
+<i class="fa-solid fa-triangle-exclamation"></i> Low-stock
                 workflow
               </div>
-            </div>
-            <div class="schema-caption">
-              <h2>Workflow dashboards, not just screens</h2>
-              <p>
-                Marketplace and QueuePoint show practical business-system logic:
-                seller operations, appointment queues, branch isolation, edit-lock
-                safety, and Supabase-backed records built with HTML, CSS, and
-                vanilla JavaScript.
-              </p>
-              <div class="caption-tags">
-                <span>Workflow logic</span>
-                <span>Supabase data</span>
-                <span>Mobile QA</span>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section class="trust-strip container" aria-label="Portfolio proof">
-        <div>
-          <strong>2 flagship builds</strong>
-          <span>Marketplace + QueuePoint SaaS MVP</span>
-        </div>
-        <div>
-          <strong>Supabase architecture</strong>
-          <span>Auth, RLS, RPCs, PostgreSQL, tenant isolation</span>
-        </div>
-        <div>
-          <strong>Mobile-tested workflows</strong>
-          <span>Android Back, keyboard, landscape, real-device QA</span>
-        </div>
-      </section>
-
-      <section id="background" class="section legacy-section container">
-        <div class="section-heading">
-          <p class="eyebrow">Systems experience + modern implementation</p>
-          <h2>Systems-analysis instincts, rebuilt on today’s web stack.</h2>
-          <p>
-            My earlier work in systems analysis, programming, application support,
-            and business software workflows still shapes how I build today. I
-            think in terms of users, records, permissions, status changes, edge
-            cases, reports, and operational flow — then implement those workflows
-            with Supabase, PostgreSQL, RLS, JavaScript, GitHub, Vercel, and
-            real-device testing.
-          </p>
-        </div>
-
-        <div class="bridge-grid">
-          <article class="bridge-card">
-            <div class="icon"><i class="fa-solid fa-sitemap"></i></div>
-            <h3>Business workflow first</h3>
-            <p>
-              I start by understanding how the business actually operates: who
-              enters data, who owns records, what changes status, and where
-              mistakes can cost time or money.
-            </p>
-          </article>
-
-          <article class="bridge-card">
-            <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
-            <h3>Data ownership and access control</h3>
-            <p>
-              My Supabase builds focus on record ownership, RLS policies,
-              authenticated users, tenant boundaries, and safer backend workflows.
-            </p>
-          </article>
-
-          <article class="bridge-card">
-            <div class="icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
-            <h3>Usability beyond desktop screens</h3>
-            <p>
-              I test real mobile behavior: sticky navigation, Android Back,
-              keyboard layouts, landscape screens, form safety, and user-error
-              recovery.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section id="services" class="section container">
-        <div class="section-heading">
-          <p class="eyebrow">Services Offered</p>
-          <h2>Backend, database, and workflow implementation for practical web apps</h2>
-          <p>
-            Best fit for small businesses and early-stage systems that need more
-            than a static website: real records, protected access, status flows,
-            dashboards, deployment, and mobile-tested usability without the
-            overhead of heavy frontend frameworks.
-          </p>
-        </div>
-
-        <div class="cards six-grid">
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-database"></i></div>
-            <h3>Supabase Backend Setup</h3>
-            <p>
-              Project setup, table design, relationships, storage buckets, auth
-              flows, and clean client-side integration.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
-            <h3>RLS & Access Control</h3>
-            <p>
-              Row-level security planning for buyers, sellers, admins, private
-              records, and role-based workflows.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-terminal"></i></div>
-            <h3>Supabase CLI & DevOps</h3>
-            <p>
-              Local/cloud workflow checks, migration readiness, environment
-              variables, deployment notes, and troubleshooting.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-code-branch"></i></div>
-            <h3>Vanilla JS Integration</h3>
-            <p>
-              API calls, auth state, cart logic, dashboards, form validation,
-              and DOM-based UI updates without packaged frameworks.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-cart-shopping"></i></div>
-            <h3>Marketplace Workflows</h3>
-            <p>
-              Seller onboarding, product CRUD, order tracking, stock checks, and
-              buyer-side checkout logic.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="icon">
-              <i class="fa-solid fa-screwdriver-wrench"></i>
-            </div>
-            <h3>Debugging & Hardening</h3>
-            <p>
-              Console-based debugging, stable error handling, rollback planning,
-              and production-readiness cleanup.
-            </p>
-          </article>
-        </div>
-      </section>
-      <section id="offers" class="section container">
-        <div class="section-heading">
-          <p class="eyebrow">Freelance Starting Points</p>
-          <h2>Clear ways to start without a risky big-bang project.</h2>
-          <p>
-            The easiest way to work with me is to begin with a focused business
-            workflow: a booking flow, seller dashboard, Supabase backend, RLS
-            policy review, or a broken prototype that needs to become stable
-            enough for real users.
-          </p>
-        </div>
-
-        <div class="cards three-grid">
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-            <h3>Workflow Review &amp; Supabase Health Check</h3>
-            <p>
+</div>
+<div class="schema-caption">
+<h2>Systems built around daily work</h2>
+<p>The portfolio projects show how scattered operations can become records, statuses, protected access, and mobile-friendly screens for staff, owners, and customers.</p>
+<div class="caption-tags"><span>Less manual checking</span><span>Clear records</span><span>Mobile-ready</span></div>
+</div>
+</aside>
+</div>
+</section>
+<section aria-label="Portfolio proof" class="trust-strip container">
+<div><strong>Manual work made trackable</strong><span>Bookings, orders, queues, reviews, dashboards</span></div>
+<div><strong>Working portfolio proof</strong><span>Marketplace + QueuePoint SaaS MVP</span></div>
+<div><strong>Safe technical backbone</strong><span>Supabase, PostgreSQL, RLS, RPCs, real-device QA</span></div>
+</section><section class="section container outcome-section" id="outcomes">
+<div class="section-heading">
+<p class="eyebrow">Who I Help</p>
+<h2>From scattered work to visible operations.</h2>
+<p>Best fit: small businesses already handling bookings, orders, customer updates, staff assignments, stock, or follow-ups — but still relying on chats, spreadsheets, notebooks, or memory to know what is happening.</p>
+</div>
+<div class="cards three-grid outcome-grid">
+<article class="card">
+<div class="icon"><i class="fa-solid fa-clipboard-check"></i></div>
+<h3>Cleaner daily tracking</h3>
+<p>Turn bookings, orders, queues, and follow-ups into records your team can see and update.</p>
+</article>
+<article class="card">
+<div class="icon"><i class="fa-solid fa-user-shield"></i></div>
+<h3>Safer access control</h3>
+<p>Use Auth, RLS, and role-aware screens so users work only with the records they should control.</p>
+</article>
+<article class="card">
+<div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+<h3>Better owner visibility</h3>
+<p>Show pending work, completed activity, stock concerns, customer flow, and bottlenecks in one place.</p>
+</article>
+</div>
+</section><section class="section fixes-section" id="fixes">
+<div class="container">
+<div class="section-heading">
+<p class="eyebrow">Common Client Problems</p>
+<h2>The problems I look for first.</h2>
+<p>Broken access, messy records, checkout mistakes, missing dashboards, mobile friction, and processes that depend too much on manual checking.</p>
+</div>
+<div class="fixes-grid">
+<article class="fix-card">
+<div class="icon"><i class="fa-solid fa-user-lock"></i></div>
+<h3>Broken login or onboarding</h3>
+<p>Fix auth-state problems, missing profile records, failed onboarding, and pages that break after login.</p>
+</article>
+<article class="fix-card">
+<div class="icon"><i class="fa-solid fa-table"></i></div>
+<h3>Messy database tables</h3>
+<p>Review table structure, relationships, foreign keys, naming, and whether the database matches the real process.</p>
+</article>
+<article class="fix-card">
+<div class="icon"><i class="fa-solid fa-shield"></i></div>
+<h3>Unsafe access rules</h3>
+<p>Plan Supabase RLS so buyers, sellers, staff, and admins only see or change the right records.</p>
+</article>
+<article class="fix-card">
+<div class="icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+<h3>Inventory and checkout bugs</h3>
+<p>Improve stock checks, cart validation, order creation, seller grouping, and checkout failure handling.</p>
+</article>
+<article class="fix-card">
+<div class="icon">
+<i class="fa-solid fa-file-circle-xmark"></i>
+</div>
+<h3>Forms that do not save</h3>
+<p>Debug insert/update errors, validation gaps, wrong selectors, missing fields, and silent JavaScript failures.</p>
+</article>
+<article class="fix-card">
+<div class="icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+<h3>Deployment and config issues</h3>
+<p>Check environment variables, Supabase links, local/cloud differences, CLI issues, and production cleanup.</p>
+</article>
+</div>
+</div>
+</section><section class="section container" id="services">
+<div class="section-heading">
+<p class="eyebrow">Services Offered</p>
+<h2>Focused ways I can help.</h2>
+<p>Start with one painful process, then build the backend, screens, access rules, and deployment path needed to make it usable.</p>
+</div>
+<div class="cards six-grid">
+<article class="card">
+<div class="icon"><i class="fa-solid fa-database"></i></div>
+<h3>Supabase Backend Setup</h3>
+<p>Tables, relationships, Auth, Storage, and client integration for real business records.</p>
+</article>
+<article class="card">
+<div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+<h3>Access Rules &amp; RLS</h3>
+<p>Buyer, seller, staff, owner, and admin boundaries planned around actual record ownership.</p>
+</article>
+<article class="card">
+<div class="icon"><i class="fa-solid fa-terminal"></i></div>
+<h3>Deployment &amp; Config Checks</h3>
+<p>Environment variables, Supabase links, local/cloud differences, migration readiness, and Vercel deployment notes.</p>
+</article>
+<article class="card">
+<div class="icon"><i class="fa-solid fa-code-branch"></i></div>
+<h3>JavaScript Screen Logic</h3>
+<p>Forms, dashboards, filters, status updates, cart logic, and Supabase calls using HTML/CSS/vanilla JS.</p>
+</article>
+<article class="card">
+<div class="icon"><i class="fa-solid fa-cart-shopping"></i></div>
+<h3>Marketplace &amp; Seller Tools</h3>
+<p>Seller onboarding, products, orders, stock checks, tracking, and moderated reviews/ratings.</p>
+</article>
+<article class="card">
+<div class="icon">
+<i class="fa-solid fa-screwdriver-wrench"></i>
+</div>
+<h3>Debugging &amp; Stabilization</h3>
+<p>Console debugging, error handling, rollback thinking, mobile checks, and production-readiness cleanup.</p>
+</article>
+</div>
+</section><section class="section container" id="offers">
+<div class="section-heading">
+<p class="eyebrow">Freelance Starting Points</p>
+<h2>Start with one workflow, not a risky big-bang project.</h2>
+<p>A good first engagement is a review, fix sprint, or small MVP around one process: booking, order tracking, seller tools, access rules, or a messy prototype that needs to become reliable.</p>
+</div>
+<div class="cards three-grid">
+<article class="card">
+<div class="icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+<h3>Workflow Review &amp; Supabase Health Check</h3>
+<p>
               A focused review for an existing app, database, or prototype. I
               look at the workflow, tables, RLS rules, auth flow, deployment
               setup, console errors, and mobile behavior, then return a practical
               fix plan.
             </p>
-            <ul class="offer-list">
-              <li><i class="fa-solid fa-check"></i><span>Good first step before a larger build.</span></li>
-              <li><i class="fa-solid fa-check"></i><span>Useful for messy prototypes or stuck Supabase projects.</span></li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-calendar-days"></i></div>
-            <h3>Booking, Queue, or Internal Dashboard MVP</h3>
-            <p>
+<ul class="offer-list">
+<li><i class="fa-solid fa-check"></i><span>Good first step before a larger build.</span></li>
+<li><i class="fa-solid fa-check"></i><span>Useful for messy prototypes or stuck Supabase projects.</span></li>
+</ul>
+</article>
+<article class="card">
+<div class="icon"><i class="fa-solid fa-calendar-days"></i></div>
+<h3>Booking, Queue, or Internal Dashboard MVP</h3>
+<p>
               A small-business operations system based on your actual daily
               process: appointments, queues, services, staff, status updates,
               simple owner dashboards, and customer-facing tracking.
             </p>
-            <ul class="offer-list">
-              <li><i class="fa-solid fa-check"></i><span>Best for clinics, service shops, repair desks, and appointment-heavy workflows.</span></li>
-              <li><i class="fa-solid fa-check"></i><span>Can start as a guided pilot before expanding features.</span></li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-store"></i></div>
-            <h3>Marketplace, Seller Tool, or Admin Panel Build</h3>
-            <p>
+<ul class="offer-list">
+<li><i class="fa-solid fa-check"></i><span>Best for clinics, service shops, repair desks, and appointment-heavy workflows.</span></li>
+<li><i class="fa-solid fa-check"></i><span>Can start as a guided pilot before expanding features.</span></li>
+</ul>
+</article>
+<article class="card">
+<div class="icon"><i class="fa-solid fa-store"></i></div>
+<h3>Marketplace, Seller Tool, or Admin Panel Build</h3>
+<p>
               Seller dashboards, product CRUD, order tracking, review workflows,
               stock checks, buyer lookup, and admin tools backed by Supabase
               tables, policies, and practical JavaScript screens.
             </p>
-            <ul class="offer-list">
-              <li><i class="fa-solid fa-check"></i><span>Best for lightweight commerce and operations workflows.</span></li>
-              <li><i class="fa-solid fa-check"></i><span>Focuses on working data rules, not decorative screens alone.</span></li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="freelance-fit-card card">
-          <div class="section-heading compact">
-            <p class="eyebrow">Good Fit</p>
-            <h2>Send me the process. I will help turn it into a system.</h2>
-            <p>
-              I am strongest when the problem involves records, permissions,
-              status changes, owner/staff views, mobile usability, and a workflow
-              that currently lives in chat messages, spreadsheets, notebooks, or
-              scattered manual steps.
-            </p>
-          </div>
-
-          <div class="freelance-fit-grid">
-            <article>
-              <h3>What to send</h3>
-              <p>
+<ul class="offer-list">
+<li><i class="fa-solid fa-check"></i><span>Best for lightweight commerce and operations workflows.</span></li>
+<li><i class="fa-solid fa-check"></i><span>Focuses on working data rules, not decorative screens alone.</span></li>
+</ul>
+</article>
+</div>
+<div class="freelance-fit-card card">
+<div class="section-heading compact">
+<p class="eyebrow">Good Fit</p>
+<h2>Send the process. I will help turn it into a system.</h2>
+<p>I am strongest when the work involves records, permissions, status changes, owner/staff views, mobile usability, and processes currently handled through chats, spreadsheets, notebooks, or memory.</p>
+</div>
+<div class="freelance-fit-grid">
+<article>
+<h3>What to send</h3>
+<p>
                 Screenshots, table notes, current URLs, error messages, sample
                 forms, or a plain-language description of how the business works.
               </p>
-            </article>
-
-            <article>
-              <h3>What I return</h3>
-              <p>
+</article>
+<article>
+<h3>What I return</h3>
+<p>
                 A practical build or fix plan, then working Supabase-backed
                 screens with safer data access, clearer workflows, and mobile
                 behavior checks.
               </p>
-            </article>
-
-            <article>
-              <h3>Best first conversation</h3>
-              <p>
+</article>
+<article>
+<h3>Best first conversation</h3>
+<p>
                 “Here is how we currently handle bookings/orders/customers. Can
                 you help make this workflow cleaner and trackable?”
               </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="capabilities" class="section container">
-        <div class="section-heading">
-          <p class="eyebrow">Additional Capabilities</p>
-          <h2>
-            Quick prototypes and creative support for early-stage projects
-          </h2>
-          <p>
-            In addition to Supabase backend and dashboard work, D &amp; P
-            Systems can help early-stage clients test ideas faster through quick
-            app prototypes and coordinated creative production support.
-          </p>
-        </div>
-
-        <div class="cards three-grid">
-          <article class="card">
-            <div class="icon">
-              <i class="fa-solid fa-mobile-screen-button"></i>
-            </div>
-            <h3>Quick Flutter Prototypes</h3>
-            <p>
-              Cross-platform mobile/desktop app prototypes connected to a real
-              Supabase backend for testing app ideas, workflows, dashboards, and
-              proof-of-concept business tools.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-film"></i></div>
-            <h3>Video &amp; Visual Content Support</h3>
-            <p>
-              Creative services are coordinated through trusted strategic
-              collaborators, allowing D &amp; P Systems to support early-stage
-              projects that need both working systems and presentation-ready
-              visual assets.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-pen-nib"></i></div>
-            <h3>Graphic &amp; Brand Design Support</h3>
-            <p>
-              Logo concepts, basic brand visuals, social media graphics, and
-              presentation-ready design assets are supported through trusted
-              strategic collaborators when a project needs both technical
-              implementation and visual polish.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section id="work" class="section flagship-projects">
-        <div class="container">
-          <div class="section-heading flagship-heading">
-            <p class="eyebrow">Flagship Proof</p>
-            <h2>Two working systems that show business logic, not just screens.</h2>
-            <p>
-              Marketplace demonstrates e-commerce workflow depth: seller identity,
-              product CRUD, stock validation, multi-seller checkout, order tracking,
-              and review moderation. QueuePoint demonstrates SaaS workflow depth:
-              branch isolation, public booking, location switching, appointment
-              tracking, queue operations, staff/services/settings, edit-lock safety,
-              mobile navigation, and small guided-pilot readiness.
-            </p>
-          </div>
-
-          <div class="flagship-grid" aria-label="Featured portfolio projects">
-            <article class="flagship-card marketplace-card">
-              <div class="flagship-media">
-                <img
-                  src="img/product-crud-overlay.png"
-                  alt="Marketplace seller inventory dashboard preview"
-                />
-              </div>
-
-              <div class="flagship-content">
-                <p class="eyebrow">Project 1 · Marketplace</p>
-                <h3>Multi-Seller Marketplace Prototype</h3>
-                <p>
-                  A Supabase-backed marketplace prototype with guest checkout,
-                  seller onboarding, product CRUD, multi-seller order splitting,
-                  stock validation, order tracking, review moderation, and real
-                  Android mobile QA.
-                </p>
-
-                <div class="flagship-breakdown">
-                  <div>
-                    <strong>Shows</strong>
-                    <span>E-commerce workflow and seller dashboard logic</span>
-                  </div>
-                  <div>
-                    <strong>Backend focus</strong>
-                    <span>RPC checkout, order ownership, stock safety, RLS</span>
-                  </div>
-                </div>
-
-                <ul class="check-list compact-check-list">
-                  <li>
-                    <i class="fa-solid fa-check"></i> Multi-seller checkout creates
-                    seller-specific orders.
-                  </li>
-                  <li>
-                    <i class="fa-solid fa-check"></i> Seller dashboard manages
-                    products, orders, stock, and reviews.
-                  </li>
-                  <li>
-                    <i class="fa-solid fa-check"></i> Real-device Android testing
-                    covered landscape, keyboard, and Back behavior.
-                  </li>
-                </ul>
-
-                <div class="stack-list compact-stack">
-                  <span>Supabase</span>
-                  <span>PostgreSQL RPC</span>
-                  <span>RLS</span>
-                  <span>Vanilla JS</span>
-                  <span>Mobile QA</span>
-                </div>
-
-                <div class="card-actions">
-                  <a class="btn primary" href="marketplace-case-study.html">
+</article>
+</div>
+</div>
+</section><section class="section flagship-projects" id="work">
+<div class="container">
+<div class="section-heading flagship-heading">
+<p class="eyebrow">Proof Through Working Systems</p>
+<h2>Proof that the process can become a working system.</h2>
+<p>Marketplace proves commerce operations: seller products, orders, stock, tracking, and reviews. QueuePoint proves appointment operations: branches, services, staff, queues, settings, and public/customer workflows.</p>
+</div>
+<div aria-label="Featured portfolio projects" class="flagship-grid">
+<article class="flagship-card marketplace-card">
+<div class="flagship-media">
+<img alt="Marketplace seller inventory dashboard preview" src="img/product-crud-overlay.png"/>
+</div>
+<div class="flagship-content">
+<p class="eyebrow">Project 1 · Marketplace</p>
+<h3>Multi-Seller Marketplace Portfolio Build</h3>
+<div class="status-badges"><span>Portfolio demo</span><span>Final polish stage</span></div>
+<p>Small sellers need product, stock, order, tracking, and review workflows that do not depend on manual checking after every sale.</p>
+<div class="flagship-breakdown"><div><strong>System built</strong><span>Guest checkout, seller dashboard, product CRUD, seller-specific orders, tracking, and moderated ratings/reviews.</span></div><div><strong>Proof</strong><span>Supabase Auth, PostgreSQL RPC checkout, seller-owned records, stock safety, RLS planning, and Android QA.</span></div></div>
+<div class="workflow-proof">
+<strong>Workflow proven</strong>
+<span>Product → Cart → Checkout → Seller order → Stock deduction → Buyer tracking → Moderated review/rating.</span>
+</div><div class="demo-flow-card"><h4>Try this demo path</h4><p>Browse products, add to cart, checkout as guest, track the order, leave a review/rating, then inspect the seller-side workflow.</p></div>
+<ul class="check-list compact-check-list">
+<li><i class="fa-solid fa-check"></i> Checkout creates seller-specific orders instead of one confused mixed-seller transaction.</li>
+<li><i class="fa-solid fa-check"></i> Seller dashboard handles product, order, stock, and review/comment workflow.</li>
+<li><i class="fa-solid fa-check"></i> Real-device Android QA covered landscape, keyboard, and Back behavior.</li>
+</ul>
+<div class="stack-list compact-stack">
+<span>Supabase</span>
+<span>PostgreSQL RPC</span>
+<span>RLS</span>
+<span>Vanilla JS</span>
+<span>Mobile QA</span>
+</div>
+<div class="project-proof-card"><h4>Why it matters</h4><ul><li>Reduces manual order and stock checking for small seller operations.</li><li>Separates buyer flow, seller records, and public tracking into clear responsibilities.</li><li>Shows moderated customer feedback instead of uncontrolled public comments.</li></ul></div>
+<div class="card-actions">
+<a class="btn primary" href="marketplace-case-study.html">
                     View case study
                   </a>
-                  <a
-                    class="btn secondary"
-                    href="https://dp-systems-marketplace.vercel.app/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+<a class="btn secondary" href="https://dp-systems-marketplace.vercel.app/" rel="noopener noreferrer" target="_blank">
                     Live demo
                   </a>
-                  <a
-                    class="btn secondary"
-                    href="https://github.com/j3ba508-art/dp-systems-marketplace-prototype"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+<a class="btn secondary" href="https://github.com/j3ba508-art/dp-systems-marketplace-prototype" rel="noopener noreferrer" target="_blank">
                     GitHub
                   </a>
-                </div>
-              </div>
-            </article>
-
-            <article class="flagship-card queuepoint-card">
-              <div class="flagship-media queuepoint-media">
-                <img
-                  src="img/queuepoint-dashboard.png"
-                  alt="QueuePoint dashboard preview with branch selector"
-                />
-              </div>
-
-              <div class="flagship-content">
-                <p class="eyebrow">Project 2 · QueuePoint</p>
-                <h3>QueuePoint Appointment &amp; Queue SaaS MVP</h3>
-                <p>
-                  A multi-branch appointment and queue management MVP for small
-                  service businesses. Built with Supabase Auth, PostgreSQL, RLS,
-                  branch-specific data, public location booking, appointment
-                  tracking, dashboard status updates, services, staff, settings,
-                  mobile navigation safety, booking draft guards, and edit-lock
-                  protection.
-                </p>
-
-                <div class="flagship-breakdown">
-                  <div>
-                    <strong>Shows</strong>
-                    <span>SaaS operations dashboard and branch-specific workflows</span>
-                  </div>
-                  <div>
-                    <strong>Backend focus</strong>
-                    <span>Tenant isolation, branch data, auth/session guards, RLS</span>
-                  </div>
-                </div>
-
-                <ul class="check-list compact-check-list">
-                  <li>
-                    <i class="fa-solid fa-check"></i> Public booking supports
-                    branch/location selection and appointment-code tracking.
-                  </li>
-                  <li>
-                    <i class="fa-solid fa-check"></i> Dashboard modules are
-                    branch-aware: services, staff, settings, appointments, queue,
-                    and business data reload by selected branch.
-                  </li>
-                  <li>
-                    <i class="fa-solid fa-check"></i> Mobile QA covered sticky nav,
-                    Android Back trapping, edit-lock protection, booking draft guards,
-                    landscape keyboard dock behavior, and real-phone usability.
-                  </li>
-                </ul>
-
-                <div class="stack-list compact-stack">
-                  <span>Supabase Auth</span>
-                  <span>RLS Policies</span>
-                  <span>Multi-tenant SaaS</span>
-                  <span>Vanilla JS Modules</span>
-                  <span>Vercel</span>
-                </div>
-
-                <div class="card-actions">
-                  <a class="btn primary queuepoint-btn" href="queuepoint-case-study.html">
+</div>
+</div>
+</article>
+<article class="flagship-card queuepoint-card">
+<div class="flagship-media queuepoint-media">
+<img alt="QueuePoint dashboard preview with branch selector" src="img/queuepoint-dashboard.png"/>
+</div>
+<div class="flagship-content">
+<p class="eyebrow">Project 2 · QueuePoint</p>
+<h3>QueuePoint Appointment &amp; Queue SaaS MVP</h3>
+<div class="status-badges"><span>Working MVP</span><span>Guided-pilot ready</span></div>
+<p>Appointment-heavy businesses need a simple way to manage public booking, branch/location choices, staff/service setup, queue movement, and customer tracking.</p>
+<div class="flagship-breakdown"><div><strong>System built</strong><span>Public booking, branch-aware dashboard modules, appointments, queue status, services, staff, and settings.</span></div><div><strong>Proof</strong><span>Tenant isolation, branch-specific data, auth/session guards, RLS planning, edit locks, and mobile navigation safety.</span></div></div>
+<div class="workflow-proof">
+<strong>Workflow proven</strong>
+<span>Public booking → Appointment code → Customer tracking → Staff update → Queue movement → Owner dashboard.</span>
+</div><div class="demo-flow-card"><h4>Try this demo path</h4><p>Choose a branch/location, book an appointment, save the code, track it, then test dashboard status and queue movement.</p></div>
+<ul class="check-list compact-check-list">
+<li><i class="fa-solid fa-check"></i> Public booking supports branch/location selection and appointment-code tracking.</li>
+<li><i class="fa-solid fa-check"></i> Dashboard modules reload by selected branch: services, staff, settings, appointments, queue, and business data.</li>
+<li><i class="fa-solid fa-check"></i> Mobile QA covered sticky nav, Android Back trapping, edit locks, draft guards, landscape keyboard behavior, and real-phone use.</li>
+</ul>
+<div class="stack-list compact-stack">
+<span>Supabase Auth</span>
+<span>RLS Policies</span>
+<span>Multi-tenant SaaS</span>
+<span>Vanilla JS Modules</span>
+<span>Vercel</span>
+</div>
+<div class="project-proof-card"><h4>Why it matters</h4><ul><li>Gives front-desk staff a clearer view of today’s appointments and queue movement.</li><li>Separates public customer booking from protected owner/staff dashboard work.</li><li>Shows SaaS-style branch isolation without exposing one business location’s records to another.</li></ul></div>
+<div class="card-actions">
+<a class="btn primary queuepoint-btn" href="queuepoint-case-study.html">
                     View case study
                   </a>
-                  <a
-                    class="btn secondary"
-                    href="https://queuepoint.vercel.app/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+<a class="btn secondary" href="https://queuepoint.vercel.app/" rel="noopener noreferrer" target="_blank">
                     Live demo
                   </a>
-                  <a class="btn secondary" href="#contact">
+<a class="btn secondary" href="#contact">
                     Ask about similar build
                   </a>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <aside class="portfolio-summary-card">
-            <h3>What these projects show together</h3>
-            <p>
+</div>
+</div>
+</article>
+</div>
+<aside class="portfolio-summary-card">
+<h3>What these projects show together</h3>
+<p>
               Marketplace proves e-commerce workflow depth. QueuePoint proves SaaS dashboard,
               branch isolation, public/private workflow separation, and pilot-ready
               business-system thinking. Together, they position D &amp; P Systems for
@@ -676,432 +427,279 @@
               internal dashboards, and custom operations software where workflow,
               data ownership, and mobile usability matter.
             </p>
-          </aside>
-        </div>
-      </section>
-
-
-      <section class="section container practical-systems-section">
-        <div class="section-heading">
-          <p class="eyebrow">What I build best</p>
-          <h2>Practical business systems with real data rules.</h2>
-          <p>
-            My strongest fit is not decorative websites. It is workflow software:
-            booking tools, seller dashboards, internal admin panels, lightweight
-            SaaS prototypes, marketplace systems, and custom business tools where
-            data ownership, permissions, status changes, and mobile usability matter.
-          </p>
-        </div>
-
-        <div class="cards three-grid">
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-calendar-check"></i></div>
-            <h3>Booking and queue systems</h3>
-            <p>
-              Appointment flows, queue status, branch-specific services, public
-              tracking, and front-desk-friendly dashboards.
+</aside>
+</div>
+</section><section class="section container practical-systems-section">
+<div class="section-heading">
+<p class="eyebrow">Where This Applies</p>
+<h2>Different industries, same operating problem: scattered work needs structure.</h2>
+<p>The same approach can support several operations-heavy systems without changing the core idea: clear records, safer access, visible status, and useful dashboards.</p>
+</div>
+<div class="cards three-grid">
+<article class="card">
+<div class="icon"><i class="fa-solid fa-calendar-check"></i></div>
+<h3>Booking and queue operations</h3>
+<p>Appointments, queue status, services, staff, public tracking, and owner/front-desk dashboards.</p>
+</article>
+<article class="card">
+<div class="icon"><i class="fa-solid fa-store"></i></div>
+<h3>Commerce and seller operations</h3>
+<p>Products, stock, orders, checkout, buyer tracking, customer reviews, and seller dashboards.</p>
+</article>
+<article class="card">
+<div class="icon"><i class="fa-solid fa-database"></i></div>
+<h3>Internal business tools</h3>
+<p>Admin panels, customer records, approvals, reports, status changes, and protected team access.</p>
+</article>
+</div>
+</section><section class="section legacy-section container" id="background">
+<div class="section-heading">
+<p class="eyebrow">Why I Think This Way</p>
+<h2>Systems-analysis habits behind modern implementation.</h2>
+<p>My earlier work in systems analysis, programming, application support, and business software still shapes how I build today: start with the process, identify the records, protect access, handle exceptions, then build the screens around real use.</p>
+</div>
+<div class="bridge-grid">
+<article class="bridge-card">
+<div class="icon"><i class="fa-solid fa-sitemap"></i></div>
+<h3>Business workflow first</h3>
+<p>
+              I start by understanding how the business actually operates: who
+              enters data, who owns records, what changes status, and where
+              mistakes can cost time or money.
             </p>
-          </article>
-
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-store"></i></div>
-            <h3>Marketplace and seller tools</h3>
-            <p>
-              Seller onboarding, product CRUD, stock checks, order tracking,
-              checkout logic, and review moderation.
+</article>
+<article class="bridge-card">
+<div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+<h3>Data ownership and access control</h3>
+<p>
+              My Supabase builds focus on record ownership, RLS policies,
+              authenticated users, tenant boundaries, and safer backend workflows.
             </p>
-          </article>
-
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-database"></i></div>
-            <h3>Supabase-backed internal apps</h3>
-            <p>
-              PostgreSQL tables, RLS, Auth, RPCs, dashboard queries, deployment,
-              and practical data workflows for small business operations.
+</article>
+<article class="bridge-card">
+<div class="icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+<h3>Usability beyond desktop screens</h3>
+<p>
+              I test real mobile behavior: sticky navigation, Android Back,
+              keyboard layouts, landscape screens, form safety, and user-error
+              recovery.
             </p>
-          </article>
-        </div>
-      </section>
-
-      <section id="qa" class="section qa-section">
-        <div class="container qa-grid">
-          <div>
-            <p class="eyebrow">Real-Device QA &amp; DevTools</p>
-            <h2>Mobile behavior testing beyond simple responsive layout</h2>
-            <p>
-              Both flagship projects were tested beyond desktop resizing. The
-              mobile QA path included real Android checks, portrait and landscape
-              screens, keyboard behavior, dashboard section history, Android Back
-              trapping, sticky mobile navigation, and form-safety regression tests.
+</article>
+</div>
+</section><section class="section container skills-section" id="skills">
+<div class="section-heading">
+<p class="eyebrow">Technical Proof</p>
+<h2>Technical proof behind the business promise.</h2>
+<p>The tools matter because they support safer records, protected access, working dashboards, deployment, and mobile usability — not because the stack is the main story.</p>
+</div>
+<div class="skills-grid">
+<article class="skill-card">
+<h3>Backend / Database</h3>
+<p>Supabase, PostgreSQL, SQL, RLS policies, RPC functions, Auth, Storage-ready architecture, table relationships, and data ownership rules.</p>
+</article>
+<article class="skill-card">
+<h3>Frontend / Integration</h3>
+<p>HTML, CSS, vanilla JavaScript, ES modules, DOM workflows, form validation, CRUD screens, responsive layouts, and dashboard UI logic.</p>
+</article>
+<article class="skill-card">
+<h3>Workflow / Deployment</h3>
+<p>GitHub, Vercel, environment variables, Chrome DevTools, Android remote debugging, QA testing, production cleanup, and technical documentation.</p>
+</article>
+</div>
+</section><section class="section container" id="capabilities">
+<div class="section-heading">
+<p class="eyebrow">Partner-Supported Services</p>
+<h2>Optional collaborator support, kept in the right lane.</h2>
+<p>My core role is business workflow analysis and Supabase-backed system implementation. When a project also needs branding, visual content, or mobile app prototype support, D &amp; P Systems can coordinate trusted collaborators while keeping one clear technical point of contact.</p>
+<p class="section-note">Core service: software systems. Optional support: collaborator-assisted design, video, branding, or prototype assets when the project needs them.</p>
+</div>
+<div class="cards three-grid">
+<article class="card">
+<div class="icon">
+<i class="fa-solid fa-mobile-screen-button"></i>
+</div>
+<h3>Cross-Platform Prototype Support</h3>
+<p>
+              Mobile or desktop app prototype support can be coordinated through trusted collaborators when a project needs to test an app idea alongside a Supabase-backed workflow.
             </p>
-
-            <div class="qa-metrics" aria-label="Mobile QA highlights">
-              <div>
-                <strong>chrome://inspect</strong>
-                <span>Remote debugging workflow</span>
-              </div>
-              <div>
-                <strong>Android Back</strong>
-                <span>History API, edit-locks, and draft guards</span>
-              </div>
-              <div>
-                <strong>Landscape QA</strong>
-                <span>Scroll, keyboard, sticky nav, and form safety</span>
-              </div>
-            </div>
-          </div>
-          <figure class="gallery-card wide contain-shot devtools-proof-card">
-            <img
-              src="img/devtools-remote-debugging.png"
-              alt="Chrome remote debugging page showing Android device tabs available through chrome inspect"
-            />
-            <figcaption>
-              <strong>Real Android Remote Debugging</strong>
+</article>
+<article class="card">
+<div class="icon"><i class="fa-solid fa-film"></i></div>
+<h3>Video &amp; Visual Content Support</h3>
+<p>
+              Video and presentation-ready visual assets can be coordinated through trusted strategic collaborators when the software project also needs client-facing materials.
+            </p>
+</article>
+<article class="card">
+<div class="icon"><i class="fa-solid fa-pen-nib"></i></div>
+<h3>Graphic &amp; Brand Design Support</h3>
+<p>
+              Logo concepts, basic brand visuals, social media graphics, and presentation-ready design assets can be supported through trusted collaborators when needed.
+            </p>
+</article>
+</div>
+</section><section class="section qa-section" id="qa">
+<div class="container qa-grid">
+<div>
+<p class="eyebrow">Real-Device QA &amp; DevTools</p>
+<h2>Mobile QA that protects real customer and staff use.</h2>
+<p>The projects were tested on real Android devices so key actions would still work when the screen is small, the keyboard is open, navigation gets tricky, or users press Back at the wrong time.</p>
+<div aria-label="Mobile QA highlights" class="qa-metrics">
+<div>
+<strong>chrome://inspect</strong>
+<span>Remote debugging workflow</span>
+</div>
+<div>
+<strong>Android Back</strong>
+<span>History API, edit-locks, and draft guards</span>
+</div>
+<div>
+<strong>Landscape QA</strong>
+<span>Scroll, keyboard, sticky nav, and form safety</span>
+</div>
+</div>
+</div>
+<figure class="gallery-card wide contain-shot devtools-proof-card">
+<img alt="Chrome remote debugging page showing Android device tabs available through chrome inspect" src="img/devtools-remote-debugging.png"/>
+<figcaption>
+<strong>Real Android Remote Debugging</strong>
               Used Chrome <code>chrome://inspect</code> with USB debugging to
               inspect live Android Chrome tabs, focus mobile pages, monitor
               console behavior, and validate marketplace flows on a real phone.
             </figcaption>
-          </figure>
-
-          <aside class="qa-card">
-            <h3>Debug workflow used</h3>
-            <ol class="qa-steps">
-              <li>Enabled Android developer options and USB debugging.</li>
-              <li>
-                Connected the phone and opened <code>chrome://inspect</code>.
-              </li>
-              <li>
-                Focused the phone tab, opened DevTools Inspect, and used
-                screencast/console checks.
-              </li>
-              <li>
-                Validated buyer pages, checkout, order tracking, seller
-                dashboard views, and review flows on the real device.
-              </li>
-              <li>
-                Applied regression control: one fix at a time, then retested the
-                previously stable desktop and mobile paths.
-              </li>
-            </ol>
-          </aside>
-        </div>
-
-        <div
-          class="container qa-proof-grid"
-          aria-label="Real mobile QA screenshots"
-        >
-          <figure class="qa-shot wide-shot">
-            <img
-              src="img/mobile-track-landscape.jpg"
-              alt="Android Chrome landscape test showing the order tracking page and order result"
-            />
-            <figcaption>
-              <strong>Track page landscape validation</strong>
+</figure>
+<aside class="qa-card"><h3>What this protects</h3><ul class="qa-steps"><li>Customers can complete booking, checkout, tracking, and reviews on phones.</li><li>Staff can use dashboard views without mobile navigation traps.</li><li>Fixes are retested so one improvement does not break a working path.</li></ul></aside>
+</div>
+<div aria-label="Real mobile QA screenshots" class="container qa-proof-grid">
+<figure class="qa-shot wide-shot">
+<img alt="Android Chrome landscape test showing the order tracking page and order result" src="img/mobile-track-landscape.jpg"/>
+<figcaption>
+<strong>Track page landscape validation</strong>
               Confirmed that the order tracking page remained scrollable and
               usable on a real phone in landscape mode.
             </figcaption>
-          </figure>
-
-          <figure class="qa-shot">
-            <img
-              src="img/mobile-cart-landscape.jpg"
-              alt="Android Chrome landscape test showing the cart and buyer information form"
-            />
-            <figcaption>
-              <strong>Cart and checkout landscape QA</strong>
+</figure>
+<figure class="qa-shot">
+<img alt="Android Chrome landscape test showing the cart and buyer information form" src="img/mobile-cart-landscape.jpg"/>
+<figcaption>
+<strong>Cart and checkout landscape QA</strong>
               Tested buyer information, cart behavior, empty-cart navigation,
               checkout redirects, and Android Back behavior.
             </figcaption>
-          </figure>
-
-          <figure class="qa-shot">
-            <img
-              src="img/mobile-review-keyboard.jpg"
-              alt="Android Chrome landscape test showing review form with the on-screen keyboard open"
-            />
-            <figcaption>
-              <strong>Keyboard and review-form usability</strong>
+</figure>
+<figure class="qa-shot">
+<img alt="Android Chrome landscape test showing review form with the on-screen keyboard open" src="img/mobile-review-keyboard.jpg"/>
+<figcaption>
+<strong>Keyboard and review-form usability</strong>
               Verified that the completed-order review form remained usable even
               with the mobile keyboard consuming most of the landscape screen.
             </figcaption>
-          </figure>
-        </div>
-
-        <div class="container qa-notes-grid">
-          <article class="qa-note-card">
-            <h3><i class="fa-solid fa-route"></i> Navigation hardening</h3>
-            <p>
-              Checkout success, track page Back to Shop, empty-cart return, and
-              Seller Hub internal views were cleaned up with replace(),
-              pushState(), and popstate handling to avoid Android Back loops.
-            </p>
-          </article>
-
-          <article class="qa-note-card">
-            <h3>
-              <i class="fa-solid fa-keyboard"></i> Landscape and keyboard QA
-            </h3>
-            <p>
-              Buyer cart, tracking, and review screens were tested in landscape
-              with the mobile keyboard open, then adjusted for natural scrolling
-              instead of fragile height locks.
-            </p>
-          </article>
-
-          <article class="qa-note-card">
-            <h3><i class="fa-solid fa-link"></i> Contact-link validation</h3>
-            <p>
-              Call/Text, Messenger, and TikTok links were confirmed on device.
-              Viber direct chat was captured during onboarding but hidden from
-              the buyer UI after real-device and desktop tests proved
-              unreliable.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section id="schema" class="section schema-section container">
-        <div class="section-heading">
-          <p class="eyebrow">Database Proof</p>
-          <h2>From layout practice to real backend relationships</h2>
-          <p>
-            The marketplace project moved beyond static landing pages into
-            actual schema design: sellers, buyers, products, orders, status
-            fields, inventory values, and contact/social data for customer
-            workflows.
-          </p>
-        </div>
-
-        <div class="schema-proof-grid">
-          <figure class="proof-image-card">
-            <img
-              src="img/supabase-schema-preview.png"
-              alt="Supabase schema diagram for marketplace app"
-            />
-            <figcaption>
+</figure>
+</div>
+<div class="container qa-notes-grid">
+<article class="qa-note-card">
+<h3><i class="fa-solid fa-route"></i> Navigation hardening</h3>
+<p>Checkout, tracking, empty-cart return, and dashboard views were adjusted to avoid confusing Android Back loops.</p>
+</article>
+<article class="qa-note-card">
+<h3><i class="fa-solid fa-keyboard"></i> Keyboard-heavy screens</h3>
+<p>Cart, tracking, and review screens were checked in landscape with the keyboard open, then adjusted for natural scrolling.</p>
+</article>
+<article class="qa-note-card">
+<h3><i class="fa-solid fa-link"></i> Contact-link judgment</h3>
+<p>Unreliable contact channels were hidden instead of being shown as broken buyer options.</p>
+</article>
+</div>
+</section><section class="section schema-section container" id="schema">
+<div class="section-heading">
+<p class="eyebrow">Database Proof</p>
+<h2>Database structure behind the visible screens.</h2>
+<p>The marketplace uses real relationships behind the interface: sellers, buyers, products, orders, inventory, reviews, ratings, and contact data.</p>
+</div>
+<div class="schema-proof-grid">
+<figure class="proof-image-card">
+<img alt="Supabase schema diagram for marketplace app" src="img/supabase-schema-preview.png"/>
+<figcaption>
               Supabase table diagram used as a simple database relationship
               proof image.
             </figcaption>
-          </figure>
-
-          <div class="proof-notes">
-            <article>
-              <h3>
-                <i class="fa-solid fa-diagram-project"></i> Relationship
-                thinking
-              </h3>
-              <p>
-                Products belong to sellers, orders connect buyers and sellers,
-                and seller profile fields support buyer contact workflows.
-              </p>
-            </article>
-            <article>
-              <h3><i class="fa-solid fa-box"></i> Inventory logic</h3>
-              <p>
-                Stock quantity, active status, order amount, and checkout
-                validation are treated as backend workflow concerns, not just UI
-                labels.
-              </p>
-            </article>
-            <article>
-              <h3><i class="fa-solid fa-user-shield"></i> Access planning</h3>
-              <p>
-                The schema creates a base for RLS rules, seller ownership
-                checks, and safer role-based data access.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section workspace-section">
-        <div class="container workspace-grid">
-          <div class="workspace-copy">
-            <p class="eyebrow">Real Workspace</p>
-            <h2>Focused, practical, and system-oriented</h2>
-            <p>
-              The original desk photo is kept as an authentic supporting image,
-              but improved with a tighter crop, darker grade, and cleaner
-              portfolio treatment. Will be replaced by a more meaningful
-              picture.
-            </p>
-          </div>
-          <figure class="workspace-card">
-            <img
-              src="img/hero-workspace-improved.jpg"
-              alt="Developer workspace with laptop and external drive"
-            />
-            <figcaption>
-              Actual development workspace, edited to fit the portfolio’s dark
-              backend/DevOps visual style.
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section id="fixes" class="section fixes-section">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">What I Can Fix For Clients</p>
-            <h2>Practical backend and workflow problems I can help clean up</h2>
-            <p>
-              This section is aimed at small businesses, local sellers, and
-              project owners who already have a website or prototype but need
-              the system behavior to actually work reliably.
-            </p>
-          </div>
-
-          <div class="fixes-grid">
-            <article class="fix-card">
-              <div class="icon"><i class="fa-solid fa-user-lock"></i></div>
-              <h3>Broken login or onboarding flow</h3>
-              <p>
-                Fix auth state problems, missing profile records, seller
-                onboarding issues, and pages that fail after login.
-              </p>
-            </article>
-
-            <article class="fix-card">
-              <div class="icon"><i class="fa-solid fa-table"></i></div>
-              <h3>Messy database tables</h3>
-              <p>
-                Review table structure, relationships, foreign keys, naming, and
-                whether the database matches the actual business workflow.
-              </p>
-            </article>
-
-            <article class="fix-card">
-              <div class="icon"><i class="fa-solid fa-shield"></i></div>
-              <h3>Unsafe access rules</h3>
-              <p>
-                Plan Supabase RLS rules so buyers, sellers, and admins only see
-                or modify the records they should control.
-              </p>
-            </article>
-
-            <article class="fix-card">
-              <div class="icon"><i class="fa-solid fa-boxes-stacked"></i></div>
-              <h3>Inventory and checkout bugs</h3>
-              <p>
-                Improve stock checks, cart validation, order creation,
-                seller-based order grouping, and checkout failure handling.
-              </p>
-            </article>
-
-            <article class="fix-card">
-              <div class="icon">
-                <i class="fa-solid fa-file-circle-xmark"></i>
-              </div>
-              <h3>Forms that do not save</h3>
-              <p>
-                Debug Supabase insert/update errors, validation gaps, wrong
-                input selectors, missing required fields, and silent JavaScript
-                failures.
-              </p>
-            </article>
-
-            <article class="fix-card">
-              <div class="icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
-              <h3>Deployment and config issues</h3>
-              <p>
-                Check environment variables, Supabase project links, local/cloud
-                differences, CLI workflow issues, and production cleanup tasks.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="cta-section">
-        <div class="container cta-card">
-          <div>
-            <p class="eyebrow">Workflow Review</p>
-            <h2>
+</figure>
+<div class="proof-notes">
+<article>
+<h3><i class="fa-solid fa-diagram-project"></i> Record relationships</h3>
+<p>Products belong to sellers, orders connect buyers and sellers, and reviews/ratings attach to real marketplace activity.</p>
+</article>
+<article>
+<h3><i class="fa-solid fa-box"></i> Inventory and checkout logic</h3>
+<p>Stock, active status, order amounts, and checkout validation are treated as backend workflow concerns.</p>
+</article>
+<article>
+<h3><i class="fa-solid fa-user-shield"></i> Access planning</h3>
+<p>The schema supports RLS, seller ownership checks, and safer role-based data access.</p>
+</article>
+</div>
+</div>
+</section><section class="cta-section">
+<div class="container cta-card">
+<div>
+<p class="eyebrow">Workflow Review</p>
+<h2>
               Need a practical business system built around your actual workflow?
             </h2>
-            <p>
-              Send me your current process, screenshots, database tables, or error
-              logs. I can help turn manual workflows into cleaner Supabase-backed
-              dashboards, booking tools, marketplace flows, and internal systems
-              with real data rules.
-            </p>
-          </div>
-          <a class="btn primary" href="#contact">Request a workflow review</a>
-        </div>
-      </section>
-
-      <section id="contact" class="section contact-section">
-        <div class="container contact-grid">
-          <div>
-            <p class="eyebrow">Contact</p>
-            <h2>Send the workflow you want to turn into a working system</h2>
-            <p>
-              Describe the business process, dashboard, booking flow, marketplace,
-              or internal tool you need. Screenshots, table notes, database
-              structure, and console errors are welcome.
-            </p>
-
-            <div class="hero-actions">
-              <a
-                class="btn primary"
-                href="mailto:j3ba508@gmail.com?subject=D%26P%20Systems%20Workflow%20Review"
-              >
+<p>Send the current process, screenshots, database tables, or error logs. I can help turn manual work into clearer dashboards, booking tools, marketplace flows, and internal systems.</p>
+</div>
+<a class="btn primary" href="#contact">Request a workflow review</a>
+</div>
+</section><section class="section contact-section" id="contact">
+<div class="container contact-grid">
+<div>
+<p class="eyebrow">Contact</p>
+<h2>Send the process you want to make trackable.</h2>
+<p>Describe the business process, dashboard, booking flow, marketplace, or internal tool you need. Screenshots, table notes, database structure, and console errors are welcome.</p>
+<div class="hero-actions">
+<a class="btn primary" href="mailto:j3ba508@gmail.com?subject=D%26P%20Systems%20Workflow%20Review">
                 Email a workflow brief
               </a>
-              <a class="btn secondary" href="#offers">See starting points</a>
-            </div>
-          </div>
-
-          <form
-            class="contact-card"
-            action="mailto:j3ba508@gmail.com?subject=D%26P%20Systems%20Project%20Inquiry"
-            method="post"
-            enctype="text/plain"
-          >
-            <label>
+<a class="btn secondary" href="#offers">See starting points</a>
+</div>
+<div class="profile-links">
+<a href="https://github.com/j3ba508-art" rel="noopener noreferrer" target="_blank"><i class="fa-brands fa-github"></i> GitHub profile</a>
+<a href="mailto:j3ba508@gmail.com"><i class="fa-solid fa-envelope"></i> j3ba508@gmail.com</a>
+<a href="#work"><i class="fa-solid fa-diagram-project"></i> View project proof</a>
+</div>
+</div>
+<form action="mailto:j3ba508@gmail.com?subject=D%26P%20Systems%20Project%20Inquiry" class="contact-card" enctype="text/plain" method="post">
+<label>
               Name
-              <input type="text" name="name" placeholder="Your name" required />
-            </label>
-
-            <label>
+              <input name="name" placeholder="Your name" required="" type="text"/>
+</label>
+<label>
               Email
-              <input
-                type="email"
-                name="email"
-                placeholder="your@email.com"
-                required
-              />
-            </label>
-
-            <label>
+              <input name="email" placeholder="your@email.com" required="" type="email"/>
+</label>
+<label>
               Project Type
               <select name="project_type">
-                <option>Workflow review / Supabase health check</option>
-                <option>Supabase backend setup</option>
-                <option>Marketplace / dashboard build</option>
-                <option>Appointment / queue system</option>
-                <option>Flutter prototype with Supabase backend</option>
-                <option>Database or RLS review</option>
-                <option>Debugging / deployment help</option>
-                <option>Video / logo / graphic design support</option>
-                <option>Other</option>
-              </select>
-            </label>
-
-            <label>
+<option>Workflow review / Supabase health check</option>
+<option>Supabase backend setup</option>
+<option>Marketplace / dashboard build</option>
+<option>Appointment / queue system</option>
+<option>Mobile prototype support through collaborators</option>
+<option>Database or RLS review</option>
+<option>Debugging / deployment help</option>
+<option>Creative support through trusted collaborators</option>
+<option>Other</option>
+</select>
+</label>
+<label>
               Message
-              <textarea
-                name="message"
-                rows="5"
-                placeholder="Tell me about the workflow, bug, or system you need help with."
-                required
-              ></textarea>
-            </label>
-
-            <button class="btn primary" type="submit">Send message</button>
-          </form>
-        </div>
-      </section>
-    </main>
-  </body>
+              <textarea name="message" placeholder="Tell me about the workflow, bug, or system you need help with." required="" rows="5"></textarea>
+</label>
+<button class="btn primary" type="submit">Send message</button>
+<p class="form-note">This form opens your email app. If it does not open, send your workflow brief directly to <a href="mailto:j3ba508@gmail.com">j3ba508@gmail.com</a>. A Supabase-backed inquiry form is a planned portfolio upgrade.</p>
+</form>
+</div>
+</section>
+</main>
+</body>
 </html>
