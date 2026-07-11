@@ -800,8 +800,8 @@ p {
 .card-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
   align-items: center;
+  gap: 12px;
 }
 
 .cta-actions a,
@@ -1462,115 +1462,6 @@ iframe {
 /* The workspace photo section was removed in v7 to keep the homepage focused on client problems and proof. */
 
 
-
-/* =========================================================
-   Featured project cards
-   ========================================================= */
-
-.flagship-projects {
-  background: rgba(2, 6, 23, 0.34);
-  border-block: 1px solid var(--line);
-}
-
-.flagship-heading {
-  max-width: 880px;
-}
-
-.flagship-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
-}
-
-.flagship-card {
-  min-width: 0;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: linear-gradient(
-    180deg,
-    rgba(15, 23, 42, 0.96),
-    rgba(17, 28, 51, 0.78)
-  );
-  box-shadow: 0 18px 48px rgba(2, 8, 23, 0.28);
-}
-
-.flagship-media {
-  min-width: 0;
-  overflow: hidden;
-  background: #07101f;
-}
-
-.flagship-media img {
-  width: 100%;
-  height: 100%;
-  min-height: 280px;
-  object-fit: cover;
-  object-position: top center;
-}
-
-.flagship-content {
-  min-width: 0;
-  padding: 26px;
-}
-
-.flagship-content > p {
-  max-width: 100%;
-}
-
-.flagship-breakdown {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  margin: 18px 0;
-}
-
-.flagship-breakdown > div {
-  min-width: 0;
-  padding: 14px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: rgba(2, 6, 23, 0.3);
-}
-
-.flagship-breakdown strong,
-.flagship-breakdown span {
-  display: block;
-}
-
-.flagship-breakdown strong {
-  margin-bottom: 5px;
-  color: var(--text);
-}
-
-.flagship-breakdown span {
-  color: var(--muted);
-  line-height: 1.55;
-}
-
-.compact-check-list {
-  margin-block: 18px;
-}
-
-.compact-stack {
-  margin-top: 16px;
-}
-
-.card-actions {
-  margin-top: 20px;
-}
-
-@media (max-width: 920px) {
-  .flagship-breakdown {
-    grid-template-columns: 1fr;
-  }
-
-  .flagship-media img {
-    min-height: 0;
-    max-height: 360px;
-  }
-}
-
 /* v8 compact polish: reduce scroll without making the page feel cramped */
 :root {
   --radius: 18px;
@@ -1959,28 +1850,8 @@ p {
   }
 }
 
-/* QueuePoint temporarily unavailable demo */
-.demo-disabled {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  max-width: 100%;
-  opacity: 0.65;
-  cursor: not-allowed;
-  pointer-events: none;
-  user-select: none;
-  white-space: normal;
-  text-align: center;
-}
-
-.demo-disabled i {
-  flex: 0 0 auto;
-  font-size: 0.9rem;
-}
-
 /* =========================================================
-   Flagship project card restore
+   Portfolio v2: normalized flagship projects and actions
    ========================================================= */
 
 .flagship-grid {
@@ -2008,7 +1879,8 @@ p {
   background: #07101f;
 }
 
-.flagship-media img {
+.flagship-media img,
+.queuepoint-media img {
   width: 100%;
   height: auto;
   min-height: 0;
@@ -2062,6 +1934,7 @@ p {
 
 .card-actions .btn {
   width: auto;
+  min-width: 0;
   max-width: 100%;
 }
 
@@ -2074,6 +1947,46 @@ p {
   cursor: not-allowed;
   pointer-events: none;
   user-select: none;
+  white-space: nowrap;
+}
+
+.demo-disabled i {
+  flex: 0 0 auto;
+  font-size: 0.86rem;
+}
+
+.portfolio-summary-card {
+  width: min(820px, 100%);
+  margin: 28px 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.portfolio-summary-card .eyebrow {
+  margin: 0 0 10px;
+}
+
+.portfolio-summary-card h3 {
+  margin: 0 0 10px;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  line-height: 1.15;
+}
+
+.portfolio-summary-card p:last-child {
+  max-width: 780px;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.flagship-projects {
+  padding-bottom: 38px;
+}
+
+.practical-systems-section {
+  padding-top: 38px;
 }
 
 @media (min-width: 921px) {
@@ -2097,8 +2010,8 @@ p {
     display: block;
   }
 
-  .flagship-media img {
-    height: auto;
+  .flagship-media img,
+  .queuepoint-media img {
     max-height: 360px;
   }
 }
@@ -2116,31 +2029,7 @@ p {
   .card-actions .btn,
   .demo-disabled {
     width: 100%;
+    white-space: normal;
   }
 }
 
-/* Compact combined-project summary */
-.portfolio-summary-card {
-  width: min(820px, 100%);
-  margin: 28px auto 0;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-}
-
-.portfolio-summary-card .eyebrow {
-  margin-bottom: 10px;
-}
-
-.portfolio-summary-card h3 {
-  margin: 0 0 10px;
-  font-size: clamp(1.25rem, 2vw, 1.55rem);
-}
-
-.portfolio-summary-card p:last-child {
-  max-width: 780px;
-  margin-bottom: 0;
-  line-height: 1.7;
-}
