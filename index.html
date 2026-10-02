@@ -5,10 +5,18 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta
-      content="D &amp; P Systems: a solo-run practice building practical web systems for small-business bookings, orders, tracking, admin dashboards, customer records, and mobile-friendly daily operations, with technical proof in Supabase-backed case studies."
+      content="Supabase &amp; JavaScript developer available for remote contract work. Booking, marketplace, and dashboard MVPs with protected data, tested on real devices, with live demos and case studies."
       name="description"
     />
-    <title>D &amp; P Systems | Solo Business Systems Developer Portfolio</title>
+    <title>Jameson Yao | Supabase &amp; JavaScript Developer | D &amp; P Systems</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Jameson Yao | Supabase &amp; JavaScript Developer" />
+    <meta property="og:description" content="Remote contract Supabase &amp; JavaScript developer. Booking, marketplace, and dashboard MVPs with live demos and case studies." />
+    <meta property="og:image" content="https://dp-systems-portfolio.vercel.app/img/branding/dp-systems-og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://dp-systems-portfolio.vercel.app/" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link href="https://cdnjs.cloudflare.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
@@ -88,6 +96,99 @@
         gap: 18px;
       }
 
+      .door-links {
+        margin: 14px 0 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .door-links a,
+      .hiring-band a {
+        color: var(--blue);
+      }
+
+      .hiring-band {
+        margin-top: 24px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--panel);
+      }
+
+      .hiring-band h2 {
+        margin: 0 0 14px;
+        font-size: 1.15rem;
+      }
+
+      .hiring-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+
+      .hiring-grid h3 {
+        margin: 0 0 6px;
+        font-size: 0.8rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--blue);
+      }
+
+      .hiring-grid p,
+      .hiring-grid li {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .hiring-grid ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .hiring-links {
+        margin: 16px 0 0;
+        color: var(--muted);
+      }
+
+      @media (max-width: 920px) {
+        .hiring-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (min-width: 921px) {
+        .cards.four-offers {
+          grid-template-columns: repeat(2, 1fr) !important;
+        }
+      }
+
+      .storysync-media {
+        justify-content: center;
+      }
+
+      .storysync-media img {
+        width: auto;
+        max-width: 100%;
+        max-height: 440px;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      }
+
+      .project-note {
+        margin: 14px 0 0;
+        padding: 12px 14px;
+        border-left: 3px solid var(--green);
+        border-radius: 12px;
+        background: rgba(34, 197, 94, 0.1);
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .project-note i {
+        color: var(--green);
+        margin-right: 6px;
+      }
+
       @media (max-width: 920px) {
         .freelance-fit-grid {
           grid-template-columns: 1fr;
@@ -120,8 +221,8 @@
           />
         </a>
         <div class="nav-links">
-          <a href="#fixes">Problems I Fix</a><a href="#services">Services</a
-          ><a href="#offers">Start Here</a><a href="#work">Proof</a
+          <a href="#work">Proof</a><a href="#fixes">Problems I Fix</a
+          ><a href="#services">Services</a><a href="#offers">Start Here</a
           ><a href="#skills">Skills</a><a href="#qa">QA Proof</a
           ><a href="#contact">Contact</a>
         </div>
@@ -138,8 +239,7 @@
               src="img/branding/dp-systems-javelin-banner.png"
             />
             <p class="eyebrow">
-              <i class="fa-solid fa-location-dot"></i> Lucena City, Quezon ·
-              Solo Business Systems Developer
+              <i class="fa-solid fa-location-dot"></i> Jameson Yao · Available for remote contract work · Philippines (UTC+8)
             </p>
             <h1>
               Turn scattered bookings, orders, and follow-ups into systems your
@@ -148,22 +248,23 @@
             <p class="hero-text">
               I help small businesses replace chat-based tracking, spreadsheets,
               notebooks, and manual follow-ups with web systems for booking,
-              queue, seller, order, admin, and dashboard workflows — backed by
-              Supabase and tested on real devices.
+              queue, seller, order, admin, and dashboard workflows — backed by Supabase and tested on real devices. Ex-systems analyst turned web developer: I model the process before I build the screens.
             </p>
             <div class="hero-actions">
-              <a class="btn primary" href="#fixes">See problems I fix</a
-              ><a class="btn secondary" href="#work">View proof</a
-              ><a class="btn secondary" href="#contact"
-                >Request workflow review</a
-              >
+              <a
+                class="btn primary"
+                href="mailto:dpsystems.contact@gmail.com?subject=D%26P%20Systems%20Inquiry"
+                >Email me</a
+              ><a class="btn secondary" href="#work">View live demos</a>
             </div>
-            <div aria-label="Core proof points" class="hero-badges">
-              <span>Booking Systems</span><span>Order Tracking</span
-              ><span>Admin Dashboards</span><span>Seller Tools</span
-              ><span>Customer Records</span><span>Staff Access</span
-              ><span>Mobile-Friendly Screens</span
-              ><span>Technical Case Studies</span>
+            <p class="door-links">
+              Hiring a developer? <a href="#hiring">Stack and proof</a> ·
+              Own a business? <a href="#fixes">Problems I fix</a>
+            </p>
+            <div aria-label="Core stack" class="hero-badges">
+              <span>Supabase</span><span>PostgreSQL</span><span>RLS</span
+              ><span>JavaScript</span><span>Vercel</span
+              ><span>Android QA</span>
             </div>
           </div>
           <aside
@@ -209,299 +310,56 @@
         </div>
         <div>
           <strong>Working portfolio proof</strong
-          ><span>Marketplace + QueuePoint SaaS MVP</span>
+          ><span>Marketplace + QueuePoint SaaS MVP + StorySync reader</span>
         </div>
         <div>
           <strong>Protected records and mobile use</strong
           ><span>Safer access, working data rules, and real-device QA</span>
         </div>
       </section>
-      <section class="section container outcome-section" id="outcomes">
-        <div class="section-heading">
-          <p class="eyebrow">Who I Help</p>
-          <h2>From scattered work to visible operations.</h2>
-          <p>
-            Best fit: small businesses already handling bookings, orders,
-            customer updates, staff assignments, stock, or follow-ups — but
-            still relying on chats, spreadsheets, notebooks, or memory to know
-            what is happening.
-          </p>
-        </div>
-        <div class="cards three-grid outcome-grid">
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-clipboard-check"></i></div>
-            <h3>Cleaner daily tracking</h3>
+      <section aria-label="For hiring managers" class="hiring-band container" id="hiring">
+        <h2>For hiring managers</h2>
+        <div class="hiring-grid">
+          <div>
+            <h3>Stack</h3>
             <p>
-              Turn bookings, orders, queues, and follow-ups into records your
-              team can see and update.
-            </p>
-          </article>
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-user-shield"></i></div>
-            <h3>Safer user access</h3>
-            <p>
-              Give owners, staff, sellers, and customers the right views so they
-              only work with records meant for them.
-            </p>
-          </article>
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
-            <h3>Better owner visibility</h3>
-            <p>
-              Show pending work, completed activity, stock concerns, customer
-              flow, and bottlenecks in one place.
-            </p>
-          </article>
-        </div>
-      </section>
-      <section class="section fixes-section" id="fixes">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Common Client Problems</p>
-            <h2>The problems I look for first.</h2>
-            <p>
-              Broken access, messy records, checkout mistakes, missing
-              dashboards, mobile friction, and processes that depend too much on
-              manual checking.
+              Supabase, PostgreSQL, Row Level Security, JavaScript (ES modules),
+              HTML/CSS, Vercel, Git.
             </p>
           </div>
-          <div class="fixes-grid">
-            <article class="fix-card">
-              <div class="icon"><i class="fa-solid fa-user-lock"></i></div>
-              <h3>Broken login or onboarding</h3>
-              <p>
-                Fix auth-state problems, missing profile records, failed
-                onboarding, and pages that break after login.
-              </p>
-            </article>
-            <article class="fix-card">
-              <div class="icon"><i class="fa-solid fa-table"></i></div>
-              <h3>Messy database tables</h3>
-              <p>
-                Review table structure, relationships, foreign keys, naming, and
-                whether the database matches the real process.
-              </p>
-            </article>
-            <article class="fix-card">
-              <div class="icon"><i class="fa-solid fa-shield"></i></div>
-              <h3>Unsafe access rules</h3>
-              <p>
-                Plan record access so buyers, sellers, staff, and admins only
-                see or change the right information.
-              </p>
-            </article>
-            <article class="fix-card">
-              <div class="icon"><i class="fa-solid fa-boxes-stacked"></i></div>
-              <h3>Inventory and checkout bugs</h3>
-              <p>
-                Improve stock checks, cart validation, order creation, seller
-                grouping, and checkout failure handling.
-              </p>
-            </article>
-            <article class="fix-card">
-              <div class="icon">
-                <i class="fa-solid fa-file-circle-xmark"></i>
-              </div>
-              <h3>Forms that do not save</h3>
-              <p>
-                Debug insert/update errors, validation gaps, wrong selectors,
-                missing fields, and silent JavaScript failures.
-              </p>
-            </article>
-            <article class="fix-card">
-              <div class="icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
-              <h3>Deployment and config issues</h3>
-              <p>
-                Check environment variables, Supabase links, local/cloud
-                differences, CLI issues, and production cleanup.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-      <section class="section container" id="services">
-        <div class="section-heading">
-          <p class="eyebrow">Services Offered</p>
-          <h2>Focused ways I can help.</h2>
-          <p>
-            Start with one painful process, then build the backend, screens,
-            access rules, and deployment path needed to make it usable.
-          </p>
-        </div>
-        <div class="cards six-grid">
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-database"></i></div>
-            <h3>Database &amp; App Backend Setup</h3>
-            <p>
-              Tables, relationships, login flow, file storage, and app
-              connections for real business records.
-            </p>
-          </article>
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
-            <h3>User Access &amp; Record Protection</h3>
-            <p>
-              Buyer, seller, staff, owner, and admin access planned around who
-              should control each record.
-            </p>
-          </article>
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-terminal"></i></div>
-            <h3>Deployment &amp; Setup Checks</h3>
-            <p>
-              Check project settings, app links, environment variables,
-              local/cloud differences, and Vercel deployment notes.
-            </p>
-          </article>
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-code-branch"></i></div>
-            <h3>Interactive Screens &amp; Dashboards</h3>
-            <p>
-              Forms, dashboards, filters, status updates, cart actions, and app
-              screens using HTML/CSS/vanilla JS.
-            </p>
-          </article>
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-cart-shopping"></i></div>
-            <h3>Marketplace &amp; Seller Tools</h3>
-            <p>
-              Seller onboarding, products, orders, stock checks, tracking, and
-              moderated reviews/ratings.
-            </p>
-          </article>
-          <article class="card">
-            <div class="icon">
-              <i class="fa-solid fa-screwdriver-wrench"></i>
-            </div>
-            <h3>Debugging &amp; Stabilization</h3>
-            <p>
-              Console debugging, error handling, rollback thinking, mobile
-              checks, and production-readiness cleanup.
-            </p>
-          </article>
-        </div>
-      </section>
-      <section class="section container" id="offers">
-        <div class="section-heading">
-          <p class="eyebrow">Freelance Starting Points</p>
-          <h2>Start with one workflow, not a risky big-bang project.</h2>
-          <p>
-            A good first engagement is a review, fix sprint, or small MVP around
-            one process: booking, order tracking, seller tools, access rules, or
-            a messy prototype that needs to become reliable.
-          </p>
-        </div>
-        <div class="cards three-grid">
-          <article class="card">
-            <div class="icon">
-              <i class="fa-solid fa-magnifying-glass-chart"></i>
-            </div>
-            <h3>Workflow Review &amp; Supabase Health Check</h3>
-            <p>
-              A focused review for an existing app, database, or prototype. I
-              look at the business process, data structure, login flow,
-              deployment setup, console errors, and mobile behavior, then return
-              a practical fix plan.
-            </p>
-            <ul class="offer-list">
+          <div>
+            <h3>Proof</h3>
+            <ul>
               <li>
-                <i class="fa-solid fa-check"></i
-                ><span>Good first step before a larger build.</span>
+                <a href="https://dp-systems-marketplace.vercel.app/" rel="noopener noreferrer" target="_blank">Marketplace</a>
+                (live demo)
               </li>
+              <li><a href="queuepoint-case-study.html">QueuePoint</a> (case study)</li>
               <li>
-                <i class="fa-solid fa-check"></i
-                ><span
-                  >Useful for messy prototypes or stuck Supabase projects.</span
-                >
+                <a href="https://storysync-v2-bw.vercel.app/" rel="noopener noreferrer" target="_blank">StorySync</a>
+                (live demo)
               </li>
             </ul>
-          </article>
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-calendar-days"></i></div>
-            <h3>Booking, Queue, or Internal Dashboard MVP</h3>
+          </div>
+          <div>
+            <h3>Availability</h3>
+            <p>Open to remote contract work. Philippines, UTC+8.</p>
+          </div>
+          <div>
+            <h3>Background</h3>
             <p>
-              A small-business operations system based on your actual daily
-              process: appointments, queues, services, staff, status updates,
-              simple owner dashboards, and customer-facing tracking.
-            </p>
-            <ul class="offer-list">
-              <li>
-                <i class="fa-solid fa-check"></i
-                ><span
-                  >Best for clinics, service shops, repair desks, and
-                  appointment-heavy workflows.</span
-                >
-              </li>
-              <li>
-                <i class="fa-solid fa-check"></i
-                ><span
-                  >Can start as a guided pilot before expanding features.</span
-                >
-              </li>
-            </ul>
-          </article>
-          <article class="card">
-            <div class="icon"><i class="fa-solid fa-store"></i></div>
-            <h3>Marketplace, Seller Tool, or Admin Panel Build</h3>
-            <p>
-              Seller dashboards, product management, order tracking, review
-              workflows, stock checks, buyer lookup, and admin tools backed by
-              clear data rules and practical JavaScript screens.
-            </p>
-            <ul class="offer-list">
-              <li>
-                <i class="fa-solid fa-check"></i
-                ><span
-                  >Best for lightweight commerce and operations workflows.</span
-                >
-              </li>
-              <li>
-                <i class="fa-solid fa-check"></i
-                ><span
-                  >Focuses on working data rules, not decorative screens
-                  alone.</span
-                >
-              </li>
-            </ul>
-          </article>
-        </div>
-        <div class="freelance-fit-card card">
-          <div class="section-heading compact">
-            <p class="eyebrow">Good Fit</p>
-            <h2>Send the process. I will help turn it into a system.</h2>
-            <p>
-              I am strongest when the work involves records, permissions, status
-              changes, owner/staff views, mobile usability, and processes
-              currently handled through chats, spreadsheets, notebooks, or
-              memory.
+              Ex-systems analyst turned web developer. I model the process
+              before I build the screens.
             </p>
           </div>
-          <div class="freelance-fit-grid">
-            <article>
-              <h3>What to send</h3>
-              <p>
-                Screenshots, table notes, current URLs, error messages, sample
-                forms, or a plain-language description of how the business
-                works.
-              </p>
-            </article>
-            <article>
-              <h3>What I return</h3>
-              <p>
-                A practical build or fix plan, then working Supabase-backed
-                screens with safer data access, clearer workflows, and mobile
-                behavior checks.
-              </p>
-            </article>
-            <article>
-              <h3>Best first conversation</h3>
-              <p>
-                “Here is how we currently handle bookings/orders/customers. Can
-                you help make this workflow cleaner and trackable?”
-              </p>
-            </article>
-          </div>
         </div>
+        <p class="hiring-links">
+          <strong>Jameson Yao</strong> ·
+          <a href="mailto:dpsystems.contact@gmail.com?subject=Contract%20Role%20Inquiry">dpsystems.contact@gmail.com</a>
+          · <a href="https://www.linkedin.com/in/jamesonyao" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+          · <a href="https://github.com/j3ba508-art" rel="noopener noreferrer" target="_blank">GitHub</a>
+          <!-- TODO: add a PDF resume link here once one exists -->
+        </p>
       </section>
       <section class="section flagship-projects" id="work">
         <div class="container">
@@ -512,7 +370,7 @@
               Marketplace proves commerce operations: seller products, orders,
               stock, tracking, and reviews. QueuePoint proves appointment
               operations: branches, services, staff, queues, settings, and
-              public/customer workflows.
+              public/customer workflows. Both are Supabase-backed. StorySync shows the other side of the work: a client-side interactive product with no database behind it, built around reading and play instead of records.
             </p>
           </div>
           <div aria-label="Featured portfolio projects" class="flagship-grid">
@@ -731,6 +589,7 @@
                   >
                     View case study
                   </a>
+                  <!-- Live demo link, restore when the upgrade is done:
                   <a
                     class="btn secondary"
                     href="https://queue-point.vercel.app/"
@@ -739,19 +598,93 @@
                   >
                     Live demo
                   </a>
-                  <!-- <span
+-->
+                  <span
                     class="btn secondary demo-disabled"
                     role="status"
                     aria-disabled="true"
-                    title="The QueuePoint live demo is temporarily offline while deployment updates are being completed."
+                    title="The QueuePoint live demo is being upgraded."
                   >
                     <i
                       class="fa-solid fa-screwdriver-wrench"
                       aria-hidden="true"
                     ></i>
-                    Demo offline
+                    Being upgraded
                   </span>
--->
+                  <a class="btn secondary" href="#contact">
+                    Ask about similar build
+                  </a>
+                </div>
+              </div>
+            </article>
+            <article class="flagship-card storysync-card">
+              <div class="flagship-media storysync-media">
+                <img
+                  alt="StorySync welcome screen on a phone-width layout showing the Bramblewood cover, reading progress at page 4 of 16, and Continue Reading, Companion Activities, and Credits buttons"
+                  src="img/storysync-welcome.png"
+                />
+              </div>
+              <div class="flagship-content">
+                <p class="eyebrow">Project 3 · StorySync · Beyond CRUD</p>
+                <h3>StorySync Interactive Reader with Companion Activities</h3>
+                <div class="status-badges">
+                  <span>Client MVP</span><span>Portfolio edition</span>
+                </div>
+                <p>
+                  Children's ebooks are usually read and forgotten. StorySync
+                  turns a story into a guided reading session, with short
+                  games that appear at set pages to reinforce what was just
+                  read.
+                </p>
+                <p>
+                  <strong>Why it's here:</strong> Marketplace and QueuePoint are
+                  database-backed. StorySync runs entirely in the browser, with
+                  no Supabase or backend, to show I can also build interactive,
+                  non-CRUD products where the work is reading flow, game logic,
+                  and touch input.
+                </p>
+                <div class="project-note">
+                  <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                  <strong>About the book:</strong> StorySync was built for a
+                  client's original book, which is copyrighted. For this
+                  portfolio, I created an open-source ePub with the same
+                  structure as the original, so the reader and activities work
+                  the same way.
+                </div>
+                <div class="flagship-breakdown">
+                  <div>
+                    <strong>System built</strong
+                    ><span
+                      >ePub reader with page-by-page navigation, progress
+                      tracking, a title and credits screen, and companion
+                      activities triggered at specific pages.</span
+                    >
+                  </div>
+                  <div>
+                    <strong>Proof</strong
+                    ><span
+                      >Three activity types (sorting, catch, and card-match
+                      memory), including a game packaged inside the ePub, plus
+                      load retry handling and mobile layout fixes.</span
+                    >
+                  </div>
+                </div>
+                <div class="stack-list compact-stack">
+                  <span>Vanilla JS Modules</span>
+                  <span>epub.js</span>
+                  <span>HTML5 Games</span>
+                  <span>Vercel</span>
+                  <span>Mobile QA</span>
+                </div>
+                <div class="card-actions">
+                  <a
+                    class="btn secondary"
+                    href="https://storysync-v2-bw.vercel.app/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    Live demo
+                  </a>
                   <a class="btn secondary" href="#contact">
                     Ask about similar build
                   </a>
@@ -763,14 +696,336 @@
             <p class="eyebrow">Combined Project Proof</p>
             <h3>What these projects show together</h3>
             <p>
-              Marketplace proves commerce operations: products, orders, stock,
-              tracking, and reviews. QueuePoint proves appointment operations:
-              branches, services, staff, queues, settings, and public booking.
-              Together, they show how D &amp; P Systems turns manual business
-              processes into trackable systems with protected records,
-              dashboards, and mobile-friendly screens.
+              Marketplace and QueuePoint are Supabase-backed operations systems:
+              products, orders, bookings, queues, and protected records.
+              StorySync is the contrast: an interactive ePub reader with
+              companion games that runs entirely in the browser. Together, they
+              show how D &amp; P Systems turns manual business processes into
+              trackable systems, and can also build interactive, non-CRUD
+              products when the project calls for it.
             </p>
           </aside>
+        </div>
+      </section>
+      <section class="section container outcome-section" id="outcomes">
+        <div class="section-heading">
+          <p class="eyebrow">Who I Help</p>
+          <h2>From scattered work to visible operations.</h2>
+          <p>
+            Best fit: small businesses already handling bookings, orders,
+            customer updates, staff assignments, stock, or follow-ups — but
+            still relying on chats, spreadsheets, notebooks, or memory to know
+            what is happening.
+          </p>
+        </div>
+        <div class="cards three-grid outcome-grid">
+          <article class="card">
+            <div class="icon"><i class="fa-solid fa-clipboard-check"></i></div>
+            <h3>Cleaner daily tracking</h3>
+            <p>
+              Turn bookings, orders, queues, and follow-ups into records your
+              team can see and update.
+            </p>
+          </article>
+          <article class="card">
+            <div class="icon"><i class="fa-solid fa-user-shield"></i></div>
+            <h3>Safer user access</h3>
+            <p>
+              Give owners, staff, sellers, and customers the right views so they
+              only work with records meant for them.
+            </p>
+          </article>
+          <article class="card">
+            <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+            <h3>Better owner visibility</h3>
+            <p>
+              Show pending work, completed activity, stock concerns, customer
+              flow, and bottlenecks in one place.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="section fixes-section" id="fixes">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Common Client Problems</p>
+            <h2>The problems I look for first.</h2>
+            <p>
+              Broken access, messy records, checkout mistakes, missing
+              dashboards, mobile friction, and processes that depend too much on
+              manual checking.
+            </p>
+          </div>
+          <div class="fixes-grid">
+            <article class="fix-card">
+              <div class="icon"><i class="fa-solid fa-user-lock"></i></div>
+              <h3>Broken login or onboarding</h3>
+              <p>
+                Fix auth-state problems, missing profile records, failed
+                onboarding, and pages that break after login.
+              </p>
+            </article>
+            <article class="fix-card">
+              <div class="icon"><i class="fa-solid fa-table"></i></div>
+              <h3>Messy database tables</h3>
+              <p>
+                Review table structure, relationships, foreign keys, naming, and
+                whether the database matches the real process.
+              </p>
+            </article>
+            <article class="fix-card">
+              <div class="icon"><i class="fa-solid fa-shield"></i></div>
+              <h3>Unsafe access rules</h3>
+              <p>
+                Plan record access so buyers, sellers, staff, and admins only
+                see or change the right information.
+              </p>
+            </article>
+            <article class="fix-card">
+              <div class="icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+              <h3>Inventory and checkout bugs</h3>
+              <p>
+                Improve stock checks, cart validation, order creation, seller
+                grouping, and checkout failure handling.
+              </p>
+            </article>
+            <article class="fix-card">
+              <div class="icon">
+                <i class="fa-solid fa-file-circle-xmark"></i>
+              </div>
+              <h3>Forms that do not save</h3>
+              <p>
+                Debug insert/update errors, validation gaps, wrong selectors,
+                missing fields, and silent JavaScript failures.
+              </p>
+            </article>
+            <article class="fix-card">
+              <div class="icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+              <h3>Deployment and config issues</h3>
+              <p>
+                Check environment variables, Supabase links, local/cloud
+                differences, CLI issues, and production cleanup.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section container" id="services">
+        <div class="section-heading">
+          <p class="eyebrow">Services Offered</p>
+          <h2>Focused ways I can help.</h2>
+          <p>
+            Start with one painful process, then build the backend, screens,
+            access rules, and deployment path needed to make it usable.
+          </p>
+        </div>
+        <div class="cards six-grid">
+          <article class="card">
+            <div class="icon"><i class="fa-solid fa-database"></i></div>
+            <h3>Database &amp; App Backend Setup</h3>
+            <p>
+              Tables, relationships, login flow, file storage, and app
+              connections for real business records.
+            </p>
+          </article>
+          <article class="card">
+            <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3>User Access &amp; Record Protection</h3>
+            <p>
+              Buyer, seller, staff, owner, and admin access planned around who
+              should control each record.
+            </p>
+          </article>
+          <article class="card">
+            <div class="icon"><i class="fa-solid fa-terminal"></i></div>
+            <h3>Deployment &amp; Setup Checks</h3>
+            <p>
+              Check project settings, app links, environment variables,
+              local/cloud differences, and Vercel deployment notes.
+            </p>
+          </article>
+          <article class="card">
+            <div class="icon"><i class="fa-solid fa-code-branch"></i></div>
+            <h3>Interactive Screens &amp; Dashboards</h3>
+            <p>
+              Forms, dashboards, filters, status updates, cart actions, app screens, and interactive reading or activity tools using HTML/CSS/vanilla JS.
+            </p>
+          </article>
+          <article class="card">
+            <div class="icon"><i class="fa-solid fa-cart-shopping"></i></div>
+            <h3>Marketplace &amp; Seller Tools</h3>
+            <p>
+              Seller onboarding, products, orders, stock checks, tracking, and
+              moderated reviews/ratings.
+            </p>
+          </article>
+          <article class="card">
+            <div class="icon">
+              <i class="fa-solid fa-screwdriver-wrench"></i>
+            </div>
+            <h3>Debugging &amp; Stabilization</h3>
+            <p>
+              Console debugging, error handling, rollback thinking, mobile
+              checks, and production-readiness cleanup.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="section container" id="offers">
+        <div class="section-heading">
+          <p class="eyebrow">Freelance Starting Points</p>
+          <h2>Start with one workflow, not a risky big-bang project.</h2>
+          <p>
+            A good first engagement is a review, fix sprint, or small MVP around
+            one process: booking, order tracking, seller tools, access rules, an interactive content tool, or a messy prototype that needs to become reliable.
+          </p>
+        </div>
+        <div class="cards three-grid four-offers">
+          <article class="card">
+            <div class="icon">
+              <i class="fa-solid fa-magnifying-glass-chart"></i>
+            </div>
+            <h3>Workflow Review &amp; Supabase Health Check</h3>
+            <p>
+              A focused review for an existing app, database, or prototype. I
+              look at the business process, data structure, login flow,
+              deployment setup, console errors, and mobile behavior, then return
+              a practical fix plan.
+            </p>
+            <ul class="offer-list">
+              <li>
+                <i class="fa-solid fa-check"></i
+                ><span>Good first step before a larger build.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i
+                ><span
+                  >Useful for messy prototypes or stuck Supabase projects.</span
+                >
+              </li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="icon"><i class="fa-solid fa-calendar-days"></i></div>
+            <h3>Booking, Queue, or Internal Dashboard MVP</h3>
+            <p>
+              A small-business operations system based on your actual daily
+              process: appointments, queues, services, staff, status updates,
+              simple owner dashboards, and customer-facing tracking.
+            </p>
+            <ul class="offer-list">
+              <li>
+                <i class="fa-solid fa-check"></i
+                ><span
+                  >Best for clinics, service shops, repair desks, and
+                  appointment-heavy workflows.</span
+                >
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i
+                ><span
+                  >Can start as a guided pilot before expanding features.</span
+                >
+              </li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="icon"><i class="fa-solid fa-store"></i></div>
+            <h3>Marketplace, Seller Tool, or Admin Panel Build</h3>
+            <p>
+              Seller dashboards, product management, order tracking, review
+              workflows, stock checks, buyer lookup, and admin tools backed by
+              clear data rules and practical JavaScript screens.
+            </p>
+            <ul class="offer-list">
+              <li>
+                <i class="fa-solid fa-check"></i
+                ><span
+                  >Best for lightweight commerce and operations workflows.</span
+                >
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i
+                ><span
+                  >Focuses on working data rules, not decorative screens
+                  alone.</span
+                >
+              </li>
+            </ul>
+          </article>
+        <article class="card">
+            <div class="icon"><i class="fa-solid fa-book-open"></i></div>
+            <h3>Interactive Reading, Learning, or Activity Tool MVP</h3>
+            <p>
+              A browser-based interactive product built around content instead
+              of records: ebook readers, learning activities, mini-games, and
+              guided experiences, with touch-friendly screens and no database
+              needed for a first version.
+            </p>
+            <ul class="offer-list">
+              <li>
+                <i class="fa-solid fa-check"></i
+                ><span
+                  >Best for publishers, educators, and content owners who want
+                  an interactive version of existing material.</span
+                >
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i
+                ><span
+                  >Can start as a single-title proof of concept before
+                  expanding.</span
+                >
+              </li>
+            </ul>
+            <div class="card-actions">
+              <a
+                class="btn secondary"
+                href="https://storysync-v2-bw.vercel.app/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Try the live demo
+              </a>
+            </div>
+          </article>
+        </div>
+        <div class="freelance-fit-card card">
+          <div class="section-heading compact">
+            <p class="eyebrow">Good Fit</p>
+            <h2>Send the process. I will help turn it into a system.</h2>
+            <p>
+              I am strongest when the work involves records, permissions, status
+              changes, owner/staff views, mobile usability, and processes
+              currently handled through chats, spreadsheets, notebooks, or
+              memory.
+            </p>
+          </div>
+          <div class="freelance-fit-grid">
+            <article>
+              <h3>What to send</h3>
+              <p>
+                Screenshots, table notes, current URLs, error messages, sample
+                forms, or a plain-language description of how the business
+                works.
+              </p>
+            </article>
+            <article>
+              <h3>What I return</h3>
+              <p>
+                A practical build or fix plan, then working Supabase-backed
+                screens with safer data access, clearer workflows, and mobile
+                behavior checks.
+              </p>
+            </article>
+            <article>
+              <h3>Best first conversation</h3>
+              <p>
+                “Here is how we currently handle bookings/orders/customers. Can
+                you help make this workflow cleaner and trackable?”
+              </p>
+            </article>
+          </div>
         </div>
       </section>
       <section class="section container practical-systems-section">
@@ -810,6 +1065,12 @@
             </p>
           </article>
         </div>
+        <p class="project-note">
+          <i class="fa-solid fa-puzzle-piece" aria-hidden="true"></i>
+          <strong>Beyond records and dashboards:</strong> the same process-first
+          approach applies to interactive content, such as ebook readers,
+          learning activities, and games. StorySync is the working example.
+        </p>
       </section>
       <section class="section legacy-section container" id="background">
         <div class="section-heading">
@@ -879,7 +1140,7 @@
             <p>
               HTML, CSS, vanilla JavaScript, ES modules, DOM workflows, form
               validation, CRUD screens, responsive layouts, and dashboard UI
-              logic.
+              logic. Also ePub reading (epub.js), HTML5 games, and touch/pointer input.
             </p>
           </article>
 
@@ -1148,13 +1409,29 @@
             <div class="hero-actions">
               <a
                 class="btn primary"
-                href="mailto:j3ba508@gmail.com?subject=D%26P%20Systems%20Workflow%20Review"
+                href="mailto:dpsystems.contact@gmail.com?subject=D%26P%20Systems%20Workflow%20Review"
               >
                 Email a workflow brief
               </a>
+              <a
+                class="btn secondary"
+                href="mailto:dpsystems.contact@gmail.com?subject=Contract%20Role%20Inquiry"
+              >
+                Discuss a contract role
+              </a>
               <a class="btn secondary" href="#offers">See starting points</a>
             </div>
+            <p class="door-links">
+              Prefer to write directly?
+              <a href="mailto:dpsystems.contact@gmail.com">dpsystems.contact@gmail.com</a>
+            </p>
             <div class="profile-links">
+              <a
+                href="https://www.linkedin.com/in/jamesonyao"
+                rel="noopener noreferrer"
+                target="_blank"
+                ><i class="fa-brands fa-linkedin"></i> LinkedIn</a
+              >
               <a
                 href="https://github.com/j3ba508-art"
                 rel="noopener noreferrer"
@@ -1173,7 +1450,7 @@
             </div>
           </div>
           <form
-            action="mailto:j3ba508@gmail.com?subject=D%26P%20Systems%20Project%20Inquiry"
+            action="mailto:dpsystems.contact@gmail.com?subject=D%26P%20Systems%20Project%20Inquiry"
             class="contact-card"
             enctype="text/plain"
             method="post"
@@ -1220,13 +1497,10 @@
               ></textarea>
             </label>
             <button class="btn primary" type="submit">Send message</button>
-            <!--<p class="form-note">
-              This form opens your email app. If it does not open, send your
-              workflow brief directly here
-              <a href="mailto:j3ba508@gmail.com"></a>. A
-              Supabase-backed inquiry form is a planned portfolio upgrade.
+            <p class="form-note">
+              This form opens your email app. If it does not open, email
+              <a href="mailto:dpsystems.contact@gmail.com">dpsystems.contact@gmail.com</a> directly.
             </p>
--->
           </form>
         </div>
       </section>
