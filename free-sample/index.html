@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Page: Put a Price on the Problem</title>
+<meta name="description" content="A free one-page calculator from Before You Buy Software, the 60-minute workflow workbook for small business owners and operations managers.">
+<meta property="og:title" content="Free page: Put a Price on the Problem">
+<meta property="og:description" content="Work out what one repeating problem costs your business each year, before you spend on software.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://dp-systems-portfolio.vercel.app/free-sample/preview.png">
+<meta property="og:url" content="https://dp-systems-portfolio.vercel.app/free-sample/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap">
+<style>
+:root {
+  --ink: #142B3B;
+  --teal: #087E8B;
+  --teal-dark: #066670;
+  --pale: #EAF4F5;
+  --amber: #E8912D;
+  --muted: #485560;
+  --line: #CFDDE0;
+  --bg: #FFFFFF;
+  --head: "Montserrat", "Segoe UI", system-ui, sans-serif;
+  --body: "Inter", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.55 var(--body); }
+a { color: var(--teal-dark); }
+
+.wrap { max-width: 1060px; margin: 0 auto; padding: 0 16px; }
+
+header.top { border-bottom: 1px solid var(--line); }
+header.top .wrap { display: flex; justify-content: space-between; align-items: center; padding-block: 14px; gap: 12px; }
+.brand { font: 800 14px/1 var(--head); letter-spacing: .12em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+.brand span { color: var(--teal); }
+.back { font-size: 14px; color: var(--muted); text-decoration: none; }
+.back:hover { text-decoration: underline; }
+
+main .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: start; padding-block: 28px 56px; }
+
+.eyebrow { font: 700 12px/1.3 var(--head); letter-spacing: .14em; text-transform: uppercase; color: var(--teal); margin: 0 0 14px; }
+h1 { font: 800 clamp(1.7rem, 3.3vw, 2.45rem)/1.12 var(--head); letter-spacing: -.02em; margin: 0 0 12px; text-wrap: balance; }
+.lede { color: var(--muted); margin: 0 0 16px; max-width: 34em; }
+
+ul.points { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 10px; }
+ul.points li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; }
+ul.points svg { width: 22px; height: 22px; margin-top: 3px; }
+
+form { background: var(--pale); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px 14px; max-width: 30em; }
+label.field { display: block; font: 600 14px/1.3 var(--body); margin-bottom: 6px; }
+input[type="email"] { width: 100%; font: 400 17px/1.3 var(--body); padding: 12px 14px; border: 1.5px solid #8CA3AA; border-radius: 8px; background: #fff; color: var(--ink); }
+input[type="email"]:focus-visible, .consent input:focus-visible, button:focus-visible, .dl:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+.consent { display: grid; grid-template-columns: 22px 1fr; gap: 10px; margin: 10px 0 12px; font-size: 14px; line-height: 1.45; color: var(--muted); }
+.consent input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--teal); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+button, .dl { display: inline-block; width: 100%; text-align: center; font: 700 16px/1.2 var(--head); letter-spacing: .02em; padding: 13px 20px; border: 0; border-radius: 8px; background: var(--teal); color: #fff; cursor: pointer; text-decoration: none; }
+button:hover, .dl:hover { background: var(--teal-dark); }
+button[disabled] { opacity: .65; cursor: wait; }
+.err { color: #9A2B0F; font-size: 14px; margin: 0; }
+.err:not(:empty) { margin-top: 10px; }
+.fine { font-size: 12.5px; line-height: 1.4; color: var(--muted); margin: 10px 0 0; }
+
+.done { background: var(--pale); border: 1px solid var(--line); border-left: 5px solid var(--teal); border-radius: 10px; padding: 18px 20px; max-width: 30em; }
+.done h2 { font: 800 1.35rem/1.2 var(--head); margin: 0 0 8px; }
+.done p { margin: 0 0 16px; color: var(--muted); }
+.done h2:focus { outline: none; }
+
+figure.sheet { margin: 0; justify-self: center; }
+figure.sheet img { display: block; width: 100%; max-width: 400px; height: auto; border: 1px solid var(--line); border-radius: 4px; box-shadow: 0 18px 40px rgba(20,43,59,.18), 0 2px 6px rgba(20,43,59,.1); transform: rotate(1.6deg); background: #fff; }
+figure.sheet figcaption { text-align: center; font-size: 13px; color: var(--muted); margin-top: 18px; }
+
+.author { border-top: 1px solid var(--line); background: #F6FAFA; }
+.author .wrap { display: block; padding-block: 28px; font-size: 15px; color: var(--muted); }
+.author strong { color: var(--ink); }
+footer { font-size: 13px; color: var(--muted); }
+footer .wrap { display: block; padding-block: 18px 28px; }
+
+@media (max-width: 860px) {
+  main .wrap { grid-template-columns: 1fr; gap: 32px; padding-block: 24px 40px; }
+  figure.sheet { order: 2; }
+  figure.sheet img { transform: none; max-width: 360px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  button, .dl { transition: background .15s ease; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/">D&amp;P <span>Systems</span></a>
+    <a class="back" href="/">Back to portfolio</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Free page from the workbook</p>
+      <h1>What is one small, repeating problem costing your business?</h1>
+      <p class="lede">Get the one-page calculator from <em>Before You Buy Software</em>. It takes about ten minutes, works in your own currency, and needs no technical background.</p>
+
+      <form id="form" novalidate>
+        <label class="field" for="email">Your email</label>
+        <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@yourbusiness.com" required aria-describedby="err">
+        <div class="hp" aria-hidden="true">
+          <label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <label class="consent">
+          <input type="checkbox" id="consent" name="consent" required>
+          <span>Send me the free page, and occasional emails about the workbook. I can unsubscribe at any time.</span>
+        </label>
+        <button type="submit" id="submit">Send me the free page</button>
+        <p class="err" id="err" role="alert"></p>
+        <p class="fine">Your address is used only to send the page and news about the workbook. It is never sold or shared.</p>
+        <noscript><p class="err">This form needs JavaScript. Please enable it, or write to <a href="mailto:dpsystems.contact@gmail.com">dpsystems.contact@gmail.com</a> and I will send the page.</p></noscript>
+      </form>
+
+      <div class="done" id="done" hidden>
+        <h2 id="done-title" tabindex="-1">Thank you. Your page is ready.</h2>
+        <p>Print it and fill it in by hand, or type into it on screen. Start with the one problem that annoys you most.</p>
+        <a class="dl" href="/free-sample/put-a-price-on-the-problem.pdf" download>Download the free page (PDF)</a>
+      </div>
+
+      <ul class="points">
+        <li>
+          <svg viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#087E8B"/><path d="M6 11.5l3.2 3.2L16 7.8" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Count how often the problem happens and how long each case takes to fix.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#087E8B"/><path d="M6 11.5l3.2 3.2L16 7.8" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Turn those minutes, plus refunds and credits, into money.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#087E8B"/><path d="M6 11.5l3.2 3.2L16 7.8" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>End with a yearly number you can compare against the price of any software.</span>
+        </li>
+      </ul>
+    </div>
+
+    <figure class="sheet">
+      <img src="/free-sample/preview.png" width="1105" height="1430" alt="Preview of the free page: a seven-line cost calculator, followed by a worked example showing a problem that happens 12 times a month costing 1,728 a year.">
+      <figcaption>Step 3 of 7: Put a Price on the Problem</figcaption>
+    </figure>
+  </div>
+</main>
+
+<section class="author">
+  <div class="wrap">
+    <strong>About the author.</strong> I'm Jameson Yao of D&amp;P Systems. I wrote <em>Before You Buy Software</em> from years of working on business systems and operations, for small business owners and operations managers who want to be sure of the problem before they pay for a tool.
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    &copy; D&amp;P Systems &middot; Questions? <a href="mailto:dpsystems.contact@gmail.com">dpsystems.contact@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById('form');
+  var email = document.getElementById('email');
+  var consent = document.getElementById('consent');
+  var btn = document.getElementById('submit');
+  var err = document.getElementById('err');
+  var done = document.getElementById('done');
+  var title = document.getElementById('done-title');
+  var RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  function show(msg) { err.textContent = msg || ''; }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    show('');
+    var v = email.value.trim();
+    if (!RE.test(v)) { show('Please enter a valid email address.'); email.focus(); return; }
+    if (!consent.checked) { show('Please tick the box so I know you agree to receive the page and emails.'); consent.focus(); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: v, consent: true, website: form.elements.website.value })
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (data) { return { ok: r.ok && data.ok, data: data }; });
+    }).then(function (res) {
+      if (res.ok) {
+        form.hidden = true;
+        done.hidden = false;
+        title.focus();
+      } else {
+        show((res.data && res.data.error) || 'Something went wrong. Please try again.');
+        btn.disabled = false;
+        btn.textContent = 'Send me the free page';
+      }
+    }).catch(function () {
+      show('Could not connect. Please check your internet and try again.');
+      btn.disabled = false;
+      btn.textContent = 'Send me the free page';
+    });
+  });
+})();
+</script>
+</body>
+</html>
