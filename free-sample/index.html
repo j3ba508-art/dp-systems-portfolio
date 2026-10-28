@@ -71,6 +71,11 @@ button[disabled] { opacity: .65; cursor: wait; }
 .done h2 { font: 800 1.35rem/1.2 var(--head); margin: 0 0 8px; }
 .done p { margin: 0 0 16px; color: var(--muted); }
 .done h2:focus { outline: none; }
+.upsell { margin: 18px 0 0; padding-top: 14px; border-top: 1px solid var(--line); font-size: 15px; }
+.upsell p { margin: 0 0 10px; }
+.upsell a.more { font-weight: 600; }
+.footer-links { margin-top: 6px; }
+.footer-links a { margin-right: 14px; }
 
 figure.sheet { margin: 0; justify-self: center; }
 figure.sheet img { display: block; width: 100%; max-width: 400px; height: auto; border: 1px solid var(--line); border-radius: 4px; box-shadow: 0 18px 40px rgba(20,43,59,.18), 0 2px 6px rgba(20,43,59,.1); transform: rotate(1.6deg); background: #fff; }
@@ -120,7 +125,7 @@ footer .wrap { display: block; padding-block: 18px 28px; }
         </label>
         <button type="submit" id="submit">Send me the free page</button>
         <p class="err" id="err" role="alert"></p>
-        <p class="fine">Your address is used only to send the page and news about the workbook. It is never sold or shared.</p>
+        <p class="fine">Your address is used only to send the page and news about the workbook. It is never sold or shared. See the <a href="/privacy.html">Privacy Policy</a>.</p>
         <noscript><p class="err">This form needs JavaScript. Please enable it, or write to <a href="mailto:dpsystems.contact@gmail.com">dpsystems.contact@gmail.com</a> and I will send the page.</p></noscript>
       </form>
 
@@ -128,6 +133,10 @@ footer .wrap { display: block; padding-block: 18px 28px; }
         <h2 id="done-title" tabindex="-1">Thank you. Your page is ready.</h2>
         <p>Print it and fill it in by hand, or type into it on screen. Start with the one problem that annoys you most.</p>
         <a class="dl" href="/free-sample/put-a-price-on-the-problem.pdf" download>Download the free page (PDF)</a>
+        <div class="upsell">
+          <p>Want all seven steps? <em>Before You Buy Software</em> is the full 24-page workbook, US$17.</p>
+          <a class="more" href="/before-you-buy-software.html">See the full workbook</a>
+        </div>
       </div>
 
       <ul class="points">
@@ -162,6 +171,7 @@ footer .wrap { display: block; padding-block: 18px 28px; }
 <footer>
   <div class="wrap">
     &copy; D&amp;P Systems &middot; Questions? <a href="mailto:dpsystems.contact@gmail.com">dpsystems.contact@gmail.com</a>
+    <div class="footer-links"><a href="/before-you-buy-software.html">Workbook</a><a href="/terms.html">Terms</a><a href="/refund-policy.html">Refund Policy</a><a href="/privacy.html">Privacy</a></div>
   </div>
 </footer>
 
